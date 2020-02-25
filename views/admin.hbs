@@ -1,0 +1,50 @@
+<form action="/admin" method="post">
+    <div class="col">
+        <label for="formGroupExampleInput" class="text-light">Titre De L'article :</label>
+        <input type="text" class="form-control" name='title' id="formGroupExampleInput">
+    </div>
+    <div class="col">
+        <label for="formGroupExampleInput" class="text-light">Type D'article :</label>
+        <input type="text" class="form-control" name='type' id="formGroupExampleInput">
+    </div>
+    <h3 class="text-light">Description : &nbsp</h3>
+    <textarea placeholder="Description" name="description"></textarea>
+    </br>
+
+    <div class="fiels is-grouped pt-4 ">
+        <div class="control pr-5">
+            <button type="submit" class="button pr4">Enregistrer</button>
+            <button class="button">Annuler</button>
+        </div>
+    </div>
+</form>
+</br>
+<h1 class="title is-1">Liste des sujets :</h1>
+<form action="/admin/?_method=DELETE" method="post">
+    <button type="submit">Effacer tout</button>
+</form>
+<div>
+    {{#each dbsujet }}
+    <div class="card">
+        <header class="card-header">
+            <div class="card-content">
+                <div class="content">
+                    <h3>Titre: {{ title }}</h3>
+                    <p>{{ type }}</p>
+                    <p>{{ description }}</p>
+                    <p>{{ _id }}</p>
+                    <form action="/admin/{{ _id }}/?_method=PUT" method="post">
+                        <input type="text" name="title" placeholder="Title" required>
+                        <input type="text" name="type" placeholder="Type" required>
+                        <input type="text" name="description" placeholder="Description" required>
+                        </br>
+                        <button type="submit">Editer</button>
+                    </form>
+                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                        <button type="submit">Effacer</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+    {{/each }}
+</div>

@@ -23,13 +23,6 @@ mongoose.connect(urlDb, {
     useUnifiedTopology: true
     })
 
-//*** Handlebars ***//
-app.set('view engine', 'hbs');
-app.engine('hbs', hbs({
-    extname: 'hbs',
-    defaultLayout: 'main'
-}));
-
 //*** Express-session ***//
 app.use(expressSession({
 
@@ -38,28 +31,29 @@ app.use(expressSession({
     saveUninitialized: true,
     resave: false,
     store: new mongoStore({
-        mongooseConnection: mongoose.connection
+    mongooseConnection: mongoose.connection
     })
 }));
 
 //*** app.use ***//
-app.use(express.static('public'));
+app.use('/assets', express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+extended: true
 }));
 
-//*** app.use ***/
-app.use(express.static('public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
+//*** Handlebars ***//
+app.set   ('view engine', 'hbs');
+app.engine('hbs', hbs({
+          extname: 'hbs',
+          defaultLayout: 'main'
 }));
+
 
 //*** Mise en place du router ****/
 const 
     ROUTER = require('./api/router');
-app.use('/', ROUTER)
+    app.use('/', ROUTER)
 
 //*** mise en place de la page 404 ***//
 // app.use((req, res) => {

@@ -4,38 +4,47 @@ const
     path = require('path'),
     router = express.Router()
 
-//*** Controllers qu'on recupère du dossier API/CONTROLLERS ***// 
+/* 
+ *  Controllers qu'on recupère du dossier API/CONTROLLERS
+ ********************************************************/
 const
     forumcontrolleur = require('./controllers/forumcontrolleur'),
     homeconnectedcontrolleur = require('./controllers/homeconnectedcontrolleur'),
     homecontrolleur = require('./controllers/homecontrolleur'),
     listepokémoncontrolleur = require('./controllers/listpokémoncontrolleur'),
     pokémoncontrolleur = require('./controllers/pokémoncontrolleur'),
-    sujetforumcontrolleur = require('./controllers/sujetforumcontrolleur')
+    sujetforumcontrolleur = require('./controllers/sujetforumcontrolleur'),
+    admincontrolleur = require('./controllers/admincontrolleur')
 
-//*** 1er route: home qui permet de gérer la page Home ***//
+//** Route de la page Home **/
 router.route('/')
     .get(homecontrolleur.get)
 
-
-/*** 2ème routes: Article qui permet de gérer la page des Articles
-**
-**           /CRUD de la page Moncompte:/ 
-** (Méthode Post: qui permet l'envois de données),
-** (Métode Get: qui permet de récupéré nos informations),
-** (Méthode Put: qui permet de metre a jour nos informations), 
-** (Méthode Déléte: permet de supprimer nos informations).
-**
-***/
+//** Route de la page forum **//
 router.route('/forum')
-    // .post(UserController.post)
     .get(forumcontrolleur.get)
-    // .put(UserController.post)
-    // .delete(UserController.delete)
 
-//*** 3ème routes: Contact qui permet de gérer la page contact ***//
+/************************************************************
+* 
+*            **CRUD de la page Admin Et Admin:id ** 
+*  (Méthode Post: qui permet l'envois de données),
+*  (Métode Get: qui permet de récupéré nos informations),
+*  (Méthode Put: qui permet de metre a jour nos informations), 
+*  (Méthode Délete: permet de supprimer nos informations).
+*
+*************************************************************/
+
+//** Route de la page Admin **//
 router.route('/admin')
-    .get(contactController.get)
+    .get(admincontrolleur.get)
+    .post(admincontrolleur.post)
+    .delete(admincontrolleur.deleteAll)
+
+
+//** Route de la page Admin ID **//
+router.route('/admin/:id')
+    .put(admincontrolleur.put)
+    .delete(admincontrolleur.deleteOne)
 
 //*** Exportation du router ***//
 module.exports = router;
