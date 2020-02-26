@@ -1,16 +1,16 @@
-<form action="/admin" method="post">
+<form action="/admin" method="post" enctype="multipart/form-data">
     <div class="col">
         <label for="formGroupExampleInput" class="text-light">Titre De L'article :</label>
-        <input type="text" class="form-control" name='title' id="formGroupExampleInput">
+        <input type="text" name='title' required>
     </div>
     <div class="col">
         <label for="formGroupExampleInput" class="text-light">Type D'article :</label>
-        <input type="text" class="form-control" name='type' id="formGroupExampleInput">
+        <input type="text" name='type' required>
     </div>
     <h3 class="text-light">Description : &nbsp</h3>
     <textarea placeholder="Description" name="description"></textarea>
     </br>
-
+    <input type="file" name="imgSujets" required>
     <div class="fiels is-grouped pt-4 ">
         <div class="control pr-5">
             <button type="submit" class="button pr4">Enregistrer</button>
@@ -29,20 +29,36 @@
         <header class="card-header">
             <div class="card-content">
                 <div class="content">
-                    <h3>Titre: {{ title }}</h3>
-                    <p>{{ type }}</p>
-                    <p>{{ description }}</p>
-                    <p>{{ _id }}</p>
-                    <form action="/admin/{{ _id }}/?_method=PUT" method="post">
-                        <input type="text" name="title" placeholder="Title" required>
-                        <input type="text" name="type" placeholder="Type" required>
-                        <input type="text" name="description" placeholder="Description" required>
-                        </br>
-                        <button type="submit">Editer</button>
-                    </form>
-                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
-                        <button type="submit">Effacer</button>
-                    </form>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src=" {{ imgSujets }} ">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p>Titre: {{ title }}</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <p>{{ type }}</p>
+                            <p>{{ description }}</p>
+                            <p>{{ _id }}</p>
+                        </div>
+                        <form action="/admin/{{ _id }}/?_method=PUT" method="post">
+                            <input type="text" name="title" placeholder="Title">
+                            <input type="text" name="type" placeholder="Type">
+                            <input type="text" name="description" placeholder="Description">
+                            <input type="file" name="imgSujets">
+                            </br>
+                            <button type="submit">Editer</button>
+                        </form>
+                        <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                            <button type="submit">Effacer</button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
     </div>

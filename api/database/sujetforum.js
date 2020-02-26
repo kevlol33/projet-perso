@@ -6,12 +6,14 @@ const
 
 //*** Model du chema de sujet du forum ***/
 const 
-    SujetSchema = new mongoose.Schema({
+    SujetsSchema = new mongoose.Schema({
         //** Variable du schema **//
         title: String,
         type: String,
-        description: String
+        description: String,
+        imgSujets: String,
+        name: String
     })
 
 //*** Exportation du shéma de sujet de forum ***//
-module.exports = mongoose.model('sujet',SujetSchema )
+module.exports = mongoose.model('Sujets',SujetsSchema )

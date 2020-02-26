@@ -1,8 +1,8 @@
 //***** Importation *****//
 const
     express = require('express'),
-    path = require('path'),
-    router = express.Router()
+    router = express.Router(),
+    upload = require('./middleware/multer-config')
 
 /* 
  *  Controllers qu'on recupère du dossier API/CONTROLLERS
@@ -37,13 +37,13 @@ router.route('/forum')
 //** Route de la page Admin **//
 router.route('/admin')
     .get(admincontrolleur.get)
-    .post(admincontrolleur.post)
+    .post(upload.single('imgSujets'), admincontrolleur.post)
     .delete(admincontrolleur.deleteAll)
 
 
 //** Route de la page Admin ID **//
 router.route('/admin/:id')
-    .put(admincontrolleur.put)
+    .put(upload.single('imgSujets'), admincontrolleur.put)
     .delete(admincontrolleur.deleteOne)
 
 //*** Exportation du router ***//
