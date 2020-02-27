@@ -1,12 +1,15 @@
-//***** Importation *****//
+/************************************************************
+*                   Importation
+*************************************************************/
 const
     express = require('express'),
     router = express.Router(),
     upload = require('./middleware/multer-config')
 
-/* 
- *  Controllers qu'on recupère du dossier API/CONTROLLERS
- ********************************************************/
+/************************************************************
+*           Controllers du dossier API/CONTROLLERS
+*************************************************************/
+
 const
     forumcontrolleur = require('./controllers/forumcontrolleur'),
     homeconnectedcontrolleur = require('./controllers/homeconnectedcontrolleur'),
@@ -16,35 +19,55 @@ const
     sujetforumcontrolleur = require('./controllers/sujetforumcontrolleur'),
     admincontrolleur = require('./controllers/admincontrolleur')
 
-//** Route de la page Home **/
-router.route('/')
-    .get(homecontrolleur.get)
-
-//** Route de la page forum **//
-router.route('/forum')
-    .get(forumcontrolleur.get)
-
 /************************************************************
-* 
-*            **CRUD de la page Admin Et Admin:id ** 
+*                    ** CRUD ** 
 *  (Méthode Post: qui permet l'envois de données),
 *  (Métode Get: qui permet de récupéré nos informations),
 *  (Méthode Put: qui permet de metre a jour nos informations), 
 *  (Méthode Délete: permet de supprimer nos informations).
-*
 *************************************************************/
 
-//** Route de la page Admin **//
+/************************************************************
+*                   CRUD page home
+*************************************************************/
+
+router.route('/')
+    .get(homecontrolleur.get)
+
+
+/************************************************************
+*                   CRUD USER
+*************************************************************/
+
+router.route('/register')
+    .post(homecontrolleur.post)
+
+/************************************************************
+*                   GRUD page forum
+*************************************************************/
+
+router.route('/forum')
+    .get(forumcontrolleur.get)
+
+/************************************************************
+*                   CRUD page Admin 
+*************************************************************/
+
 router.route('/admin')
     .get(admincontrolleur.get)
     .post(upload.single('imgSujets'), admincontrolleur.post)
     .delete(admincontrolleur.deleteAll)
 
+/************************************************************
+*                   CRUD Admin ID
+*************************************************************/
 
-//** Route de la page Admin ID **//
 router.route('/admin/:id')
     .put(upload.single('imgSujets'), admincontrolleur.put)
     .delete(admincontrolleur.deleteOne)
 
-//*** Exportation du router ***//
+/************************************************************
+*                   Exportation de la route
+*************************************************************/
+
 module.exports = router;

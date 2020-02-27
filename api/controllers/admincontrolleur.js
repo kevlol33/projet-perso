@@ -1,25 +1,35 @@
-//***** Importation *****//
+/************************************************************
+*                       Importation 
+*************************************************************/
 const
     Sujets = require('../database/sujetforum'),
     path = require('path'),
     fs = require('fs')
 
 
-//***** Controleur du forum *****//
+/************************************************************
+*                       Controleur Admin 
+*************************************************************/
 module.exports = {
 
-    //*** Permet de rester sur la pasge admin ***//
+/************************************************************
+*                        Méthode GET 
+*************************************************************/
+    //*** Permet de récupérer des donnée sur la pasge admin ***//
     get: async (req, res) => {
         //** chercher les donnée a l'interieur de la base de donnée **//
-        const dbsujet = await Sujets.find({})
+        const dbsujets = await Sujets.find({})
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
         res.render('admin', {
-            dbsujet
+            dbsujets
         })
     },
 
+/************************************************************
+*                        Méthode POST
+*************************************************************/
     //*** Permet d'enregistrer un sujet dans la base de données ***//
     post: async (req, res) => {
         // condition //
@@ -43,6 +53,9 @@ module.exports = {
         }
     },
 
+/************************************************************
+*                        Méthode PUT
+*************************************************************/
     //*** Permet de metre a jour un sujet ***//
     put: async (req, res) => {
         const
@@ -102,6 +115,9 @@ module.exports = {
         }
     },
 
+/************************************************************
+*                        Méthdoe DELLETE(1 SUJET) 
+*************************************************************/
     //*** Permet de suprimer un sujet de la basse de données ***//
     deleteOne: async (req, res) => {
         //** chercher les sujets dans la base de donnée **//
@@ -141,6 +157,9 @@ module.exports = {
             })
     },
 
+/************************************************************
+*                        Méthode DELLETE(ALL) 
+*************************************************************/
     //*** permet de supprimer tout les article en un clic ***//
     deleteAll: (req, res) => {
         const

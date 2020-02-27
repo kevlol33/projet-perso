@@ -1,12 +1,15 @@
 </br>
 <nav class="panel">
+    {{!-- Barre des sujets --}}
     <p class="panel-tabs">
         <a href="/">Région</a>
         <a>Pokédex</a>
         <a>Jeux Vidéo</a>
         <a>Produit Dériver</a>
     </p>
+    {{!-- /Barre des sujets --}}
     </br>
+    {{!-- Barre de recherche --}}
     <div class="panel-block">
         <p class="control has-icons-left">
             <input class="input" type="text" placeholder="Search">
@@ -15,31 +18,28 @@
             </span>
         </p>
     </div>
+    {{!-- /Barre de recherche --}}
 </nav>
+
 </br>
 <h1 class="title is-1">Liste de Sujet</h1>
 </br>
+
+{{!-- Tableau pour afficher les sujet du forum --}}
 <table class="table is-fullwidth">
     <thead>
         <tr>
-            <th class="title is-2"><abbr title="Sujet">Sujet</abbr></th>
-            <th class="title is-2"><abbr title="Description">Description</abbr></th>
+            <th class="title is-2">Sujet</th>
+            <th class="title is-2">Description</th>
         </tr>
     </thead>
-<tr>
-    <td>Région</td>
-    <td>Histoire de Kanto <span class="tag is-success">Admin</span></td>
-</tr>
-<tr>
-    <td>Pokédex</td>
-    <td>Togépie <span class="tag is-warning">Utilisateur</span></td>
-</tr>
-<tr>
-    <td>Jeux</td>
-    <td>Astuce Pokémon rouge</td>
-</tr>
-<tr>
-    <td>Produit Dériver</td>
-    <td>Peluche feurisson</td>
-</tr>
+    {{#each dbsujets }}
+    <tr>
+        <td>{{ title }}</td>
+        <td>{{ description }}</td>
+    </tr>
+    {{/each }}
 </table>
+
+
+{{!-- /Tableau pour afficher les sujet du forum --}}

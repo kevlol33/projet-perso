@@ -1,4 +1,6 @@
-//**** Importation ****//
+/************************************************************
+*                        Importation 
+*************************************************************/
 const
     bodyParser     = require('body-parser'),
     express        = require('express'),
@@ -10,20 +12,27 @@ const
     MongoStore     = require('connect-mongo'),
     port           = process.env.PORT || 3000;
 
-//*** Method Override ***//
+/************************************************************
+*                        Methode Override 
+*************************************************************/
 app.use(methodOverride('_method'));
 
-//*** Mongoose ***//
+/************************************************************
+*                        Mongoose 
+*************************************************************/
 const
     urlDb      = 'mongodb://localhost:27017/BaseJs',
     mongoStore = MongoStore(expressSession)
 
 mongoose.connect(urlDb, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
     })
 
-//*** Express-session ***//
+/************************************************************
+*                        Express Session 
+*************************************************************/
 app.use(expressSession({
 
     secret: 'securite',
@@ -35,14 +44,18 @@ app.use(expressSession({
     })
 }));
 
-//*** app.use ***//
+/************************************************************
+*                        App.Use 
+*************************************************************/
 app.use('/assets', express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 extended: true
 }));
 
-//*** Handlebars ***//
+/************************************************************
+*                        Handlebars 
+*************************************************************/
 app.set   ('view engine', 'hbs');
 app.engine('hbs', hbs({
           extname: 'hbs',
@@ -50,17 +63,23 @@ app.engine('hbs', hbs({
 }));
 
 
-//*** Mise en place du router ****/
+/************************************************************
+*                        Routeur
+*************************************************************/
 const 
     ROUTER = require('./api/router');
     app.use('/', ROUTER)
 
-//*** mise en place de la page 404 ***//
+/************************************************************
+*                        Erreur 404 
+*************************************************************/
 // app.use((req, res) => {
 //     res.render('err404')
 // })
 
-//*** Port ***//
+/************************************************************
+*                        Port 
+*************************************************************/
 app.listen(port, () => {
     console.log("le serveur tourne sur le port: " + port);
     
