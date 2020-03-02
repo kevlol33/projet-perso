@@ -1,7 +1,7 @@
 <nav class="navbar is-info is-flex-mobile " role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <img src="https://picsum.photos/50">
-        <a class="navbar-item">Pokélande</a>
+        <a class="navbar-item" href="/">Pokélande</a>
     </div>
 
     <div id=" navbarBasicExample" class="navbar-menu">
@@ -11,44 +11,48 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <div class="column">
-                    {{!-- <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="email" placeholder="Email">
+                <form action="/login" method="POST">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Email" name="email">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
                         </p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Password">
+                            <input class="input" type="password" placeholder="Password" name="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </p>
+                        <p class="control">
+                            <button type="submit" class="button is-success">
+                                Login
+                            </button>
+                        </p>
                     </div>
-                </div>
-                <div class="column">
-                    <div>
-                        <button class="button has-icons-left is-link is-outlined">Connection</button>
-                    </div>
-                </div> --}}
+                </form>
                 <div class="buttons">
-                    <a href="/admin"  class="button is-link">
-                        Admin
-                    </a>
-                    <a href="/forum"  class="button is-link">
+                    {{#if user}}
+                    <a href="/forum" class="button is-link">
                         Forum
                     </a>
-                    <a href="/"  class="button is-link">
-                        Home
-                    </a>
-                    <a href="/listpokemon"  class="button is-link">
+                    <a href="/listpokemon" class="button is-link">
                         Pokédex
                     </a>
+                    <a class="button is-link">
+                        Se Déconnecté
+                    </a>
+                    {{/if}}
+                    {{#if isAdmin}}
+                    <a href="/admin" class="button is-link">
+                        Admin
+                    </a>
+                    {{/if}}
+
                 </div>
             </div>
         </div>

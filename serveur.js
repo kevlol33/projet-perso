@@ -3,13 +3,16 @@
 *************************************************************/
 const
     bodyParser     = require('body-parser'),
+    connectFlash   = require('connect-flash'),
     express        = require('express'),
     app            = express(),
     expressSession = require('express-session'),
     hbs            = require('express-handlebars'),
+    handlebars     = require('handlebars'),
     methodOverride = require('method-override'),
     mongoose       = require('mongoose'),
     MongoStore     = require('connect-mongo'),
+    passport       = require('passport'),
     port           = process.env.PORT || 3000;
 
 /************************************************************
@@ -22,11 +25,11 @@ app.use(methodOverride('_method'));
 *************************************************************/
 const
     urlDb      = 'mongodb://localhost:27017/BaseJs',
-    mongoStore = MongoStore(expressSession)
+    mongoStore =  MongoStore(expressSession)
 
 mongoose.connect(urlDb, {
-    useCreateIndex: true,
-    useNewUrlParser: true,
+    useCreateIndex:     true,
+    useNewUrlParser:    true,
     useUnifiedTopology: true
     })
 
@@ -35,11 +38,11 @@ mongoose.connect(urlDb, {
 *************************************************************/
 app.use(expressSession({
 
-    secret: 'securite',
-    name: 'ptitBiscuit',
-    saveUninitialized: true,
-    resave: false,
-    store: new mongoStore({
+    secret:             'securite',
+    name:               'ptitBiscuit',
+    saveUninitialized:  true,
+    resave:             false,
+    store:              new mongoStore({
     mongooseConnection: mongoose.connection
     })
 }));
@@ -48,10 +51,13 @@ app.use(expressSession({
 *                        App.Use 
 *************************************************************/
 app.use('/assets', express.static('public'));
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(connectFlash())
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-extended: true
-}));
+    extended: true}));
 
 /************************************************************
 *                        Handlebars 
@@ -62,6 +68,21 @@ app.engine('hbs', hbs({
           defaultLayout: 'main'
 }));
 
+/************************************************************
+*                       Uttilisation du middleware 
+*************************************************************/
+
+app.use('*', (req, res, next) => {
+    if (res.locals.user = req.session.userId) {
+        if (req.session.status === 'user') {
+            res.locals.user = req.session.status
+
+        }
+
+    }
+    // La function next permet qu'une fois la condition effectuer il reprenne son chemin
+    next()
+})
 
 /************************************************************
 *                        Routeur

@@ -11,13 +11,21 @@ const
 *************************************************************/
 
 const
-    forumcontrolleur = require('./controllers/forumcontrolleur'),
-    homeconnectedcontrolleur = require('./controllers/homeconnectedcontrolleur'),
-    homecontrolleur = require('./controllers/homecontrolleur'),
-    listepokémoncontrolleur = require('./controllers/listpokémoncontrolleur'),
-    pokémoncontrolleur = require('./controllers/pokémoncontrolleur'),
-    sujetforumcontrolleur = require('./controllers/sujetforumcontrolleur'),
-    admincontrolleur = require('./controllers/admincontrolleur')
+    forumControlleur = require('./controllers/forumcontrolleur'),
+    homeConnectedControlleur = require('./controllers/homeconnectedcontrolleur'),
+    homeControlleur = require('./controllers/homecontrolleur'),
+    listepokémonControlleur = require('./controllers/listpokémoncontrolleur'),
+    pokémonControlleur = require('./controllers/pokémoncontrolleur'),
+    sujetforumControlleur = require('./controllers/sujetforumcontrolleur'),
+    adminControlleur = require('./controllers/admincontrolleur'),
+    userControlleur = require('./controllers/Usercontrolleur')
+
+/************************************************************
+*                       Impotation middlewares 
+*************************************************************/
+
+const
+    auth = require('./middleware/auth')
 
 /************************************************************
 *                    ** CRUD ** 
@@ -32,7 +40,7 @@ const
 *************************************************************/
 
 router.route('/')
-    .get(homecontrolleur.get)
+    .get(homeControlleur.get)
 
 
 /************************************************************
@@ -40,31 +48,37 @@ router.route('/')
 *************************************************************/
 
 router.route('/register')
-    .post(homecontrolleur.post)
+    .post(homeControlleur.post)
+
+router.route('/login')
+    .post(userControlleur.post)
+
+router.route('/homeconnected', auth)
+    .get(homeConnectedControlleur.get)
 
 /************************************************************
 *                   GRUD page forum
 *************************************************************/
 
-router.route('/forum')
-    .get(forumcontrolleur.get)
+router.route('/forum', auth)
+    .get(forumControlleur.get)
 
 /************************************************************
 *                   CRUD page Admin 
 *************************************************************/
 
 router.route('/admin')
-    .get(admincontrolleur.get)
-    .post(upload.single('imgSujets'), admincontrolleur.post)
-    .delete(admincontrolleur.deleteAll)
+    .get(adminControlleur.get)
+    .post(upload.single('imgSujets'), adminControlleur.post)
+    .delete(adminControlleur.deleteAll)
 
 /************************************************************
 *                   CRUD Admin ID
 *************************************************************/
 
-router.route('/admin/:id')
-    .put(upload.single('imgSujets'), admincontrolleur.put)
-    .delete(admincontrolleur.deleteOne)
+router.route('/admin/:id', auth)
+    .put(upload.single('imgSujets'), adminControlleur.put)
+    .delete(adminControlleur.deleteOne)
 
 /************************************************************
 *                   Exportation de la route

@@ -1,5 +1,5 @@
 /************************************************************
-*                        Importation 
+*                        Importation du model User
 *************************************************************/
 const 
     User = require('../database/User')
@@ -24,8 +24,8 @@ module.exports = {
 *************************************************************/
     //** Post permet de crée un utilisateur **//
     post: (req, res) => {
-
-       //** Je crée l'utilisateur **/
+        
+    //    ** Je crée l'utilisateur **/
        User.create({
 
         //** création de l'username **/

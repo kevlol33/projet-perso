@@ -1,9 +1,9 @@
 /************************************************************
 *                        Importation 
 *************************************************************/
-const 
-    mongoose = require ('mongoose')
-    bcrypt = require('bcrypt')
+const
+    mongoose = require('mongoose')
+bcrypt = require('bcrypt')
 
 /************************************************************
 *                        Schema
@@ -33,7 +33,7 @@ const UserShema = new mongoose.Schema({
         unique: true
     },
 
-    password:{
+    password: {
 
         //* le type sera une chaine de caractère *//
         type: String
@@ -66,13 +66,32 @@ const UserShema = new mongoose.Schema({
 *                         Bcrypt
 *************************************************************/
 
-// const 
-//     User = this
+UserShema.pre('save', function (next) {
 
-// bcrypt.hach(User.password, 10, (error, encrypted)) => {
-//     user.password = encrypted
-//     next()
-// }
+    //** utilise le passeword de l'utilisateur **//
+    const user = this                                      
+
+    //** avec le passeword hache le et crypte le**//
+    bcrypt.hash(user.password, 10, (error, encrypted) => {  
+        user.password = encrypted
+        //** passe a la suite **//
+        next()                                                
+    })
+})
+
+UserShema.pre('save', function (next) {
+
+    //** utilise le passeword2 de l'utilisateur **//
+    const user = this                                      
+
+    //** avec le passeword2 hache le et crypte le**//
+    bcrypt.hash(user.password2, 10, (error, encrypted) => {  
+        user.password2 = encrypted
+        //** passe a la suite **//
+        next()                                                
+    })
+})
+
 
 /************************************************************
 *                        Exportation du Module 

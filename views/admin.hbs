@@ -29,7 +29,7 @@
 {{!-- /Formulaire pour éfacer tout les sujet --}}
 <div>
     {{!-- Boucle pour afficher les sujet --}}
-    {{#each dbsujet }}
+    {{#each dbsujets }}
     <div class="card">
         <header class="card-header">
             <div class="card-content">
@@ -45,7 +45,7 @@
                                 <p>Titre: {{ title }}</p>
                             </div>
                         </div>
-                        
+
                         {{!-- Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
                         <div class="content">
                             <p>{{ type }}</p>
@@ -78,3 +78,32 @@
     {{/each }}
     {{!-- /Boucle pour afficher les sujet --}}
 </div>
+
+<h1 class="title is-1">Liste des utilisateurs :</h1>
+{{#each dbusers }}
+<div class="card">
+    <header class="card-header">
+        <div class="card-content">
+            <div class="content">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p>username : {{ username }} email : {{ email }} password : {{ password }} id : {{ _id }}</p>
+                        </div>
+                    </div>
+                    {{!-- /Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
+
+                    {{!-- Formulaire pour mettre a jour un sujet  --}}
+                    <form action="/admin/{{ _id }}/?_method=PUT" method="post">
+                        <input type="text" name="username" placeholder="username">
+                        <input type="text" name="email" placeholder="email">
+                        <input type="text" name="password" placeholder="password">
+                        </br>
+                        <button type="submit">Editer</button>
+                    </form>
+                    {{!-- /Formulaire pour mettre a jour un sujet  --}}
+                </div>
+            </div>
+        </div>
+</div>
+{{/each}} 
