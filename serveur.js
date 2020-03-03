@@ -73,13 +73,19 @@ app.engine('hbs', hbs({
 *************************************************************/
 
 app.use('*', (req, res, next) => {
-    if (res.locals.user = req.session.userId) {
-        if (req.session.status === 'user') {
+    const sess = req.session
+    console.log(sess)
+        if (sess.isBan === true) {
+            console.log('sess isBan ')
+        } else if (sess.status === 'user') {
+            console.log('log user sess')
             res.locals.user = req.session.status
-
+            if (sess.isAdmin === true) {
+                console.log('log Admin sess')
+                res.locals.isAdmin = req.session.status
+            } 
         }
 
-    }
     // La function next permet qu'une fois la condition effectuer il reprenne son chemin
     next()
 })

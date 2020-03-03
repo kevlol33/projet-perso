@@ -2,7 +2,7 @@
 *                       Importation 
 *************************************************************/
 const
-    Sujets = require('../database/sujetforum'),
+    Sujets = require('../database/Sujet'),
     path = require('path'),
     fs = require('fs')
 
@@ -22,7 +22,7 @@ module.exports = {
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
-        res.render('admin', {
+        res.render('Admin', {
             dbsujets
         })
     },
@@ -47,7 +47,7 @@ module.exports = {
                 //** si il y a des errreur alors **/
                 (error, post) => {
                     //** tu me redirige vers la page admin **//
-                    res.redirect('/admin')
+                    res.redirect('/Admin')
                 })
                 
         }
@@ -77,15 +77,15 @@ module.exports = {
                     //** sinon tu me redirige soit **/
                     (err) => {
                         //** soit a l'acceuil **//
-                        if (err) res.redirect('/admin')
+                        if (err) res.redirect('/Admin')
                         //** soit a la page admin **//
-                        else res.redirect('/admin')
+                        else res.redirect('/Admin')
                     })
             }
             //** sinon ru me redirige **//
             else {
                 //** a la page home **//
-                res.redirect('/admin')
+                res.redirect('/Admin')
             }
         }
         //** sinon tout sa **//
@@ -108,7 +108,7 @@ module.exports = {
                             //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
                             else {
                                 console.log('File Deleted.')
-                                res.redirect('/admin')
+                                res.redirect('/Admin')
                             }
                         })
                 })
@@ -146,7 +146,7 @@ module.exports = {
                             //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
                             else {
                                 console.log('fichier supprimer')
-                                res.redirect('/admin')
+                                res.redirect('/Admin')
                             }
                         })
                 }
@@ -189,7 +189,7 @@ module.exports = {
                             })
                         }
                         //**apres tout sa tu me dirige sur la page admin **/
-                        res.redirect('/admin')
+                        res.redirect('/Admin')
                     } 
                     //**sinon tu me logue l'erreur **//
                     else {

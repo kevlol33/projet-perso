@@ -11,9 +11,29 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
+                {{#if user}}
+                <div class="buttons">
+                    <a href="/Forum" class="button is-link">
+                        Forum
+                    </a>
+                    <a href="/Pokedex" class="button is-link">
+                        Pokédex
+                    </a>
+                    <a href="/logout" class="button is-link">
+                        Se Déconnecté
+                    </a>
+                    
+                    {{#if isAdmin}}
+                    <a href="/admin" class="button is-link">
+                        Admin
+                    </a>
+                    {{/if}}
+
+                </div>
+                {{else}}
                 <form action="/login" method="POST">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
+                    <div class="field columns">
+                        <p class="control has-icons-left has-icons-right column">
                             <input class="input" type="email" placeholder="Email" name="email">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
@@ -22,38 +42,21 @@
                                 <i class="fas fa-check"></i>
                             </span>
                         </p>
-                        <p class="control has-icons-left">
+                        <p class="control has-icons-left column">
                             <input class="input" type="password" placeholder="Password" name="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </p>
-                        <p class="control">
+                        <p class="control column">
                             <button type="submit" class="button is-success">
                                 Login
                             </button>
                         </p>
                     </div>
                 </form>
-                <div class="buttons">
-                    {{#if user}}
-                    <a href="/forum" class="button is-link">
-                        Forum
-                    </a>
-                    <a href="/listpokemon" class="button is-link">
-                        Pokédex
-                    </a>
-                    <a class="button is-link">
-                        Se Déconnecté
-                    </a>
-                    {{/if}}
-                    {{#if isAdmin}}
-                    <a href="/admin" class="button is-link">
-                        Admin
-                    </a>
-                    {{/if}}
-
-                </div>
+                
+                {{/if}}
             </div>
         </div>
     </div>

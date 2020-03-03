@@ -62,9 +62,10 @@ module.exports = {
     
                         //** si l'utilisateur est Bannie **//
                         req.session.isBan = user.isBan
+                        console.log('Je suis Bannis ' + user.isBan);
                         
                         //** Apres sela et ok tu me redirigide sur la page home connect **//
-                        res.redirect('/homeconnected')
+                        res.redirect('/Home')
                         console.log('Je suis Bannie ' + user.isBan);
                         
 
@@ -84,6 +85,13 @@ module.exports = {
                 
                return res.redirect('/')
             }
+        })
+    },
+
+    logout: (req, res) => {
+        req.session.destroy(() => {
+            res.clearCookie("ptitBiscuit");
+            res.redirect('/')
         })
     }
 }
