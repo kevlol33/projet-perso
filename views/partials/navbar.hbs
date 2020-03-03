@@ -13,22 +13,25 @@
             <div class="navbar-item">
                 {{#if user}}
                 <div class="buttons">
+                    <a href="/Home" class="button is-link">
+                        Acceuil
+                    </a>
                     <a href="/Forum" class="button is-link">
                         Forum
                     </a>
                     <a href="/Pokedex" class="button is-link">
                         Pokédex
                     </a>
-                    <a href="/logout" class="button is-link">
-                        Se Déconnecté
-                    </a>
-                    
                     {{#if isAdmin}}
                     <a href="/admin" class="button is-link">
                         Admin
                     </a>
                     {{/if}}
 
+                    <a href="/logout" class="button is-link">
+                        Se Déconnecté
+                    </a>
+                            
                 </div>
                 {{else}}
                 <form action="/login" method="POST">

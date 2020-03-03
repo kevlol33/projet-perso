@@ -25,7 +25,8 @@ const
 *************************************************************/
 
 const
-    auth = require('./middleware/auth')
+    Auth = require('./middleware/Auth'),
+    admin = require('./middleware/Admin')
 
 /************************************************************
 *                    ** CRUD ** 
@@ -57,31 +58,37 @@ router.route('/logout')
     .get(User.logout)
 
 router.route('/Home')
-    .get(auth, Home.get)
+    .get(Auth, Home.get)
 
 /************************************************************
-*                   GRUD page forum
+*                   GRUD page Forum
 *************************************************************/
 
 router.route('/Forum')
-    .get(auth, Forum.get)
+    .get(Auth, Forum.get)
 
+/************************************************************
+*                   GRUD page Pokedex
+*************************************************************/
+
+router.route('/Pokedex')
+    .get(Auth, Pokedex.get)
 /************************************************************
 *                   CRUD page Admin 
 *************************************************************/
 
 router.route('/Admin')
-    .get(Admin.get)
-    .post(upload.single('imgSujets'), Admin.post)
-    .delete(Admin.deleteAll)
+    .get(admin, Admin.get)
+    .post(admin, upload.single('imgSujets'), Admin.post)
+    .delete(admin, Admin.deleteAll)
 
 /************************************************************
 *                   CRUD Admin ID
 *************************************************************/
 
-router.route('/Admin/:id', auth)
-    .put(upload.single('imgSujets'), Admin.put)
-    .delete(Admin.deleteOne)
+router.route('/Admin/:id')
+    .put(admin, upload.single('imgSujets'), Admin.put)
+    .delete(admin, Admin.deleteOne)
 
 /************************************************************
 *                   Exportation de la route
