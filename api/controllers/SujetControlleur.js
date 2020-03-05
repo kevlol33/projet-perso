@@ -1,7 +1,22 @@
-//***** Contoleur de la page acceuil *****//
+/************************************************************
+*                       Importation 
+*************************************************************/
+const
+    Sujets = require('../database/Sujet'),
+    path = require('path'),
+    fs = require('fs')
+
+/************************************************************
+*                       Controleur Sujet 
+*************************************************************/
 module.exports = {
-    //*** Permet de rester sur la pasge home ***//
-    get: (req, res) => {
-        res.render('Sujet')
+/************************************************************
+*                        Méthode GET 
+*************************************************************/
+    get: async (req, res) => {
+        const dbsujets = await Sujets.find({})
+        res.render('Sujet', {
+            dbsujets
+        })
     },
 }

@@ -1,7 +1,8 @@
 /************************************************************
 *                       Importation 
 *************************************************************/
-const 
+const
+    Sujets = require('../database/Sujet'),
     express = require('express'),
     router = express.Router(),
     path = require('path'),
@@ -12,7 +13,10 @@ const
 *************************************************************/
 module.exports = {
     //*** Permet de rester sur la pasge forum ***//
-    get: (req, res) => {
-        res.render('Forum')
+    get: async (req, res) => {
+        const dbsujets = await Sujets.find({})
+        res.render('Forum', {
+            dbsujets
+        })
     },
 }
