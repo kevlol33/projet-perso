@@ -3,19 +3,19 @@
     <div class="col">
         <label for="formGroupExampleInput" class="text-light">Titre De L'article :</label>
         <input type="text" name='title' required>
-    </div>
-    <div class="col">
         <label for="formGroupExampleInput" class="text-light">Type D'article :</label>
         <input type="text" name='type' required>
+        <label for="formGroupExampleInput" class="text-light">Description : &nbsp</label>
+        <textarea placeholder="Description" name="description"></textarea>
     </div>
-    <h3 class="text-light">Description : &nbsp</h3>
-    <textarea placeholder="Description" name="description"></textarea>
     </br>
-    <input type="file" name="imgSujets" required>
+    <input type="file" name="imgSujets" class="button pr4" required>
     <div class="fiels is-grouped pt-4 ">
         <div class="control pr-5">
+            </br>
             <button type="submit" class="button pr4">Enregistrer</button>
             <button class="button">Annuler</button>
+            </br>
         </div>
     </div>
 </form>
@@ -80,30 +80,39 @@
 </div>
 
 <h1 class="title is-1">Liste des utilisateurs :</h1>
-{{#each dbusers }}
+
 <div class="card">
     <header class="card-header">
         <div class="card-content">
             <div class="content">
                 <div class="card-content">
                     <div class="media">
-                        <div class="media-content">
-                            <p>username : {{ username }} email : {{ email }} password : {{ password }} id : {{ _id }}</p>
-                        </div>
+                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Id</th>
+                                    <th>Bouton</th>
+                                </tr>
+                            </thead>
+                            {{#each dbusers }}
+                            <tr>
+                                <td>{{ username }}</td>
+                                <td>{{ email }}</td>
+                                <td>{{ _id }}</td>
+                                <td>
+                                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                                        <button type="submit">Effacer</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
                     </div>
                     {{!-- /Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
-
-                    {{!-- Formulaire pour mettre a jour un sujet  --}}
-                    <form action="/admin/{{ _id }}/?_method=PUT" method="post">
-                        <input type="text" name="username" placeholder="username">
-                        <input type="text" name="email" placeholder="email">
-                        <input type="text" name="password" placeholder="password">
-                        </br>
-                        <button type="submit">Editer</button>
-                    </form>
-                    {{!-- /Formulaire pour mettre a jour un sujet  --}}
                 </div>
             </div>
         </div>
 </div>
-{{/each}} 
