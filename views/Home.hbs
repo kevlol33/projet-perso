@@ -1,76 +1,38 @@
-</br>
-<h1 class="title is-1">Favorie du mois :</h1>
 <div class="container">
-    <div class="columns">
-        {{#each dbsujets }}
-        <div class="column">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src=" {{ imgSujets }} "
-                            alt="Placeholder image">
-                    </figure>
+    <div class="row">
+        <h1 class="title is-1">Favorie du mois :</h1>
+        <div class="col-md-12">
+            <div class="card-deck">
+                {{#each dbsujets}}
+                <div class="card text-white bg-secondary mb-3">
+                    <img src="{{imgSujets}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{title}} </h5>
+                        <p class="card-text">{{ description }}</p>
+                        <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img src=" {{ imgSujets }} "
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p class="title is-4">{{ title }}</p>
-                        </div>
-                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 
-                    <div class="content">
-                        {{ description }}
-                        <a href="#">#Feu</a> <a href="#">#Kantho</a>
-                        <br>
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+
+    <div class="container">
+        <div class="row">
+            <h1 class="title is-1">Favorie du mois :</h1>
+            <div class="col-md-12">
+                <div class="card-deck">
+                    {{#each dbsujets}}
+                    <div class="card text-white bg-secondary mb-3">
+                        <img src="{{imgSujets}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{title}} </h5>
+                            <p class="card-text">{{ description }}</p>
+                            <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
+                        </div>
                     </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
-        {{/each }}
-    </div>
-</div>
-</br>
-<h1 class="title is-1">Équipe Favorie :</h1>
-<div class="container">
-    <div class="columns">
-        {{#each dbsujets }}
-        <div class="column">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src=" {{ imgSujets }} "
-                            alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img src=" {{ imgSujets }} "
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p class="title is-4">{{ title }}</p>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        {{ description }}
-                        <a href="#">#Feu</a> <a href="#">#Kantho</a>
-                        <br>
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{/each }}
-    </div>
-</div>

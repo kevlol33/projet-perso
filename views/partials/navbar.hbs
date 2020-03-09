@@ -1,58 +1,32 @@
-<nav class="navbar is-info is-flex-mobile " role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <img src="https://picsum.photos/50">
-        <a class="navbar-item" href="/">Pokélande</a>
-    </div>
-
-    <div id=" navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
+<nav class="site-header sticky-top py-1 bg-dark">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#">
+      <img src="/public/image/Pokemon_Go_Pokemon_Play_Pokeball_53820.png" alt="">
+      <a class="py-2 d-none d-md-inline-block" href="/">Pokélande</a>
+    </a>
+    {{#if isAdmin}}
+    <a class="py-2 d-none d-md-inline-block" href="/Admin">Admin</a>
+    {{/if}}
+    {{#if user}}
+    <a class="py-2 d-none d-md-inline-block" href="/Home">Home</a>
+    <a class="py-2 d-none d-md-inline-block" href="/Forum">Forum</a>
+    <a class="py-2 d-none d-md-inline-block" href="/Pokedex">Pokédex</a>
+    <a class="py-2 d-none d-md-inline-block" href="/logout">Se déconnecter</a>
+ 
+  </div>
+  {{else}}
+    <form action="/login" method="POST">
+            <div class="form-inline">
+                <label for="Email1">Email :&nbsp;</label>
+                <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
+                    placeholder="email" name="email">
+                &nbsp;
+                <label for="Password1">Password :&nbsp;</label>
+                <input type="password" class="form-control" id="Password1" placeholder="Password"
+                    name="password">
+                </br>
+                <button type="submit" class="btn btn-danger">Connection</button>
             </div>
-        </div>
-        <div class="navbar-end">
-            <div class="navbar-item">
-                {{#if user}}
-                <div class="buttons">
-                    <a href="/Home" class="button is-link">
-                        Acceuil
-                    </a>
-                    <a href="/Forum" class="button is-link">
-                        Forum
-                    </a>
-                    <a href="/Pokedex" class="button is-link">
-                        Pokédex
-                    </a>
-                    {{#if isAdmin}}
-                    <a href="/admin" class="button is-link">
-                        Admin
-                    </a>
-                    {{/if}}
-
-                    <a href="/logout" class="button is-link">
-                        Se Déconnecté
-                    </a>
-
-                </div>
-                {{else}}
-                <form action="/login" method="POST">
-                    <div class="field columns">
-                        <div class="column">
-                                <input class="input" type="email" placeholder="Email" name="email">
-                        </div>
-                        <div class="column">
-                                <input class="input" type="password" placeholder="Password" name="password">
-                        </div>
-                        <div class="column">
-                                <button type="submit" class="button is-success">
-                                    Login
-                                </button>
-                        </div>
-                    </div>
-
-                </form>
-
-                {{/if}}
-            </div>
-        </div>
-    </div>
+        </form>
+           {{/if}}
 </nav>

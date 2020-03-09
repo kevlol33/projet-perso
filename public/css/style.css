@@ -1,6 +1,24 @@
-/* h1 {
-    size: 500px;
-    color: red;
-    font-family: 'Times New Roman', Times, serif;
+h1 {
+    /* size: 500px; */
+    color: #820B11 !important;
+    /* font-family: 'Times New Roman', Times, serif; */
 }
- */
+
+p {
+    color: #043360;
+}
+
+a {
+    color: #FFBB00;
+}
+
+background {
+    color: #FFF4D7;
+}   
+
+.navbar-header {
+    float: none;
+    }
+    .navbar-toggle {
+    display: block;
+    }

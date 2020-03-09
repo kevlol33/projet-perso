@@ -26,7 +26,7 @@ const
 
 const
     Auth = require('./middleware/Auth')
-    // admin = require('./middleware/Admin')
+    admin = require('./middleware/Admin')
 
 /************************************************************
 *                    ** CRUD ** 
@@ -68,6 +68,13 @@ router.route('/Forum')
     .get(Auth, Forum.get)
 
 /************************************************************
+*                   GRUD page Forum ID
+*************************************************************/
+
+router.route('/Sujet/:id')
+    .get(Sujet.get)
+
+/************************************************************
 *                   GRUD page Pokedex
 *************************************************************/
 
@@ -78,9 +85,9 @@ router.route('/Pokedex')
 *************************************************************/
 
 router.route('/Admin')
-    // .get(admin, Admin.get)
-    // .post(admin, upload.single('imgSujets'), Admin.post)
-    // .delete(admin, Admin.deleteAll)
+    .get(admin, Admin.get)
+    .post(admin, upload.single('imgSujets'), Admin.post)
+    .delete(admin, Admin.deleteAll)
     .get(Admin.get)
     .post(upload.single('imgSujets'), Admin.post)
     .delete(Admin.deleteAll)

@@ -14,9 +14,9 @@ module.exports = {
 *                        Méthode GET 
 *************************************************************/
     get: async (req, res) => {
-        const dbsujets = await Sujets.find({})
+        const dbsujetsID = await Sujets.findById(req.params.id)
         res.render('Sujet', {
-            dbsujets
+            dbsujetsID
         })
     },
 }
