@@ -1,26 +1,12 @@
-</br>
-<nav class="panel">
-    {{!-- Barre des sujets --}}
-    <p class="panel-tabs">
-        <a href="/">Région</a>
-        <a>Pokédex</a>
-        <a>Jeux Vidéo</a>
-        <a>Produit Dériver</a>
-    </p>
-    {{!-- /Barre des sujets --}}
-    </br>
-</nav>
-
-</br>
 <h1 class="title is-1">Liste de Sujet</h1>
 </br>
 
 {{!-- Tableau pour afficher les sujet du forum --}}
-<table class="table is-fullwidth">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th class="title is-2">Sujet</th>
-            <th class="title is-2">Description</th>
+            <th scope="col">Sujet</th>
+            <th scope="col">Description</th>
         </tr>
     </thead>
     {{#each dbsujets }}

@@ -73,6 +73,7 @@ router.route('/Forum')
 
 router.route('/Sujet/:id')
     .get(Sujet.get)
+    .post(Sujet.post)
 
 /************************************************************
 *                   GRUD page Pokedex

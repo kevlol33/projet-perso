@@ -25,13 +25,13 @@ app.use(methodOverride('_method'));
 *************************************************************/
 const
     urlDb      = 'mongodb://localhost:27017/BaseJs',
-    mongoStore =  MongoStore(expressSession)
+    mongoStore =  MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
     useCreateIndex:     true,
     useNewUrlParser:    true,
     useUnifiedTopology: true
-    })
+    });
 
 /************************************************************
 *                        Express Session 
@@ -88,14 +88,14 @@ app.use('*', (req, res, next) => {
 
     // La function next permet qu'une fois la condition effectuer il reprenne son chemin
     next()
-})
+});
 
 /************************************************************
 *                        Routeur
 *************************************************************/
 const 
     ROUTER = require('./api/router');
-    app.use('/', ROUTER)
+    app.use('/', ROUTER);
 
 /************************************************************
 *                        Erreur 404 

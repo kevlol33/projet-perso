@@ -1,12 +1,52 @@
-
-{{#each dbsujetsID }}
-<div <div class="card-columns">
-  <div class="card">
-    <img class="card-img-top" src={{ imgSujets }} alt="">
-    <div class="card-body">
-      <h4 class="card-title">{{title}}</h4>
-      <p class="card-text">{{description}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      {{#each dbsujetsID }}
+      <img src="{{ imgSujets }}" alt="">
+      </br>
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
+      {{/each}}
     </div>
   </div>
 </div>
-{{/each}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Commentaire:</h3>
+      {{#each dbcommentaireID }}
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <img src="https://picsum.photos/102/102" class="align-self-center mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0">{{ username }}</h5>
+              <p>"{{ description }}"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      </br>
+    </div>
+  </div>
+</div>
+</br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form action="/Sujet/:id" method="post">
+        <h3>Ajouter un Commentaire:</h3>
+        <div class="form-group row">
+          <textarea class="form-control" id="validationTextarea" placeholder="Commentaire" required
+            name="description"></textarea>
+        </div>
+        <div class="form">
+          <button type="submit" class="btm btn-primary" type="submit">Envoyer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
