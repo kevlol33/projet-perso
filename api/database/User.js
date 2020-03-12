@@ -45,6 +45,10 @@ const UserShema = new mongoose.Schema({
         type: String
     },
 
+    sexe: {
+        type: String
+    },
+    
     isAdmin: {
 
         //* boolea permet de savoir si c'est oui ou non à une condition *//
