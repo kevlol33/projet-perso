@@ -1,9 +1,10 @@
 &nbsp;
 <div class="container">
     <div class="row">
-        <h1 class="title is-1">Favorie du mois :</h1>
+        <h1>Favorie du mois :</h1>
         <div class="col-md-12">
             <div class="card-deck">
+                {{!-- Carte de mes sujet favorie --}}
                 {{#each dbsujets}}
                 <div class="card text-white bg-secondary mb-3">
                     <img src="{{imgSujets}}" class="card-img-top" alt="...">
@@ -14,6 +15,7 @@
                     </div>
                 </div>
                 {{/each}}
+                {{!-- Carte de mes sujet favorie --}}
             </div>
         </div>
     </div>
@@ -24,6 +26,7 @@
             <h1 class="title is-1">Favorie du mois :</h1>
             <div class="col-md-12">
                 <div class="card-deck">
+                    {{!-- Carte de mes équipe favorite --}}
                     {{#each dbsujets}}
                     <div class="card text-white bg-secondary mb-3">
                         <img src="{{imgSujets}}" class="card-img-top" alt="...">
@@ -34,6 +37,7 @@
                         </div>
                     </div>
                     {{/each}}
+                    {{!-- /Carte de mes équipe favorite --}}
                 </div>
             </div>
         </div>
