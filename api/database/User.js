@@ -46,6 +46,7 @@ const UserShema = new mongoose.Schema({
     },
 
     sexe: {
+        //* le type sera une chaine de caractère *//
         type: String
     },
     

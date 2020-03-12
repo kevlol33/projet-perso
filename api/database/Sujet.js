@@ -1,13 +1,16 @@
-//***** Model pour les sujet du forum ******//
 
-//*** Import de Mongoose (qui permet de crée un Shéma) ***//
+/************************************************************
+*                       Importation de mongoose
+*************************************************************/
 const 
     mongoose = require('mongoose')
 
-//*** Model du chema de sujet du forum ***/
+/************************************************************
+*                       Model
+*************************************************************/
 const 
     SujetsSchema = new mongoose.Schema({
-        //** Variable du schema **//
+        //** Variable du schema de type string **//
         title: String,
         type: String,
         description: String,

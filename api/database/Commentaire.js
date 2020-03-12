@@ -11,9 +11,11 @@ const
 *                       Model du Shema
 *************************************************************/
 const 
+    /* Création du schema Com */
     ComSchema = new mongoose.Schema({
-        //** Variable du schema **//
+        /* les description sera de type String */
         description: String,
+        /* les username sera de type String */ 
         username: String,
 
     })

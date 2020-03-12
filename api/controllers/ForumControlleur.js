@@ -12,8 +12,9 @@ const
 *                       Controleur du forum 
 *************************************************************/
 module.exports = {
-    //*** Permet de rester sur la pasge forum ***//
+    //*** Permet de rester sur la pasge forum avec les donnée des sujet ***//
     get: async (req, res) => {
+        //** cette constance permet d'aller chercher les sujet dans la base de donnée **//
         const dbsujets = await Sujets.find({})
         res.render('Forum', {
             dbsujets

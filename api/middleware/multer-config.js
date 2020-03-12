@@ -1,7 +1,11 @@
-//**** Import de multer ****//
+/************************************************************
+*                       Importation 
+*************************************************************/
 const multer = require('multer')
 
-//** chemin pour placer l'image **//
+/************************************************************
+*                       Chemin pour placer l'iamge
+*************************************************************/
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './public/image')
@@ -14,7 +18,9 @@ const storage = multer.diskStorage({
   }
 })
 
-//** mettre a jour l'image du sujet **/
+/************************************************************
+*                       Mise a jour de l'image
+*************************************************************/
 const upload = multer({
     storage: storage,
     //** régle pour l'imade uploder **//
@@ -43,5 +49,7 @@ const upload = multer({
     }
 })
 
-//**** exportation du module sous le nom upload ****//
+/************************************************************
+*                       Exportation sous le nom upload
+*************************************************************/
 module.exports = upload
