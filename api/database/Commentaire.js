@@ -11,7 +11,7 @@ const
 *                       Model du Shema
 *************************************************************/
 const 
-    CommentaireSchema = new mongoose.Schema({
+    ComSchema = new mongoose.Schema({
         //** Variable du schema **//
         description: String,
         username: String,
@@ -21,4 +21,4 @@ const
 /************************************************************
 *                       Exporte du Shema
 *************************************************************/
-    module.exports = mongoose.model('Commentaire',CommentaireSchema)
+    module.exports = mongoose.model('Com',ComSchema)

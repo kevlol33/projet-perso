@@ -1,0 +1,133 @@
+
+<h1>Liste des pokemon :</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pokemon1g-xl">Liste 1er
+    génération</button>
+
+<div class="modal fade modal-pokemon1g-xl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <h2>Liste par Géneration :</h2>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pokemon2g-xl">Liste 2ème
+    génération </button>
+
+<div class="modal fade modal-pokemon2g-xl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <h2>Liste par Géneration :</h2>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pokemon3g-xl">Liste 3ème
+    génération</button>
+
+<div class="modal fade modal-pokemon3g-xl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <h2>Liste par Géneration :</h2>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pokemonadd-xl">Ajouter
+    Pokemon</button>
+
+<div class="modal fade modal-pokemonadd-xl" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <h1>Ajoute du pokémon au Pokédex</h1>
+            <form action="/admin" method="POST">
+                <div class="container">
+                    <div class="rov">
+                        <div class="col-md-auto">
+                            <label>Name :</label>
+                            <input type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>Description :</label>
+                            <input type="text" name="description">
+                        </div>
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="dropdown col-md-auto">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdowntype"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Type :
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdowntype" name="type">
+                                <a class="dropdown-item" href="#">Normal</a>
+                                <a class="dropdown-item" href="#">Feu</a>
+                                <a class="dropdown-item" href="#">Eau</a>
+                                <a class="dropdown-item" href="#">Plante</a>
+                                <a class="dropdown-item" href="#">Électrique</a>
+                                <a class="dropdown-item" href="#">Glace</a>
+                                <a class="dropdown-item" href="#">Combat</a>
+                                <a class="dropdown-item" href="#">Poison</a>
+                                <a class="dropdown-item" href="#">Sol</a>
+                                <a class="dropdown-item" href="#">Vol</a>
+                                <a class="dropdown-item" href="#">Psy</a>
+                                <a class="dropdown-item" href="#">Insecte</a>
+                                <a class="dropdown-item" href="#">Roche</a>
+                                <a class="dropdown-item" href="#">Spectre</a>
+                                <a class="dropdown-item" href="#">Dragon</a>
+                                <a class="dropdown-item" href="#">Ténèbre</a>
+                                <a class="dropdown-item" href="#">Acier</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>Image du Pokémon :</label>
+                            <input type="file" name=" imgPoke">
+                        </div>
+                    </div>
+                    <h5>Statistique :</h5>
+                    <div class="rov">
+                        <div class="col-md-auto">
+                            <label>PV :</label>
+                            <input type="text" name="StatPV">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>ATK :</label>
+                            <input type="number" name="StatATK">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>DEF :</label>
+                            <input type="number" name="StatDEF">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>VIT :</label>
+                            <input type="number" name="StatVIT">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>ATKSPE :</label>
+                            <input type="number" name="StatATKSPE">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label>DEFSPE :</label>
+                            <input type="number" name="StatDEFSPE">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Crée</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

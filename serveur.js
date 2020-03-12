@@ -57,7 +57,7 @@ app.use(connectFlash())
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true}));
+        extended: true}));
 
 /************************************************************
 *                        Handlebars 

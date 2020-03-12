@@ -2,10 +2,11 @@
 *                       Importation 
 *************************************************************/
 const
-    Sujets = require('../database/Sujet'),
-    User   = require('../database/User')
-    path = require('path'),
-    fs = require('fs')
+
+    Sujets = require('../../database/Sujet'),
+    User   = require('../../database/User'),
+    path   = require('path'),
+    fs     = require('fs')
 
 
 /************************************************************
@@ -25,7 +26,7 @@ module.exports = {
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
-        res.render('Admin', {
+        res.render('AdminSujet', {
             dbsujets, dbusers
         })
     },

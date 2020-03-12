@@ -11,13 +11,17 @@ const
     const 
         PokeSchema = new mongoose.Schema({
         //** Variable du schema **//
-        name: String,
-        type: String,
+        name:        String,
+        type:        String,
         description: String,
-        imgPoke: String,
-        StatAtk: String,
-        StatDEF: String,
-        StatSpé: String
+        imgPoke:     String,
+        StatPV:      String,
+        StatATK:     String,
+        StatDEF:     String,
+        StatATKSPE:  String,
+        StatDEFSPE:  String,
+        StatVIT:     String,
+        StatSPE:     String
     })
 
 /************************************************************
