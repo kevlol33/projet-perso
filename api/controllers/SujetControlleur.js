@@ -15,9 +15,11 @@ module.exports = {
 *                        Méthode GET 
 *************************************************************/
     get: async (req, res) => {
+        /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const 
             dbsujetsID      = await Sujets.findById(req.params.id),
             dbcommentaireID = await Com.findById(req.params.id)
+            /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {
             dbsujetsID, dbcommentaireID
         })

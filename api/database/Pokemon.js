@@ -9,8 +9,9 @@ const
 *************************************************************/
 
     const 
+        /* Création du Shema Poke */
         PokeSchema = new mongoose.Schema({
-        //** Variable du schema **//
+        /* les variable seront de type string */
         name:        String,
         type:        String,
         description: String,
