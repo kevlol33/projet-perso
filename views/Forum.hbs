@@ -1,5 +1,46 @@
-<h1 class="title is-1">Liste des Sujets</h1>
+<!-- Button trigger modal -->
 </br>
+<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ModalArticle">
+    Ajouter un article</article>
+</button>
+</br>
+<h1 class="title is-1">Liste des Sujets</h1>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalArticle" tabindex="-1" role="dialog" aria-labelledby="ModalArticle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajout Sujet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/Forum" method="post" enctype="multipart/form-data"></form>
+            <div class="modal-body">
+                {{!-- Formulaire pour crée un article --}}
+                    <div class="col">
+                        <label>Titre De L'article :</label>
+                        <input type="text" name='title' required>
+                        <label>Type D'article :</label>
+                        <input type="text" name='type' required>
+                        <label>Description : &nbsp</label>
+                        <textarea placeholder="Description" name="description"></textarea>
+                    </div>
+                    </br>
+                    <input type="file" name="imgSujets" class="button pr4" required>
+                
+                {{!-- /Formulaire pour crée un article --}}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Crée</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 {{!-- Tableau pour afficher les sujet du forum --}}
 <table class="table table-hover table-dark">

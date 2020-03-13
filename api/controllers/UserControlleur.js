@@ -75,7 +75,7 @@ module.exports = {
                     else {
                         console.log('pas content');
                         
-                        res.redirect('/')
+                        res.redirect('/404')
                     }
                 })
             } 
@@ -83,7 +83,7 @@ module.exports = {
             else {
                 console.log('pas content 2');
                 
-               return res.redirect('/')
+               return res.redirect('/404')
             }
         })
     },

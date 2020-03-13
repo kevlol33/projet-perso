@@ -1,34 +1,37 @@
-<nav class="site-header sticky-top py-1 bg-dark">
-  <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#">
-      <img src="/public/image/Pokemon_Go_Pokemon_Play_Pokeball_53820.png" alt="">
-      <a class="py-2 d-none d-md-inline-block" href="/">Pokélande</a>
-    </a>
-    {{#if isAdmin}}
-    <a class="py-2 d-none d-md-inline-block" href="/AdminSujet">AdminSujet</a>
-    <a class="py-2 d-none d-md-inline-block" href="/AdminPokedex">AdminPokedex</a>
-    {{/if}}
-    {{#if user}}
-    <a class="py-2 d-none d-md-inline-block" href="/Home">Home</a>
-    <a class="py-2 d-none d-md-inline-block" href="/Forum">Forum</a>
-    <a class="py-2 d-none d-md-inline-block" href="/Pokedex">Pokédex</a>
-    <a class="py-2 d-none d-md-inline-block" href="/logout">Se déconnecter</a>
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <a class="navbar-brand" href="/">Pokélande</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {{#if isAdmin}}
+        <a class="nav-link" href="/AdminSujet">AdminSujet</a>
+        <a class="nav-link" href="/AdminPokedex">AdminPokedex</a>
+      {{/if}}
+    </ul>
+    {{#if user}}
+      <a class="nav-link" href="/Home">Home</a>
+      <a class="nav-link" href="/Forum">Forum</a>
+      <a class="nav-link" href="/Pokedex">Pokedex</a>
+      <a class="nav-link" href="/logout">Se déconnecter</a>
+    {{else}}
+    <form action="/login" method="POST">
+      <div class="form-row align-items-center">
+        <div class="col-sm-3 my-1">
+          <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Email"
+            name="email">
+        </div>
+        <div class="col-sm-3 my-1">
+          <input type="password" class="form-control" id="Password1" placeholder="Password" name="password">
+        </div>
+        <div class="col-auto my-1">
+          <button type="submit" class="btn btn-danger">Connection</button>
+        </div>
+      </div>
+    </form>
+    {{/if}}
   </div>
-  {{else}}
-  <form action="/login" method="POST">
-    <div class="form-row align-items-center">
-      <div class="col-sm-3 my-1">
-        <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Email"
-          name="email">
-      </div>
-      <div class="col-sm-3 my-1">
-        <input type="password" class="form-control" id="Password1" placeholder="Password" name="password">
-      </div>
-      <div class="col-auto my-1">
-        <button type="submit" class="btn btn-danger">Connection</button>
-      </div>
-    </div>
-  </form>
-  {{/if}}
-  </nav>
+</nav>

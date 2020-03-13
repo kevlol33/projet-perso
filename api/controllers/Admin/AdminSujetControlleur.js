@@ -51,7 +51,7 @@ module.exports = {
                 //** si il y a des errreur alors **/
                 (error, post) => {
                     //** tu me redirige vers la page admin **//
-                    res.redirect('/Admin')
+                    res.redirect('/adminsujet')
                 })
                 
         }
@@ -89,7 +89,7 @@ module.exports = {
             //** sinon ru me redirige **//
             else {
                 //** a la page home **//
-                res.redirect('/Admin')
+                res.redirect('/AdminSujet')
             }
         }
         //** sinon tout sa **//
@@ -112,7 +112,7 @@ module.exports = {
                             //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
                             else {
                                 console.log('File Deleted.')
-                                res.redirect('/Admin')
+                                res.redirect('/AdminSujet')
                             }
                         })
                 })
@@ -150,7 +150,7 @@ module.exports = {
                             //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
                             else {
                                 console.log('fichier supprimer')
-                                res.redirect('/Admin')
+                                res.redirect('/AdminSujet')
                             }
                         })
                 }
@@ -193,7 +193,7 @@ module.exports = {
                             })
                         }
                         //**apres tout sa tu me dirige sur la page admin **/
-                        res.redirect('/Admin')
+                        res.redirect('/AdminSujet')
                     } 
                     //**sinon tu me logue l'erreur **//
                     else {

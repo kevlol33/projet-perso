@@ -29,7 +29,7 @@ module.exports = {
         console.log(body)
     
         if (body.password !== body.password2) {
-            res.redirect('/')
+            res.redirect('/404')
         } else if (body.password === body.password2) {
             //    ** Je crée l'utilisateur **/
             User.create({
@@ -57,7 +57,7 @@ module.exports = {
             (error, user) => {
 
                 //** resdircetion sur la page acceuil **//
-                res.redirect('/')
+                res.redirect('/404')
 
             })
         }

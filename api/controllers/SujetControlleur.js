@@ -36,7 +36,7 @@ module.exports = {
             //* tu me redirige sur la page précédente *//
             console.log(err);
             
-            res.redirect('/Home')
+            res.redirect('/404')
         } 
         //* Sinon *//
         else {
@@ -44,9 +44,13 @@ module.exports = {
             
             //* Tu me cree le commantaire *//
             Com.create({
+                createDate: new Date(),
+                Id: req.params.id,
                 username: req.session.username,
                 description: req.body.description
-            },            console.log('com ok'))
+            },            
+            
+            console.log('com ok'))
 
         }
             res.redirect('/Forum')

@@ -1,5 +1,5 @@
 {{!-- Formulaire pour crée un article --}}
-<form action="/admin" method="post" enctype="multipart/form-data">
+<form action="/adminSujet" method="post" enctype="multipart/form-data">
     <div class="col">
         <label>Titre De L'article :</label>
         <input type="text" name='title' required>
@@ -23,7 +23,7 @@
 </br>
 <h1 class="title is-1">Liste des sujets :</h1>
 {{!-- Formulaire pour éfacer tout les sujet --}}
-<form action="/admin/?_method=DELETE" method="post">
+<form action="/adminSujet/?_method=DELETE" method="post">
     <button type="submit">Effacer tout</button>
 </form>
 {{!-- /Formulaire pour éfacer tout les sujet --}}
