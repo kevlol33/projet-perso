@@ -41,7 +41,7 @@ const
 *                   CRUD page home
 *************************************************************/
 
-router.route('/')
+router.route('/Login')
     .get(Login.get)
 
 
