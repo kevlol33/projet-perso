@@ -1,64 +1,90 @@
-<!-- Button trigger modal -->
-</br>
-<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#ModalArticle">
-    Ajouter un article</article>
-</button>
-</br>
-<h1 class="title is-1">Liste des Sujets</h1>
-
-
-<!-- Modal -->
-<div class="modal fade" id="ModalArticle" tabindex="-1" role="dialog" aria-labelledby="ModalArticle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout Sujet</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="/Forum" method="post" enctype="multipart/form-data"></form>
-            <div class="modal-body">
-                {{!-- Formulaire pour crée un article --}}
-                    <div class="col">
-                        <label>Titre De L'article :</label>
-                        <input type="text" name='title' required>
-                        <label>Type D'article :</label>
-                        <input type="text" name='type' required>
-                        <label>Description : &nbsp</label>
-                        <textarea placeholder="Description" name="description"></textarea>
-                    </div>
-                    </br>
-                    <input type="file" name="imgSujets" class="button pr4" required>
-                
-                {{!-- /Formulaire pour crée un article --}}
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Crée</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            </div>
-            </form>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron col-md-12">
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h1 class="display-4">Bonjour, Tous le monde!</h1>
+            <p class="lead">Les règle du Forum son disponible sur l'article Règle, pour le consulter je vous invite a
+                cliqué sur le bouton juste en dessous.</p>
+            <hr class="my-4">
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="Sujet/5e6f7caf77169d3de8b838c7" role="button">Cliqué ici</a>
+            </p>
         </div>
     </div>
 </div>
 
-{{!-- Tableau pour afficher les sujet du forum --}}
-<table class="table table-hover table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Sujet</th>
-            <th scope="col">Description</th>
-            <th scope="col">Bouton</th>
-        </tr>
-    </thead>
-    {{#each dbsujets }}
-    <tr>
-        <td>{{ type }}</td>
-        <td>{{ description }}</td>
-        <td> <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
-    </tr>
-    {{/each }}
-</table>
+</br>
+<div class="container">
+    <div class="raw">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#ModalArticle">
+                Ajouter un article</article>
+            </button>
+            <h1 class="title is-1">Liste des Sujets :</h1>
+        </div>
+    </div>
+</div>
 
 
-{{!-- /Tableau pour afficher les sujet du forum --}}
+<!-- Modal -->
+<div class="container">
+    <div class="row">
+        <div class="modal fade" id="ModalArticle" tabindex="-1" role="dialog" aria-labelledby="ModalArticle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout d'un Sujet :</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/Forum" method="post" enctype="multipart/form-data"></form>
+                    <div class="modal-body">
+                        {{!-- Formulaire pour crée un article --}}
+                        <div class="container">
+                            <div class="raw">
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Titre De L'article :</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        placeholder="Example de Titre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Type de l'article :</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Accueil des Personnes</option>
+                                        <option>Article sur les Régions Pokémon</option>
+                                        <option>Article sur Les Jeux Pokémon</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Description :</label>
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="input">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier ...</label>
+                            </div>
+                        </div>
+
+                        {{!-- /Formulaire pour crée un article --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Crée</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> forum/collapseforum }}

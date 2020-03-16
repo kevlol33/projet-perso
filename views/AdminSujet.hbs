@@ -1,81 +1,112 @@
 {{!-- Formulaire pour crée un article --}}
 <form action="/adminSujet" method="post" enctype="multipart/form-data">
-    <div class="col">
-        <label>Titre De L'article :</label>
-        <input type="text" name='title' required>
-        <label>Type D'article :</label>
-        <input type="text" name='type' required>
-        <label>Description : &nbsp</label>
-        <textarea placeholder="Description" name="description"></textarea>
+    <div class="container">
+        <div class="row">
+            <label>Titre De L'article :</label>
+            <input type="text" name='title' required>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="dropdown" name="type">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Type de l'article :
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item">Accueil des Personnes</a>
+                    <a class="dropdown-item">Article sur les Régions Pokémon</a>
+                    <a class="dropdown-item">Article sur Les Jeux Pokémone</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <label>Description : &nbsp</label>
+            <textarea placeholder="Description" name="description"></textarea>
+        </div>
     </div>
     </br>
-    <input type="file" name="imgSujets" class="button pr4" required>
-    <div class="fiels is-grouped pt-4 ">
-        <div class="control pr-5">
-            </br>
+    <div class="container">
+        <div class="row">
+            <input type="file" name="imgSujets" class="button pr4" required>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             <button type="submit" class="button pr4">Enregistrer</button>
             <button class="button">Annuler</button>
-            </br>
         </div>
     </div>
 </form>
 {{!-- /Formulaire pour crée un article --}}
-</br>
-<h1 class="title is-1">Liste des sujets :</h1>
-{{!-- Formulaire pour éfacer tout les sujet --}}
-<form action="/adminSujet/?_method=DELETE" method="post">
-    <button type="submit">Effacer tout</button>
-</form>
-{{!-- /Formulaire pour éfacer tout les sujet --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/adminSujet/?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-primary float-right">Effacer tout</button>
+            </form>
+            <h1 class="title is-1">Liste des sujets :</h1>
+        </div>
+    </div>
+</div>
 <div>
     {{!-- Boucle pour afficher les sujet --}}
-    {{#each dbsujets }}
-    <div class="card">
-        <header class="card-header">
-            <div class="card-content">
-                <div class="content">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src=" {{ imgSujets }} ">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p>Titre: {{ title }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{#each dbsujets }}
+                <div class="card">
+                    <header class="card-header">
+                        <div class="card-content">
+                            <div class="content">
+                                <div class="card-content">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img src=" {{ imgSujets }} ">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <p>Titre: {{ title }}</p>
+                                            {{!-- Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
+                                            <div class="content">
+                                                <p>{{ type }}</p>
+                                                <p>{{ description }}</p>
+                                                <p>{{ _id }}</p>
+                                            </div>
+                                            {{!-- /Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
+
+                                        </div>
+                                    </div>
+
+                                    {{!-- Formulaire pour mettre a jour un sujet  --}}
+                                    <form action="/admin/{{ _id }}/?_method=PUT" method="post">
+                                        <input type="text" name="title" placeholder="Title">
+                                        <input type="text" name="type" placeholder="Type">
+                                        <input type="text" name="description" placeholder="Description">
+                                        <input type="file" name="imgSujets">
+                                        </br>
+                                        <button type="submit" class="btn btn-primary">Editer</button>
+                                    </form>
+                                    {{!-- /Formulaire pour mettre a jour un sujet  --}}
+
+                                    {{!-- Formulaire pour supprimer un article --}}
+                                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                                        <button type="submit" class="btn btn-primary">Effacer</button>
+                                    </form>
+                                    {{!-- /Formulaire pour supprimer un article --}}
+
+                                </div>
                             </div>
                         </div>
-
-                        {{!-- Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
-                        <div class="content">
-                            <p>{{ type }}</p>
-                            <p>{{ description }}</p>
-                            <p>{{ _id }}</p>
-                        </div>
-                        {{!-- /Dans les <p> je vais chercher les infos que j'ai besoin dans ma base de sonné --}}
-
-                        {{!-- Formulaire pour mettre a jour un sujet  --}}
-                        <form action="/admin/{{ _id }}/?_method=PUT" method="post">
-                            <input type="text" name="title" placeholder="Title">
-                            <input type="text" name="type" placeholder="Type">
-                            <input type="text" name="description" placeholder="Description">
-                            <input type="file" name="imgSujets">
-                            </br>
-                            <button type="submit">Editer</button>
-                        </form>
-                        {{!-- /Formulaire pour mettre a jour un sujet  --}}
-
-                        {{!-- Formulaire pour supprimer un article --}}
-                        <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
-                            <button type="submit">Effacer</button>
-                        </form>
-                        {{!-- /Formulaire pour supprimer un article --}}
-
-                    </div>
                 </div>
+                {{/each }}
             </div>
+        </div>
     </div>
-    {{/each }}
     {{!-- /Boucle pour afficher les sujet --}}
 </div>
 

@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+        <div class="accordion col-12 col-md-12" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Accueil des Personnes
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        {{!-- Tableau pour afficher les sujet du forum --}}
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Titre</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Bouton</th>
+                                </tr>
+                            </thead>
+                            {{#each dbsujets }}
+                            <tr>
+                                <td>{{ title }}</td>
+                                <td>{{ description }}</td>
+                                <td> <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
+                            </tr>
+                            {{/each }}
+                        </table>
+                        {{!-- /Tableau pour afficher les sujet du forum --}}
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Article sur les Régions Pokémon
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {{!-- Tableau pour afficher les sujet du forum --}}
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sujet</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Bouton</th>
+                                </tr>
+                            </thead>
+                            {{#each dbsujets }}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td> <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
+                            </tr>
+                            {{/each }}
+                        </table>
+                        {{!-- /Tableau pour afficher les sujet du forum --}}
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Article sur Les Jeux Pokémon
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        {{!-- Tableau pour afficher les sujet du forum --}}
+                        <table class="table table-hover table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sujet</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Bouton</th>
+                                </tr>
+                            </thead>
+                            {{#each dbsujets }}
+                            <tr>
+                                <td>{{ type }}</td>
+                                <td>{{ description }}</td>
+                                <td> <a href="/Sujet/{{_id}}"> Voir L'article</a></td>
+                            </tr>
+                            {{/each }}
+                        </table>
+                        {{!-- /Tableau pour afficher les sujet du forum --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

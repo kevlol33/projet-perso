@@ -29,11 +29,15 @@ module.exports = {
         console.log(body)
     
         if (body.password !== body.password2) {
-            res.redirect('/404')
+            console.log('pas content');
+            
+            res.redirect('Login')
         } else if (body.password === body.password2) {
+            console.log('content');
+            
             //    ** Je crée l'utilisateur **/
-            User.create({
-
+            User.create({  
+                
                 //** création de l'username **/
                 username: req.body.username,
                 
@@ -51,15 +55,19 @@ module.exports = {
                 isBan: false
 
             }, 
+                console.log('je te dirige vers home'),
+                
                 res.redirect('/Home'),
             
             //** Gestion des erreure **//
-            (error, user) => {
-
+            (err) => {
+                console.log('pas contnent 2');
+                
                 //** resdircetion sur la page acceuil **//
-                res.redirect('/')
+                res.redirect('Login')
 
-            })
+            }
+            )
         }
     
     },
