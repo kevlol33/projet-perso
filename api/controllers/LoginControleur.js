@@ -57,7 +57,7 @@ module.exports = {
             (error, user) => {
 
                 //** resdircetion sur la page acceuil **//
-                res.redirect('/404')
+                res.redirect('/')
 
             })
         }

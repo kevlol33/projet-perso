@@ -96,7 +96,7 @@ module.exports = {
         req.session.destroy(() => {
             /* tu detruit le cookie et tu me redirige sur la page login */
             res.clearCookie("ptitBiscuit");
-            res.redirect('/Login')
+            res.redirect('/')
         })
     }
 }
