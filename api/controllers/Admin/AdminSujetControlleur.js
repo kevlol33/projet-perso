@@ -40,7 +40,7 @@ module.exports = {
         //** si req.file nes pas la **//
         if (!req.file) {
             //** alors tu me redirige sur la page home **//
-            res.redirect('/admin')
+            res.redirect('/adminsujet')
         } else {
             //** sinon tu me crée sa **//
             Sujets.create({

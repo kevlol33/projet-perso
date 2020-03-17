@@ -67,6 +67,7 @@ router.route('/Home')
 
 router.route('/Forum')
     .get(Auth, Forum.get)
+    .post(Auth, Forum.post)
 
 /************************************************************
 *                   GRUD page Forum ID
