@@ -2,42 +2,54 @@
 <form action="/adminSujet" method="post" enctype="multipart/form-data">
     <div class="container">
         <div class="row">
-            <label>Titre De L'article :</label>
-            <input type="text" name='title' required>
+            <div class="col-md-12">
+                <label for="formGroupExampleInput">Titre De L'article :</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example de Titre"
+                    name='title'>
+            </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="dropdown" name="type">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Type de l'article :
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item">Accueil des Personnes</a>
-                    <a class="dropdown-item">Article sur les Régions Pokémon</a>
-                    <a class="dropdown-item">Article sur Les Jeux Pokémone</a>
-                </div>
+            <div class="col-md-12">
+                <label for="exampleFormControlSelect1">Type de l'article :</label>
+                <select class="form-control" id="exampleFormControlSelect1" name='type'>
+                    <option>Accueil des Personnes</option>
+                    <option>Article sur les Régions Pokémon</option>
+                    <option>Article sur Les Jeux Pokémon</option>
+                </select>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <label>Description : &nbsp</label>
-            <textarea placeholder="Description" name="description"></textarea>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="comment">Description :</label>
+                    <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
+                </div>
+            </div>
         </div>
     </div>
     </br>
     <div class="container">
         <div class="row">
-            <input type="file" name="imgSujets" class="button pr4" required>
+            <div class="col-md-12">
+                <div class="input">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01" name="imgSujets">
+                        <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier ...</label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <button type="submit" class="button pr4">Enregistrer</button>
-            <button class="button">Annuler</button>
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            <button class="btn btn-secondary">Annuler</button>
         </div>
     </div>
 </form>

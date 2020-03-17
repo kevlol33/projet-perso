@@ -26,12 +26,12 @@ module.exports = {
     post: (req, res) => {
         const body = req.body
 
-        console.log(body)
+        // console.log(body)
     
         if (body.password !== body.password2) {
             console.log('pas content');
             
-            res.redirect('Login')
+            res.redirect('/')
         } else if (body.password === body.password2) {
             console.log('content');
             
@@ -47,24 +47,24 @@ module.exports = {
                 //** création du password **//
                 password: req.body.password,
 
+                //** création du password **//
+                sexe: req.body.sexe,
+
                 //** le statue de la personne sera un utilisateur **//
                 status: 'user',
 
                 isAdmin: false,
 
-                isBan: false
+                isBan: false,
 
             }, 
-                console.log('je te dirige vers home'),
-                
-                res.redirect('/Home'),
             
             //** Gestion des erreure **//
             (err) => {
-                console.log('pas contnent 2');
+                console.log(err);
                 
                 //** resdircetion sur la page acceuil **//
-                res.redirect('Login')
+                 res.redirect('/')
 
             }
             )
