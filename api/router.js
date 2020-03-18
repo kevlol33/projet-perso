@@ -91,10 +91,6 @@ router.route('/AdminSujet')
     .get(admin, AdminSujet.get)
     .post(admin, upload.single('imgSujets'), AdminSujet.post)
     .delete(admin, AdminSujet.deleteAll)
-    .get(AdminSujet.get)
-    .post(upload.single('imgSujets'), AdminSujet.post)
-    .delete(AdminSujet.deleteAll)
-
 
 /************************************************************
 *                   CRUD page AdminPokedex
