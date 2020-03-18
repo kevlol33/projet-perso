@@ -23,30 +23,31 @@ module.exports = {
 
     post: async (req, res) => {
         // condition //
-        console.log(req.boddy);
+        console.log(req.body);
+        
         
         //** si req.file nes pas la **//
-        // if (!req.file) {
-        //     //** alors tu me redirige sur la page home **//
-        //     res.redirect('/Home')
-        //     console.log('Pas de fichier');
+        if (!req.file) {
+            //** alors tu me redirige sur la page home **//
+            res.redirect('/Home')
+            console.log('Pas de fichier');
             
-        // } else {
-        //     //** sinon tu me crée sa **//
-        //     Sujets.create({
-        //         ...req.body,
-        //         // imgSujets: `/assets/image/${req.file.originalname}`,
-        //         // name: req.file.originalname,
-        //     },
-        //         //** si il y a des errreur alors **/
-        //         (error, post) => {
-        //             console.log(err);
+        } else {
+            //** sinon tu me crée sa **//
+            Sujets.create({
+                ...req.body,
+                imgSujets: `/assets/image/${req.file.originalname}`,
+                name: req.file.originalname,
+            },
+                //** si il y a des errreur alors **/
+                (error, post) => {
+                    console.log(err);
                     
-        //             //** tu me redirige vers la page admin **//
-        //             res.redirect('/Home')
-        //         })
+                    //** tu me redirige vers la page admin **//
+                    res.redirect('/Home')
+                })
                 
-        // }
+        }
     },
 
 }
