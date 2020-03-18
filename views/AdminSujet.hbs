@@ -1,59 +1,6 @@
-{{!-- Formulaire pour crée un article --}}
-<form action="/adminSujet" method="post" enctype="multipart/form-data">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <label for="formGroupExampleInput">Titre De L'article :</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example de Titre"
-                    name='title'>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <label for="exampleFormControlSelect1">Type de l'article :</label>
-                <select class="form-control" id="exampleFormControlSelect1" name='type'>
-                    <option>Accueil des Personnes</option>
-                    <option>Article sur les Régions Pokémon</option>
-                    <option>Article sur Les Jeux Pokémon</option>
-                </select>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="comment">Description :</label>
-                    <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-    </br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01" name="imgSujets">
-                        <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier ...</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <button type="submit" class="btn btn-success">Enregistrer</button>
-            <button class="btn btn-secondary">Annuler</button>
-        </div>
-    </div>
-</form>
-{{!-- /Formulaire pour crée un article --}}
+{{> Admin/AddArticle}}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -70,15 +17,15 @@
         <div class="row">
             <div class="col-sm-4">
                 {{#each dbsujets }}
-                <div class="card" style="width: 18rem">
+                <div class="card" style="width: 18rem" >
                     <header class="card-header">
                         <div class="card-content">
                             <div class="content">
                                 <div class="card-content">
                                     <div class="media">
                                         <div class="media-left">
-                                            <figure class="image is-48x48">
-                                                <img src=" {{ imgSujets }} ">
+                                            <figure >
+                                                <img src="{{ imgSujets }}" class="img-50x50 rounded-circle">
                                             </figure>
                                         </div>
                                         <div class="media-content">

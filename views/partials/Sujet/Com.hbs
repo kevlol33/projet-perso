@@ -1,0 +1,24 @@
+{{!-- Liste de mes commentaire --}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Commentaire:</h3>
+      {{#each dbcommentairesID}}
+      <div class="card">
+        <div class="card-body">
+          <div class="media">
+            <img src="https://picsum.photos/102/102" class="align-self-center mr-3" alt="...">
+            <div class="media-body">
+              <h5 class="mt-0">{{ username }} a dit :</h5>
+              <p>"{{ description }}"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      </br>
+    </div>
+  </div>
+</div>
+</br>
+{{!-- /Liste de mes commentaire --}}

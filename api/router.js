@@ -18,8 +18,9 @@ const
     Pokemon      = require('./controllers/PokemonControlleur'),
     Sujet        = require('./controllers/SujetControlleur'),
     AdminSujet   = require('./controllers/Admin/AdminSujetControlleur'),
-    AdminPokedex = require('./controllers/Admin/AdminPokedexControlleur')
-    User         = require('./controllers/UserControlleur')
+    AdminPokedex = require('./controllers/Admin/AdminPokedexControlleur'),
+    User         = require('./controllers/UserControlleur'),
+    MCompte      = require('./controllers/MonCompteControlleur')
 
 /************************************************************
 *                       Impotation middlewares 
@@ -76,6 +77,13 @@ router.route('/Forum')
 router.route('/Sujet/:id')
     .get(Sujet.get)
     .post(Sujet.post)
+
+/************************************************************
+*                   GRUD page MonCompte
+*************************************************************/
+
+router.route('/MonCompte')
+    .get(MCompte.get)
 
 /************************************************************
 *                   GRUD page Pokedex
