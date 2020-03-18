@@ -29,7 +29,7 @@ module.exports = {
         //** si req.file nes pas la **//
         if (!req.file) {
             //** alors tu me redirige sur la page home **//
-            res.redirect('/Home')
+            res.redirect('/Forum')
             console.log('Pas de fichier');
             
         } else {

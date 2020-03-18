@@ -5,7 +5,7 @@ h1 {
 }
 
 p {
-    color: #043360;
+    color: #ffffff;
 }
 
 a {
@@ -25,4 +25,32 @@ background {
 
 h1 {
 color: #000000 !important;
+}
+
+html, body {
+    height: 100%
+}
+li {list-style: none}
+nav {
+  padding: 5px;
+  width: 100%;
+  height: 50px;
+}
+body {
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between
+}
+header { margin-top: 100px}
+.item-nav { margin: 10px }
+.footer {
+    border-top: 2px solid yellow;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+}
+.flex-rw {
+    display: flex;
+    flex-flow: row wrap;
 }

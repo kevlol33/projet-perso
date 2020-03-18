@@ -81,9 +81,9 @@ module.exports = {
                     //** sinon tu me redirige soit **/
                     (err) => {
                         //** soit a l'acceuil **//
-                        if (err) res.redirect('/Admin')
+                        if (err) res.redirect('/AdminSujet')
                         //** soit a la page admin **//
-                        else res.redirect('/Admin')
+                        else res.redirect('/AdminSujet')
                     })
             }
             //** sinon ru me redirige **//

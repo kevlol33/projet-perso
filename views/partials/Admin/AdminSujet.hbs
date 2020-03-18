@@ -1,0 +1,35 @@
+&nbsp;
+<div class="container">
+    <h1 class="title is-1">Équipe Favorie :</h1>
+    <div class="row">
+        {{#each dbsujets}}
+        <div class="col-sm-4">
+            <div class="card text-white bg-secondary border-light mb-3" style="width: 18rem" ;>
+                <img class="card-img-top" src="{{imgSujets}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ title }} </h5>
+                    <p class="card-text">
+                        {{ type }}
+                        </br>
+                        {{ description }}
+                        </br>
+                        {{_id}}
+                        <form action="/admin/{{ _id }}/?_method=PUT" method="post">
+                            <input type="text" name="title" placeholder="Title">
+                            <select class="form-control" id="exampleFormControlSelect1" name='type'>
+                                <option>Accueil des Personnes</option>
+                                <option>Article sur les Régions Pokémon</option>
+                                <option>Article sur Les Jeux Pokémon</option>
+                            </select>
+                            <input type="text" name="description" placeholder="Description">
+                            <input type="file" name="imgSujets">
+                            </br>
+                            <button type="submit" class="btn btn-primary">Editer</button>
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
