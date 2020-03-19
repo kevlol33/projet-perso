@@ -15,9 +15,11 @@ module.exports = {
     //*** Permet de rester sur la pasge forum avec les donnée des sujet ***//
     get: async (req, res) => {
         //** cette constance permet d'aller chercher les sujet dans la base de donnée **//
+        const dbtype1 = await Sujets.find({ type: { $lte: 1 } })
+        const dbtype2 = await Sujets.find({ type: { $gte: 2 } })
         const dbsujets = await Sujets.find({})
         res.render('Forum', {
-            dbsujets
+            dbsujets, dbtype1, dbtype2
         })
     },
 

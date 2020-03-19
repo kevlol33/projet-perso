@@ -26,7 +26,7 @@
                             <div class="col-md-12">
                                 <label for="formGroupExampleInput">Titre De L'article :</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Example de Titre" name='title'>
+                                    placeholder="Example de Titre" name='title' required>
                             </div>
                         </div>
                     </div>
@@ -34,11 +34,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="exampleFormControlSelect1">Type de l'article :</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name='type'>
-                                    <option value="Accueil des Personnes">Accueil des Personnes</option>
-                                    <option value="Article sur les Régions Pokémon">Article sur les Régions Pokémon
-                                    </option>
-                                    <option value="Article sur Les Jeux Pokémon">Article sur Les Jeux Pokémon</option>
+                                <select class="form-control" id="exampleFormControlSelect1" name='type' required>
+                                    <option selected>Choisir :</option>
+                                    <option value="1">Article sur les Régions Pokémon</option>
+                                    <option value="2">Article sur Les Jeux Pokémon</option>
                                 </select>
                             </div>
                         </div>
@@ -49,7 +48,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="comment">Description :</label>
-                                    <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
+                                    <textarea class="form-control" rows="5" id="comment" name="description" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +60,7 @@
                                 <div class="input">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01" name="imgSujets">
+                                            aria-describedby="inputGroupFileAddon01" name="imgSujets" required>
                                         <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier
                                             ...</label>
                                     </div>

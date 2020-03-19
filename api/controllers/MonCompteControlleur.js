@@ -15,7 +15,10 @@ module.exports = {
     //*** Permet de rester sur la pasge home ***//
     get: async (req, res) => {
 
-        res.render('MonCompte')
+        const dbusers = await User.find({})
+        res.render('MonCompte', {
+            dbusers
+        })
 
     },
 
