@@ -15,9 +15,12 @@ module.exports = {
     //*** Permet de rester sur la pasge home ***//
     get: async (req, res) => {
 
-        const dbUsers = await User.find({})
+    const
+        sess = req.session,
+        dbUsersID = await User.findById(sess.userId)
+
         res.render('MonCompte', {
-            dbUsers
+            dbUsersID
         })
 
     },

@@ -2,7 +2,7 @@
 *                       Importation 
 *************************************************************/
 const
-    commentaire = require('../database/Commentaire'),
+    Commentaire = require('../database/Commentaire'),
     Sujets      = require('../database/Sujet'),
     Path        = require('path'),
     Fs          = require('fs')
@@ -19,7 +19,7 @@ module.exports = {
         const 
             dbSujetsID      = await Sujets.findById(req.params.id),
             dbCommentaireID = await Commentaire.find({sujetID: req.params.id})
-            console.log(dbcommentaireID);
+            console.log(dbCommentaireID);
             
             /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {

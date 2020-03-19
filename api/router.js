@@ -19,7 +19,6 @@ const
     MCompte      = require('./controllers/MonCompteControlleur'),
     Pokedex      = require('./controllers/PokedexControlleur'),
     Pokemon      = require('./controllers/PokemonControlleur'),
-    Regle        = require('./controllers/RegleControlleur'),
     Sujet        = require('./controllers/SujetControlleur'),
     User         = require('./controllers/UserControlleur')
 
@@ -62,14 +61,6 @@ Router.route('/logout')
 
 Router.route('/Home')
     .get(Auth, Home.get)
-
-/************************************************************
-*                   CRUD Page régle
-*************************************************************/
-
-// Router.route(('/Regle'))
-//     .get(Auth, Regle.get)
-
 
 /************************************************************
 *                   CRUD page Forum
