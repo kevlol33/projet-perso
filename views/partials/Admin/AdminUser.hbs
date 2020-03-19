@@ -1,36 +1,29 @@
-<h1 class="title is-1">Liste des utilisateurs :</h1>
 
-<div class="card">
-    <header class="card-header">
-        <div class="card-content">
-            <div class="content">
-                <div class="card-content">
-                    <div class="media">
-                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Id</th>
-                                    <th>Bouton</th>
-                                </tr>
-                            </thead>
-                            {{#each dbusers }}
-                            <tr>
-                                <td>{{ username }}</td>
-                                <td>{{ email }}</td>
-                                <td>{{ _id }}</td>
-                                <td>
-                                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
-                                        <button type="submit">Effacer</button>
-                                    </form>
+<div class="container">
+    <div class="raw">
+        <h1>Liste des utilisateurs :</h1>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Id</th>
+                    <th>Bouton</th>
+                </tr>
+            </thead>
+            {{#each dbusers }}
+            <tr>
+                <td>{{ username }}</td>
+                <td>{{ email }}</td>
+                <td>{{ _id }}</td>
+                <td>
+                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                        <button class="btn btn-primary" type="submit">Effacer</button>
+                    </form>
 
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
 </div>
