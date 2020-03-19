@@ -5,22 +5,24 @@
 *                       Mongoose 
 *************************************************************/
 const 
-    mongoose = require('mongoose')
+    Mongoose = require('mongoose')
 
 /************************************************************
 *                       Model du Shema
 *************************************************************/
 const 
     /* Création du schema Com */
-    ComSchema = new mongoose.Schema({
+    ComSchema = new Mongoose.Schema({
         /* les description sera de type String */
         description: String,
         /* les username sera de type String */ 
         username: String,
+
+        sujetID: String
 
     })
 
 /************************************************************
 *                       Exporte du Shema
 *************************************************************/
-    module.exports = mongoose.model('Commentaire',ComSchema)
+    module.exports = Mongoose.model('Commentaire',ComSchema)

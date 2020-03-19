@@ -2,13 +2,13 @@
 *                        Importation 
 *************************************************************/
 const
-    mongoose = require('mongoose')
-bcrypt = require('bcrypt')
+    Mongoose = require('mongoose')
+    Bcrypt = require('bcrypt')
 
 /************************************************************
 *                        Schema
 *************************************************************/
-const UserShema = new mongoose.Schema({
+const UserShema = new Mongoose.Schema({
 
     //** Je deffinie le statu de futur utilisateur et savoir a quoi il corespondra sur la base de donnée **//
     status: {
@@ -77,7 +77,7 @@ UserShema.pre('save', function (next) {
     const user = this                                      
 
     //** avec le passeword hache le et crypte le**//
-    bcrypt.hash(user.password, 10, (error, encrypted) => {  
+    Bcrypt.hash(user.password, 10, (error, encrypted) => {  
         user.password = encrypted
         //** passe a la suite **//
         next()                                                
@@ -90,7 +90,7 @@ UserShema.pre('save', function (next) {
     const user = this                                      
 
     //** avec le passeword2 hache le et crypte le**//
-    bcrypt.hash(user.password2, 10, (error, encrypted) => {  
+    Bcrypt.hash(user.password2, 10, (error, encrypted) => {  
         user.password2 = encrypted
         //** passe a la suite **//
         next()                                                
@@ -101,4 +101,4 @@ UserShema.pre('save', function (next) {
 /************************************************************
 *                        Exportation du Module 
 *************************************************************/
-module.exports = mongoose.model('User', UserShema)
+module.exports = Mongoose.model('User', UserShema)

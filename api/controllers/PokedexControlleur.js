@@ -2,9 +2,9 @@
 *                       Importation 
 *************************************************************/
 const
-    express = require('express'),
-    router = express.Router(),
-    path = require('path'),
+    Express = require('express'),
+    Router = Express.Router(),
+    Path = require('path'),
     Pokedex = require('../database/Pokemon')
 /************************************************************
 *                        Controleur Page Pokedex

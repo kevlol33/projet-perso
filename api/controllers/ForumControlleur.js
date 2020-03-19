@@ -2,24 +2,27 @@
 *                       Importation 
 *************************************************************/
 const
-    Sujets = require('../database/Sujet'),
-    express = require('express'),
-    router = express.Router(),
-    path = require('path'),
-    sujetforum = require('../database/Sujet')
+    Sujets  = require('../database/Sujet'),
+    Express = require('express'),
+    Path    = require('path'),
+    Router  = Express.Router()
 
 /************************************************************
 *                       Controleur du forum 
 *************************************************************/
 module.exports = {
+
     //*** Permet de rester sur la pasge forum avec les donnée des sujet ***//
     get: async (req, res) => {
+
         //** cette constance permet d'aller chercher les sujet dans la base de donnée **//
-        const dbtype1 = await Sujets.find({ type: { $lte: 1 } })
-        const dbtype2 = await Sujets.find({ type: { $gte: 2 } })
-        const dbsujets = await Sujets.find({})
+        const 
+            dbType1  = await Sujets.find({ type: { $lte: 1 } })
+            dbType2  = await Sujets.find({ type: { $gte: 2 } })
+            dbSujets = await Sujets.find({})
+
         res.render('Forum', {
-            dbsujets, dbtype1, dbtype2
+            dbSujets, dbType1, dbType2
         })
     },
 

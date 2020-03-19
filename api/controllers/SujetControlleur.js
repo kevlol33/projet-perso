@@ -4,8 +4,8 @@
 const
     commentaire = require('../database/Commentaire'),
     Sujets      = require('../database/Sujet'),
-    path        = require('path'),
-    fs          = require('fs')
+    Path        = require('path'),
+    Fs          = require('fs')
 
 /************************************************************
 *                       Controleur Sujet 
@@ -17,13 +17,13 @@ module.exports = {
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const 
-            dbsujetsID      = await Sujets.findById(req.params.id),
-            dbcommentaireID = await commentaire.findById(req.params.id)
+            dbSujetsID      = await Sujets.findById(req.params.id),
+            dbCommentaireID = await Commentaire.find({sujetID: req.params.id})
             console.log(dbcommentaireID);
             
             /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {
-            dbsujetsID, dbcommentaireID
+            dbSujetsID, dbCommentaireID
         })
     },
 /************************************************************
@@ -31,8 +31,7 @@ module.exports = {
 *************************************************************/
     //*** Permet d'enregistrer un commentaire ***//
     post: async (req, res) => {
-        console.log('ok');
-        
+                
         //* Condition si il n'y a pas texte dans le commentaire *//
         if(!req.session) {
             console.log('pas content');
@@ -47,9 +46,9 @@ module.exports = {
             console.log('cooool');
             
             //* Tu me cree le commantaire *//
-            commentaire.create({
+            Commentaire.create({
                 createDate: new Date(),
-                Id: req.params.id,
+                sujetID: req.params.id,
                 username: req.session.username,
                 description: req.body.description
             },            

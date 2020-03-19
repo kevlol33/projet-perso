@@ -3,24 +3,25 @@
 *************************************************************/
 const
     express = require('express'),
-    router  = express.Router(),
-    upload  = require('./middleware/multer-config')
+    Router  = express.Router(),
+    Upload  = require('./middleware/multer-config')
 
 /************************************************************
 *           Controllers du dossier API/CONTROLLERS
 *************************************************************/
 
 const
+    AdminSujet   = require('./controllers/Admin/AdminSujetControlleur'),
+    AdminPokedex = require('./controllers/Admin/AdminPokedexControlleur'),
     Forum        = require('./controllers/ForumControlleur'),
     Home         = require('./controllers/HomeControlleur'),
     Login        = require('./controllers/LoginControleur'),
+    MCompte      = require('./controllers/MonCompteControlleur'),
     Pokedex      = require('./controllers/PokedexControlleur'),
     Pokemon      = require('./controllers/PokemonControlleur'),
+    Regle        = require('./controllers/RegleControlleur'),
     Sujet        = require('./controllers/SujetControlleur'),
-    AdminSujet   = require('./controllers/Admin/AdminSujetControlleur'),
-    AdminPokedex = require('./controllers/Admin/AdminPokedexControlleur'),
-    User         = require('./controllers/UserControlleur'),
-    MCompte      = require('./controllers/MonCompteControlleur')
+    User         = require('./controllers/UserControlleur')
 
 /************************************************************
 *                       Impotation middlewares 
@@ -42,7 +43,7 @@ const
 *                   CRUD page home
 *************************************************************/
 
-router.route('/')
+Router.route('/')
     .get(Login.get)
 
 
@@ -50,74 +51,82 @@ router.route('/')
 *                   CRUD USER
 *************************************************************/
 
-router.route('/register')
+Router.route('/register')
     .post(Login.post)
 
-router.route('/login')
+Router.route('/login')
     .post(User.post)
 
-router.route('/logout')
+Router.route('/logout')
     .get(User.logout)
 
-router.route('/Home')
+Router.route('/Home')
     .get(Auth, Home.get)
 
 /************************************************************
-*                   GRUD page Forum
+*                   CRUD Page régle
 *************************************************************/
 
-router.route('/Forum')
-    .get(Auth, Forum.get)
-    .post(Auth, upload.single('imgSujets'), Forum.post)
+// Router.route(('/Regle'))
+//     .get(Auth, Regle.get)
+
 
 /************************************************************
-*                   GRUD page Forum ID
+*                   CRUD page Forum
 *************************************************************/
 
-router.route('/Sujet/:id')
+Router.route('/Forum')
+    .get(Auth, Forum.get)
+    .post(Auth, Upload.single('imgSujets'), Forum.post)
+
+/************************************************************
+*                   CRUD page Forum ID
+*************************************************************/
+
+Router.route('/Sujet/:id')
     .get(Sujet.get)
     .post(Sujet.post)
 
 /************************************************************
-*                   GRUD page MonCompte
+*                   CRUD page MonCompte
 *************************************************************/
 
-router.route('/MonCompte')
+Router.route('/MonCompte')
     .get(MCompte.get)
 
 /************************************************************
-*                   GRUD page Pokedex
+*                   CRUD page Pokedex
 *************************************************************/
 
-router.route('/Pokedex')
+Router.route('/Pokedex')
     .get(Auth, Pokedex.get)
 /************************************************************
 *                   CRUD page AdminSujet
 *************************************************************/
 
-router.route('/AdminSujet')
+Router.route('/AdminSujet')
     .get(admin, AdminSujet.get)
-    .post(admin, upload.single('imgSujets'), AdminSujet.post)
+    .post(admin, Upload.single('imgSujets'), AdminSujet.post)
     .delete(admin, AdminSujet.deleteAll)
 
 /************************************************************
 *                   CRUD page AdminPokedex
 *************************************************************/
 
-router.route('/AdminPokedex')
+Router.route('/AdminPokedex')
     .get(admin, AdminPokedex.get)
-    .post(admin, upload.single('imgPoke'), AdminPokedex.post)
+    .post(admin, Upload.single('imgPoke'), AdminPokedex.post)
 
 /************************************************************
 *                   CRUD Admin ID
 *************************************************************/
 
-router.route('/Admin/:id')
-    .put(admin, upload.single('imgSujets'), AdminSujet.put)
+Router.route('/Admin/:id')
+    .put(admin, Upload.single('imgSujets'), AdminSujet.put)
     .delete(admin, AdminSujet.deleteOne)
 
 /************************************************************
 *                   Exportation de la route
 *************************************************************/
 
-module.exports = router;
+module.exports = Router;

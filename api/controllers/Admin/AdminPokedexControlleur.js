@@ -2,9 +2,9 @@
 *                       Importation 
 *************************************************************/
 const
-    poke   = require('../../database/Pokemon')
-    path   = require('path'),
-    fs     = require('fs')
+    Poke   = require('../../database/Pokemon')
+    Path   = require('path'),
+    Fs     = require('fs')
 
 
 /************************************************************
@@ -18,10 +18,10 @@ module.exports = {
 *************************************************************/
     get: async (req, res) => {
         /* cela me permet de chercher dans la base de donnée  */
-        const dbpoke   = await poke.find({})
+        const dbPoke   = await Poke.find({})
         /* cela me permet d'afficher la page adminpokedex avec les donner des pokemon */
         res.render('AdminPokedex', 
-        dbpoke
+        dbPoke
         )
     },
 
@@ -37,7 +37,7 @@ module.exports = {
         /* sinon */
         else {
             /* tu me crée le pokemon */
-            poke.create({
+            Poke.create({
                 ...req.body,
                 imgPoke: `/assets/image/Pokemon/${req.file.originalname}`,
                 name: req.file.originalname,

@@ -2,7 +2,7 @@
 *                       Importation 
 *************************************************************/
 const 
-    mongoose = require('mongoose')
+    Mongoose = require('mongoose')
 
 /************************************************************
 *                       Model
@@ -10,7 +10,7 @@ const
 
     const 
         /* Création du Shema Poke */
-        PokeSchema = new mongoose.Schema({
+        PokeSchema = new Mongoose.Schema({
         /* les variable seront de type string */
         name:        String,
         type:        String,
@@ -28,4 +28,4 @@ const
 /************************************************************
 *            Exportation du shéma de sujet de forum 
 *************************************************************/
-module.exports = mongoose.model('Poke',PokeSchema )
+module.exports = Mongoose.model('Poke',PokeSchema )

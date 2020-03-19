@@ -3,13 +3,13 @@
 *                       Importation de mongoose
 *************************************************************/
 const 
-    mongoose = require('mongoose')
+    Mongoose = require('mongoose')
 
 /************************************************************
 *                       Model
 *************************************************************/
 const 
-    SujetsSchema = new mongoose.Schema({
+    SujetsSchema = new Mongoose.Schema({
         //** Variable du schema de type string **//
         title: String,
         type: String,
@@ -19,4 +19,4 @@ const
     })
 
 //*** Exportation du shéma de sujet de forum ***//
-module.exports = mongoose.model('Sujets',SujetsSchema )
+module.exports = Mongoose.model('Sujets',SujetsSchema )

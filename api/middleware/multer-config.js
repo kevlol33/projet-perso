@@ -1,12 +1,12 @@
 /************************************************************
 *                       Importation 
 *************************************************************/
-const multer = require('multer')
+const Multer = require('multer')
 
 /************************************************************
 *                       Chemin pour placer l'iamge
 *************************************************************/
-const storage = multer.diskStorage({
+const storage = Multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './public/image')
   },
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 /************************************************************
 *                       Mise a jour de l'image
 *************************************************************/
-const upload = multer({
+const upload = Multer({
     storage: storage,
     //** régle pour l'imade uploder **//
     limits: {

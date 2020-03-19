@@ -24,15 +24,15 @@ module.exports = {
 *************************************************************/
     //** Post permet de crée un utilisateur **//
     post: (req, res) => {
-        const body = req.body
+        const Body = req.body
 
         // console.log(body)
     
-        if (body.password !== body.password2) {
+        if (Body.password !== Body.password2) {
             console.log('pas content');
             
             res.redirect('/')
-        } else if (body.password === body.password2) {
+        } else if (Body.password === Body.password2) {
             console.log('content');
             
             //    ** Je crée l'utilisateur **/

@@ -3,7 +3,7 @@
 *************************************************************/
 const 
     User = require('../database/User'),
-    bcrypt = require('bcrypt')
+    Bcrypt = require('bcrypt')
 
 /************************************************************
 *                       Controleur User
@@ -30,7 +30,7 @@ module.exports = {
             if (user) {
 
                 //** tu va comparer dans la base de donnée **//
-                bcrypt.compare(password, user.password, (error, same) => {
+                Bcrypt.compare(password, user.password, (error, same) => {
                 
                     //** les information suivante sont identique **//
                     if (same) {                        
