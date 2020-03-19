@@ -3,19 +3,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <img src="{{ imgSujets }}" alt="">
+      <img src="{{ imgSujets }}" class="img-fluid" alt="">
     </div>
   </div>
 </div>
 <div class="container">
   <div class="col-md-12">
     <h1>{{ title }}</h1>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
     <p>{{ description }}</p>
   </div>
 </div>
 {{/each}}
 {{!-- /Mon Sujet --}}
+
+<style>
+  p {
+    color: #000000;
+  }
+</style>

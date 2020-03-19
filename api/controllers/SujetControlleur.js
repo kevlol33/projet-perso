@@ -2,7 +2,7 @@
 *                       Importation 
 *************************************************************/
 const
-    Com         = require('../database/Commentaire'),
+    commentaire = require('../database/Commentaire'),
     Sujets      = require('../database/Sujet'),
     path        = require('path'),
     fs          = require('fs')
@@ -18,7 +18,9 @@ module.exports = {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const 
             dbsujetsID      = await Sujets.findById(req.params.id),
-            dbcommentaireID = await Com.findById(req.params.id)
+            dbcommentaireID = await commentaire.findById(req.params.id)
+            console.log(dbcommentaireID);
+            
             /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {
             dbsujetsID, dbcommentaireID
@@ -38,14 +40,14 @@ module.exports = {
             //* tu me redirige sur la page précédente *//
             console.log(err);
             
-            res.redirect('/404')
+            res.redirect('/Forum')
         } 
         //* Sinon *//
         else {
             console.log('cooool');
             
             //* Tu me cree le commantaire *//
-            Com.create({
+            commentaire.create({
                 createDate: new Date(),
                 Id: req.params.id,
                 username: req.session.username,
@@ -55,7 +57,7 @@ module.exports = {
             console.log('com ok'))
 
         }
-            res.redirect('/Forum')
+            res.redirect('back')
         }
             
     }

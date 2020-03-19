@@ -23,4 +23,4 @@ const
 /************************************************************
 *                       Exporte du Shema
 *************************************************************/
-    module.exports = mongoose.model('Com',ComSchema)
+    module.exports = mongoose.model('Commentaire',ComSchema)
