@@ -5,7 +5,7 @@ const
 
     Sujets = require('../../database/Sujet'),
     User   = require('../../database/User'),
-    Path   = require('path'),
+    path   = require('path'),
     Fs     = require('fs')
 
 
@@ -117,48 +117,6 @@ module.exports = {
                         })
                 })
         }
-    },
-
-/************************************************************
-*                        Méthdoe DELLETE(1 SUJET) 
-*************************************************************/
-    //*** Permet de suprimer un sujet de la basse de données ***//
-    deleteOne: async (req, res) => {
-        //** chercher les sujets dans la base de donnée **//
-        const dbSujets = await Sujets.findById(req.params.id),
-              //** pathImg permet de supprimer l'image lier au sujet supprimer **//
-              PathImg = path.resolve("public/image/" + dbSujets.name)
-              
-
-        //** foncttion pour supprimer un sujet **//
-        Sujets.deleteOne({
-            //** id est dans req.params.id **//
-            _id: req.params.id
-        },
-            //** Gestion des erreur **//
-            (err) => {
-                //** si il y a pas d'erreur **/
-                if (!err) {
-                    //** fs.unlink permet de supprimer l'image du sujet **//
-                    Ds.unlink(PathImg,
-                        //** Gestion des erreurs **//
-                        (err) => {
-                            //** si i y a une erreur tu me la logue **//
-                            if (err) {
-                                console.log(err)
-                            }
-                            //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
-                            else {
-                                console.log('fichier supprimer')
-                                res.redirect('/AdminSujet')
-                            }
-                        })
-                }
-                //** si il y a une erruer tu me logue l'erreur **/
-                else {
-                    res.send(err)
-                }
-            })
     },
 
 /************************************************************

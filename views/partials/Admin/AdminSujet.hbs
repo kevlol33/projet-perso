@@ -10,12 +10,21 @@
                     <th scope="col">Bouton</th>
                 </tr>
             </thead>
-            {{#each dbsujets }}
+            {{#each dbSujets }}
             <tr>
                 <td>{{ title }}</td>
                 <td>{{ type }}</td>
                 <td>{{ description }}</td>
-                <td> <a href="/Sujet/{{_id}}" class="btn btn-primary"> Voir L'article</a></td>
+                <td>
+                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
+                        <a href="/Sujet/{{ _id }}" class="btn btn-success">
+                        <i class="fas fa-eye"></i>
+                        </a>
+                        <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
             </tr>
             {{/each }}
         </table>

@@ -77,6 +77,7 @@ Router.route('/Forum')
 Router.route('/Sujet/:id')
     .get(Sujet.get)
     .post(Sujet.post)
+    .delete(Sujet.deleteOne)
 
 /************************************************************
 *                   CRUD page MonCompte
@@ -99,6 +100,7 @@ Router.route('/AdminSujet')
     .get(admin, AdminSujet.get)
     .post(admin, Upload.single('imgSujets'), AdminSujet.post)
     .delete(admin, AdminSujet.deleteAll)
+    .put(admin, AdminSujet.put)
 
 /************************************************************
 *                   CRUD page AdminPokedex
@@ -107,14 +109,6 @@ Router.route('/AdminSujet')
 Router.route('/AdminPokedex')
     .get(admin, AdminPokedex.get)
     .post(admin, Upload.single('imgPoke'), AdminPokedex.post)
-
-/************************************************************
-*                   CRUD Admin ID
-*************************************************************/
-
-Router.route('/Admin/:id')
-    .put(admin, Upload.single('imgSujets'), AdminSujet.put)
-    .delete(admin, AdminSujet.deleteOne)
 
 /************************************************************
 *                   Exportation de la route

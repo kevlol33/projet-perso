@@ -17,10 +17,10 @@ module.exports = {
 
     const
         sess = req.session,
-        dbUsersID = await User.findById(sess.userId)
+        dbUsersId = await User.findById(sess.userId)
 
         res.render('MonCompte', {
-            dbUsersID
+            dbUsersId
         })
 
     },

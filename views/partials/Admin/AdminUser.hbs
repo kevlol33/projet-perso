@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="raw">
         <h1>Liste des utilisateurs :</h1>
@@ -11,14 +10,16 @@
                     <th>Bouton</th>
                 </tr>
             </thead>
-            {{#each dbusers }}
+            {{#each dbUsers }}
             <tr>
                 <td>{{ username }}</td>
                 <td>{{ email }}</td>
                 <td>{{ _id }}</td>
                 <td>
                     <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
-                        <button class="btn btn-primary" type="submit">Effacer</button>
+                        <button class="btn btn-danger" type="submit">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </form>
 
                 </td>
