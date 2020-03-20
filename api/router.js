@@ -1,6 +1,6 @@
 /************************************************************
 *                   Importation
-*************************************************************/
+************************************************************/
 const
     express = require('express'),
     Router  = express.Router(),
@@ -31,7 +31,7 @@ const
     admin = require('./middleware/Admin')
 
 /************************************************************
-*                    ** CRUD ** 
+*            ********** CRUD ********** 
 *  (Méthode Post: qui permet l'envois de données),
 *  (Métode Get: qui permet de récupéré nos informations),
 *  (Méthode Put: qui permet de metre a jour nos informations), 
@@ -39,7 +39,7 @@ const
 *************************************************************/
 
 /************************************************************
-*                   CRUD page home
+*                   Page home
 *************************************************************/
 
 Router.route('/')
@@ -63,47 +63,47 @@ Router.route('/Home')
     .get(Auth, Home.get)
 
 /************************************************************
-*                   CRUD page Forum
+*                   Page Forum
 *************************************************************/
 
 Router.route('/Forum')
-    .get(Auth, Forum.get)
-    .post(Auth, Upload.single('imgSujets'), Forum.post)
+    .get  (Auth, Forum.get)
+    .post (Auth, Upload.single('imgSujets'), Forum.post)
 
 /************************************************************
-*                   CRUD page Forum ID
+*                   Page Forum ID
 *************************************************************/
 
 Router.route('/Sujet/:id')
-    .get(Sujet.get)
-    .post(Sujet.post)
-    .delete(Sujet.deleteOne)
+    .get    (Sujet.get)
+    .post   (Sujet.post)
+    .delete (Sujet.deleteOne)
 
 /************************************************************
-*                   CRUD page MonCompte
+*                   Page MonCompte
 *************************************************************/
 
 Router.route('/MonCompte')
     .get(MCompte.get)
 
 /************************************************************
-*                   CRUD page Pokedex
+*                   Page Pokedex
 *************************************************************/
 
 Router.route('/Pokedex')
     .get(Auth, Pokedex.get)
 /************************************************************
-*                   CRUD page AdminSujet
+*                   Page AdminSujet
 *************************************************************/
 
 Router.route('/AdminSujet')
-    .get(admin, AdminSujet.get)
-    .post(admin, Upload.single('imgSujets'), AdminSujet.post)
-    .delete(admin, AdminSujet.deleteAll)
-    .put(admin, AdminSujet.put)
+    .get    (admin, AdminSujet.get)
+    .post   (admin, Upload.single('imgSujets'), AdminSujet.post)
+    .delete (admin, AdminSujet.deleteAll)
+    .put    (admin, AdminSujet.put)
 
 /************************************************************
-*                   CRUD page AdminPokedex
+*                  Page AdminPokedex
 *************************************************************/
 
 Router.route('/AdminPokedex')

@@ -28,16 +28,15 @@ module.exports = {
 
     post: async (req, res) => {
         // condition //
-        console.log(req.body);
-        
-        
         //** si req.file nes pas la **//
         if (!req.file) {
+            console.log('pas content');
+            
             //** alors tu me redirige sur la page home **//
             res.redirect('/Forum')
-            console.log('Pas de fichier');
-            
         } else {
+            console.log('content');
+            
             //** sinon tu me crée sa **//
             Sujets.create({
                 ...req.body,
@@ -46,10 +45,8 @@ module.exports = {
             },
                 //** si il y a des errreur alors **/
                 (error, post) => {
-                    console.log(err);
-                    
                     //** tu me redirige vers la page admin **//
-                    res.redirect('/Home')
+                    res.redirect('/Forum')
                 })
                 
         }

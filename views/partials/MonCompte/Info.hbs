@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            {{#each dbUsersId}}
-            <h1>Bonjour {{ username }} </h1>
+            <h1>
+                <i class="fas fa-id-card"></i>
+                Bonjour 
+                {{ dbUsersId.username }} 
+                </h1>
 
             <div class="container">
                 <div class="row">
@@ -26,10 +29,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{username}}</td>
-                                        <td>{{email}}</td>
-                                        <td>{{sexe}}</td>
-                                        <td>{{status}}</td>
+                                        <td> {{ dbUsersId.username }} </td>
+                                        <td> {{ dbUsersId.email }}</td>
+                                        <td> {{ dbUsersId.sexe }} </td>
+                                        <td> {{ dbUsersId.status }} </td>
                                         <td>
                                             <!-- Button trigger modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -44,7 +47,6 @@
                     </div>
                 </div>
             </div>
-            {{/each}}
         </div>
     </div>
 </div>

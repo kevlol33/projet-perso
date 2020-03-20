@@ -23,11 +23,13 @@ module.exports = {
         const 
             dbSujets = await Sujets.find({})
             dbUsers  = await User.find({})
+            dbType1  = await Sujets.find({ type: { $lte: 1 } })
+            dbType2  = await Sujets.find({ type: { $gte: 2 } })
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
         res.render('AdminSujet', {
-            dbSujets, dbUsers
+            dbSujets, dbUsers, dbType1, dbType2
         })
     },
 
