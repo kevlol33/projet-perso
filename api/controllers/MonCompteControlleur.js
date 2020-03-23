@@ -16,11 +16,10 @@ module.exports = {
     get: async (req, res) => {
 
     const
-        sess = req.session,
-        dbUsersId = await User.findById(sess.userId)
+        sess = req.session
 
         res.render('MonCompte', {
-            dbUsersId
+            sess
         })
 
     },
