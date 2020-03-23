@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
                 Ajouter un article
             </button>
             <h1>Liste des Sujets :</h1>
@@ -17,13 +17,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Créer un Sujet</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="/Forum" method="post" enctype="multipart/form-data">
+            <form action="/Forum" method="post" enctype="multipart/form-data"></form>
+                <div class="modal-body">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -34,16 +34,16 @@
                         </div>
                     </div>
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="exampleFormControlSelect1">Type de l'article :</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name='type' required>
-                                    <option selected>Choisir :</option>
-                                    <option value="1">Article sur les Régions Pokémon</option>
-                                    <option value="2">Article sur Les Jeux Pokémon</option>
-                                </select>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="exampleFormControlSelect1">Type de l'article :</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name='type' required>
+                                <option selected>Choisir :</option>
+                                <option value="1">Article sur les Régions Pokémon</option>
+                                <option value="2">Article sur Les Jeux Pokémon</option>
+                            </select>
                         </div>
+                    </div>
                     </div>
 
                     <div class="container">
@@ -73,12 +73,12 @@
                         </div>
                     </div>
                     {{!-- /Formulaire pour crée un article --}}
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Enregistrer</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

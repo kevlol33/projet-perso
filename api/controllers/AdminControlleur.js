@@ -21,15 +21,16 @@ module.exports = {
     get: async (req, res) => {
         //** chercher les donnée a l'interieur de la base de donnée **//
         const 
-            dbSujets = await Sujet.find({})
-            dbUsers  = await User.find({})
-            dbType1  = await Sujet.find({ type: { $lte: 1 } })
-            dbType2  = await Sujet.find({ type: { $gte: 2 } })
+            dbType1    = await Sujet.find({ type: { $lte: 1 } })
+            dbType2    = await Sujet.find({ type: { $gte: 2 } })
+            dbSujetsID = await Sujet.findById(req.params.id)
+            dbSujets   = await Sujet.find({})
+            dbUsers    = await User.find({})
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
         res.render('Admin', {
-            dbSujets, dbUsers, dbType1, dbType2
+            dbSujetsID, dbSujets, dbUsers, dbType1, dbType2
         })
     },
 
@@ -56,68 +57,6 @@ module.exports = {
                     res.redirect('/Admin')
                 })
                 
-        }
-    },
-
-/************************************************************
-*                        Méthode PUT
-*************************************************************/
-    //*** Permet de metre a jour un sujet ***//
-    put: async (req, res) => {
-        const
-            //** query me permer de recupere l'id d'un sujet **//
-            Query = { _id: req.params.id },
-            //** dbsujet permet de chercher un sujet par id **//
-            dbSujets = await Sujet.findById(Query),
-            //** pathImg permet de relier l'image du sujet dans la base de donnée **//
-            PathImg = path.resolve("public/image/" + dbSujets.name)
-
-        //** condition dans une condition **//
-        //** Si req.file n'y est pas alors: **/
-        if (!req.file) {
-            //** tu met a jour le sujet **//
-            if (req.body.title) {
-                Sujets.updateOne(Query, {
-                    title: req.body.title
-                },
-                    //** sinon tu me redirige soit **/
-                    (err) => {
-                        //** soit a l'acceuil **//
-                        if (err) res.redirect('/Admin')
-                        //** soit a la page admin **//
-                        else res.redirect('/Admin')
-                    })
-            }
-            //** sinon ru me redirige **//
-            else {
-                //** a la page home **//
-                res.redirect('/Admin')
-            }
-        }
-        //** sinon tout sa **//
-        else {
-            //** tu met a jour mon sujet **//
-            Sujet.updateOne(query, {
-                ...req.body,
-                imgSujets: `/assets/image/${req.file.originalname}`,
-                name: req.file.originalname,
-            },
-                //** si il y a des erreur **//
-                (error, post) => {
-                    //** fs.unlink permet de supprimer le fichier en asynchrone **//
-                    Fs.unlink(PathImg,
-                        (err) => {
-                            //** si il y a une erreur tu me la logue **/
-                            if (err) {
-                                console.log(err)
-                            }
-                            //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
-                            else {
-                                console.log('File Deleted.')
-                                res.redirect('/Admin')
-                            }
-                        })
-                })
         }
     },
 

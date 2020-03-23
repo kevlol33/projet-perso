@@ -76,16 +76,17 @@ Router.route('/Forum')
 *************************************************************/
 
 Router.route('/Sujet/:id')
-    .get    (Sujet.get)
-    .post   (Sujet.post)
-    .delete (Sujet.deleteOne)
+    .get    (Auth, Sujet.get)
+    .post   (Auth, Sujet.post)
+    .delete (Auth, Sujet.delete)
+    .put    (Auth, Upload.single('imgSujets'), Sujet.put)
 
 /************************************************************
 *                   Page MonCompte
 *************************************************************/
 
 Router.route('/MonCompte')
-    .get(Compte.get)
+    .get(Auth, Compte.get)
 
 /************************************************************
 *                   Page Admin (CRUD)
@@ -95,7 +96,6 @@ Router.route('/Admin')
     .get    (Auth, MAdmin, Admin.get)
     .post   (Auth, MAdmin, Upload.single('imgSujets'), Admin.post)
     .delete (Auth, MAdmin, Admin.deleteAll)
-    .put    (Auth, MAdmin, Admin.put)
 
 /************************************************************
 *                   Exportation de la route

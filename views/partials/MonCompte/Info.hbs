@@ -3,9 +3,9 @@
         <div class="col-md-12">
             <h1>
                 <i class="fas fa-id-card"></i>
-                Bonjour 
-                {{ sess.username }} 
-                </h1>
+                Bonjour
+                {{ sess.username }}
+            </h1>
 
             <div class="container">
                 <div class="row">
@@ -15,32 +15,38 @@
                             Mes Donnée :
                         </button>
                     </p>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Bouton</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> {{ sess.username }} </td>
-                                        <td> {{ sess.email }}</td>
-                                        <td> {{ sess.status }} </td>
-                                        <td>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal">
-                                                Modifier
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Bouton</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> {{ sess.username }} </td>
+                                            <td> {{ sess.email }}</td>
+                                            <td> {{ sess.status }} </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#exampleModal">
+                                                    Modifier
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,6 +54,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -61,7 +68,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form > 
+                <form>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Username :</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username">
