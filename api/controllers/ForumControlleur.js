@@ -2,10 +2,7 @@
 *                       Importation 
 *************************************************************/
 const
-    Sujets  = require('../database/Sujet'),
-    Express = require('express'),
-    Path    = require('path'),
-    Router  = Express.Router()
+    Sujet  = require('../database/Sujet')
 
 /************************************************************
 *                       Controleur du forum 
@@ -17,9 +14,9 @@ module.exports = {
 
         //** cette constance permet d'aller chercher les sujet dans la base de donnée **//
         const 
-            dbType1  = await Sujets.find({ type: { $lte: 1 } })
-            dbType2  = await Sujets.find({ type: { $gte: 2 } })
-            dbSujets = await Sujets.find({})
+            dbType1  = await Sujet.find({ type: { $lte: 1 } })
+            dbType2  = await Sujet.find({ type: { $gte: 2 } })
+            dbSujets = await Sujet.find({})
 
         res.render('Forum', {
             dbSujets, dbType1, dbType2
@@ -38,7 +35,7 @@ module.exports = {
             console.log('content');
             
             //** sinon tu me crée sa **//
-            Sujets.create({
+            Sujet.create({
                 ...req.body,
                 imgSujets: `/assets/image/${req.file.originalname}`,
                 name: req.file.originalname,

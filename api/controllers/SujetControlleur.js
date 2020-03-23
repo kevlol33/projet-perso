@@ -3,7 +3,7 @@
 *************************************************************/
 const
     Commentaire = require('../database/Commentaire'),
-    Sujets = require('../database/Sujet'),
+    Sujet = require('../database/Sujet'),
     Path = require('path'),
     Fs = require('fs')
 
@@ -18,7 +18,7 @@ module.exports = {
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const
-            dbSujetsID = await Sujets.findById(req.params.id),
+            dbSujetsID = await Sujet.findById(req.params.id),
             dbCommentaireID = await Commentaire.find({ sujetID: req.params.id })
         console.log(dbCommentaireID);
 
@@ -66,13 +66,13 @@ module.exports = {
     //*** Permet de suprimer un sujet de la basse de données ***//
     deleteOne: async (req, res) => {
         //** chercher les sujets dans la base de donnée **//
-        const dbSujets = await Sujets.findById(req.params.id),
+        const dbSujets = await Sujet.findById(req.params.id),
             //** pathImg permet de supprimer l'image lier au sujet supprimer **//
             PathImg = Path.resolve("public/image/" + dbSujets.name)
 
 
         //** foncttion pour supprimer un sujet **//
-        Sujets.deleteOne({
+        Sujet.deleteOne({
             //** id est dans req.params.id **//
             _id: req.params.id
         },

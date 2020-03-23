@@ -2,25 +2,21 @@
 *                   Importation
 ************************************************************/
 const
-    express = require('express'),
-    Router  = express.Router(),
-    Upload  = require('./middleware/multer-config')
-
+    Express = require('express'),
+    Router  = Express.Router()
+    
 /************************************************************
 *           Controllers du dossier API/CONTROLLERS
 *************************************************************/
 
 const
-    AdminSujet   = require('./controllers/Admin/AdminSujetControlleur'),
-    AdminPokedex = require('./controllers/Admin/AdminPokedexControlleur'),
-    Forum        = require('./controllers/ForumControlleur'),
-    Home         = require('./controllers/HomeControlleur'),
-    Login        = require('./controllers/LoginControleur'),
-    MCompte      = require('./controllers/MonCompteControlleur'),
-    Pokedex      = require('./controllers/PokedexControlleur'),
-    Pokemon      = require('./controllers/PokemonControlleur'),
-    Sujet        = require('./controllers/SujetControlleur'),
-    User         = require('./controllers/UserControlleur')
+    Admin  = require('./controllers/AdminControlleur'),
+    Compte = require('./controllers/MonCompteControlleur'),
+    Forum  = require('./controllers/ForumControlleur'),
+    Home   = require('./controllers/HomeControlleur'),
+    Login  = require('./controllers/LoginControleur'),
+    Sujet  = require('./controllers/SujetControlleur'),
+    User   = require('./controllers/UserControlleur')
 
 /************************************************************
 *                       Impotation middlewares 
@@ -28,7 +24,8 @@ const
 
 const
     Auth  = require('./middleware/Auth'),
-    admin = require('./middleware/Admin')
+    MAdmin = require('./middleware/Admin'),
+    Upload  = require('./middleware/multer-config')
 
 /************************************************************
 *            ********** CRUD ********** 
@@ -39,7 +36,7 @@ const
 *************************************************************/
 
 /************************************************************
-*                   Page home
+*                   Page Home Not Login
 *************************************************************/
 
 Router.route('/')
@@ -47,7 +44,7 @@ Router.route('/')
 
 
 /************************************************************
-*                   CRUD USER
+*                   USER
 *************************************************************/
 
 Router.route('/register')
@@ -58,6 +55,10 @@ Router.route('/login')
 
 Router.route('/logout')
     .get(User.logout)
+
+/************************************************************
+*                   Page Home Login
+*************************************************************/
 
 Router.route('/Home')
     .get(Auth, Home.get)
@@ -84,31 +85,17 @@ Router.route('/Sujet/:id')
 *************************************************************/
 
 Router.route('/MonCompte')
-    .get(MCompte.get)
+    .get(Compte.get)
 
 /************************************************************
-*                   Page Pokedex
+*                   Page Admin (CRUD)
 *************************************************************/
 
-Router.route('/Pokedex')
-    .get(Auth, Pokedex.get)
-/************************************************************
-*                   Page AdminSujet
-*************************************************************/
-
-Router.route('/AdminSujet')
-    .get    (admin, AdminSujet.get)
-    .post   (admin, Upload.single('imgSujets'), AdminSujet.post)
-    .delete (admin, AdminSujet.deleteAll)
-    .put    (admin, AdminSujet.put)
-
-/************************************************************
-*                  Page AdminPokedex
-*************************************************************/
-
-Router.route('/AdminPokedex')
-    .get(admin, AdminPokedex.get)
-    .post(admin, Upload.single('imgPoke'), AdminPokedex.post)
+Router.route('/Admin')
+    .get    (Auth, MAdmin, Admin.get)
+    .post   (Auth, MAdmin, Upload.single('imgSujets'), Admin.post)
+    .delete (Auth, MAdmin, Admin.deleteAll)
+    .put    (Auth, MAdmin, Admin.put)
 
 /************************************************************
 *                   Exportation de la route
