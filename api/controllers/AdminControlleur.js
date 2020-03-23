@@ -45,7 +45,7 @@ module.exports = {
             res.redirect('/Admin')
         } else {
             //** sinon tu me crée sa **//
-            Sujets.create({
+            Sujet.create({
                 ...req.body,
                 imgSujets: `/assets/image/${req.file.originalname}`,
                 name: req.file.originalname,

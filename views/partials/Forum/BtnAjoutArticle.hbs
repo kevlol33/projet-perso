@@ -1,10 +1,12 @@
 <!-- Button trigger modal -->
 <div class="container">
     <div class="row">
-        <h1>Liste des Sujets :</h1>
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-            Ajouter un article
-        </button>
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                Ajouter un article
+            </button>
+            <h1>Liste des Sujets :</h1>
+        </div>
     </div>
 </div>
 
@@ -74,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Enregistrer</button>
-                <button class="btn btn-secondary">Annuler</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 </form>
             </div>
         </div>

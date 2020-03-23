@@ -91,7 +91,7 @@ module.exports = {
                             //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
                             else {
                                 console.log('fichier supprimer')
-                                res.redirect('/AdminSujet')
+                                res.redirect('/Admin')
                             }
                         })
                 }
