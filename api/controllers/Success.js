@@ -1,27 +1,29 @@
 /************************************************************
-*                        Importation du model User
+*                       Importation 
 *************************************************************/
-const 
-    User = require('../database/User')
+const
+
+User   = require('../database/User')
 
 /************************************************************
-*                        Controleur Page Home
+*                       Controleur Success 
 *************************************************************/
+
 module.exports = {
-    
+
 /************************************************************
-*                        METHODE GET 
+*                        Méthode GET 
 *************************************************************/
-    //*** Permet de rester sur la pasge home ***//
+
     get: async (req, res) => {
+        const 
+            dbUser = await User.find({})
+            sess = req.session
 
-    const
-        dbUsers    = await User.findById(req.session.userId)
-
-        res.render('MonCompte', {
-            dbUsers
+        console.log(sess);
+        
+        res.render('Sussess', {
+            dbUser, sess
         })
-
-    },
-
+    }
 }

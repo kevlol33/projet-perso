@@ -2,8 +2,8 @@
 *                       Importation 
 *************************************************************/
 const 
-    User = require('../database/User'),
-    Bcrypt = require('bcrypt')
+    User = require('../database/User')
+,   Bcrypt = require('bcrypt')
 
 /************************************************************
 *                       Controleur User
@@ -50,8 +50,8 @@ module.exports = {
                         console.log('Le mail est ok');
                         
     
-                        //** le password de l'utilisateur **//
-                        req.session.password = user.password
+                        //** l'user de l'utilisateur **//
+                        req.session.userId = user._id
                         console.log('Le password est ok');
                         
     

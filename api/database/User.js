@@ -65,6 +65,13 @@ const UserShema = new Mongoose.Schema({
         //* Par defaut l'utilisateur ne sera pas bani du site *//
         default: false
     },
+
+    isVerified: {
+        //* boolea permet de savoir si c'est oui ou non à une condition *//
+        type: Boolean,
+        //* Par defaut l'utilisateur ne sera pas bani du site *//
+        default: false
+    }
 })
 
 /************************************************************

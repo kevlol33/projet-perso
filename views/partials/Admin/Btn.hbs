@@ -1,20 +1,55 @@
-<!-- Button trigger modal -->
 <div class="container">
     <div class="row">
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-            Ajouter un article
-        </button>
+        <div class="col-md-12">
+            <h1>
+                <i class="fas fa-list"></i>
+                Liste des Sujets :
+                <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
+                    data-target="#DelAllModal">
+                    <i class="fas fa-trash-alt"></i>
+                    Effacer tout
+                </button>
+                <!-- Button Add Sujet -->
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
+                    data-target="#AddSujet">
+                    <i class="fas fa-plus"></i>
+                    Ajouter un article
+                </button>
+        </div>
+        </h1>
     </div>
 </div>
 
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="DelAllModal" tabindex="-1" role="dialog" aria-labelledby="DelAllModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="DelAllModalLabel">Effacer Tous Les Sujets ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sur de supprimer tout les sujets ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <form action="/admin/?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Tout Effacer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add Sujet-->
+<div class="modal fade" id="AddSujet" tabindex="-1" role="dialog" aria-labelledby="AddSujet" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddSujet">Ajouté un Sujet</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -48,7 +83,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="comment">Description :</label>
-                                    <textarea class="form-control" rows="5" id="comment" name="description" required></textarea>
+                                    <textarea class="form-control" rows="5" id="comment" name="description"
+                                        required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -71,8 +107,8 @@
                     {{!-- /Formulaire pour crée un article --}}
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-success">Enregistrer</button>
-                <button class="btn btn-secondary">Annuler</button>
                 </form>
             </div>
         </div>

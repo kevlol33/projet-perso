@@ -10,6 +10,8 @@ const
     hbs            = require('express-handlebars'),
     handlebars     = require('handlebars'),
     methodOverride = require('method-override'),
+    nodemailer     = require('nodemailer'),
+    NODEMAILER     = require('./api/nodemailer'),
     mongoose       = require('mongoose'),
     MongoStore     = require('connect-mongo'),
     passport       = require('passport'),
@@ -96,6 +98,12 @@ app.use('*', (req, res, next) => {
 const 
     ROUTER = require('./api/router');
     app.use('/', ROUTER);
+
+/************************************************************
+*                        Routeur
+*************************************************************/
+
+app.use('/mailer', NODEMAILER)
 
 /************************************************************
 *                        Erreur 404 

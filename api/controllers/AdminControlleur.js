@@ -3,10 +3,10 @@
 *************************************************************/
 const
 
-    Sujet = require('../database/Sujet'),
-    User   = require('../database/User'),
-    path   = require('path'),
-    Fs     = require('fs')
+    Sujet = require('../database/Sujet')
+,   User   = require('../database/User')
+,   path   = require('path')
+,   Fs     = require('fs')
 
 
 /************************************************************
@@ -21,6 +21,7 @@ module.exports = {
     get: async (req, res) => {
         //** chercher les donnée a l'interieur de la base de donnée **//
         const 
+            sess = req.session
             dbType1    = await Sujet.find({ type: { $lte: 1 } })
             dbType2    = await Sujet.find({ type: { $gte: 2 } })
             dbSujetsID = await Sujet.findById(req.params.id)
@@ -30,7 +31,7 @@ module.exports = {
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
         res.render('Admin', {
-            dbSujetsID, dbSujets, dbUsers, dbType1, dbType2
+            dbSujetsID, dbSujets, dbUsers, dbType1, dbType2, sess
         })
     },
 

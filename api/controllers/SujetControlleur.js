@@ -2,10 +2,10 @@
 *                       Importation 
 *************************************************************/
 const
-    Commentaire = require('../database/Commentaire'),
-    Sujet = require('../database/Sujet'),
-    Path = require('path'),
-    Fs = require('fs')
+    Commentaire = require('../database/Commentaire')
+,   Sujet = require('../database/Sujet')
+,   Path = require('path')
+,   Fs = require('fs')
 
 /************************************************************
 *                       Controleur Sujet 
@@ -18,13 +18,15 @@ module.exports = {
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const
-            dbSujetsID      = await Sujets.findById(req.params.id),
+            sess = req.session
+            dbSujetsID      = await Sujet.findById(req.params.id),
             dbCommentaireID = await Commentaire.find({ sujetID: req.params.id })
+        
         console.log(dbCommentaireID);
 
         /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {
-            dbSujetsID, dbCommentaireID
+            dbSujetsID, dbCommentaireID, sess
         })
     },
 /************************************************************

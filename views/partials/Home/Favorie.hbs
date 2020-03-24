@@ -1,15 +1,15 @@
 &nbsp;
 <div class="container">
-    <h1>Favorie du mois :</h1>
+    <h1>Favorie des Région Pokémon :</h1>
     <div class="row">
-        {{#each dbSujets}}
-        <div class="col-md-12">
-            <div class="card text-white bg-secondary border-light mb-3" style="width: 18rem" ;>
-                <img class="img-fluid" src="{{imgSujets}}" alt="Card image cap">
+        {{#each dbType1}}
+        <div class="col-md-4">
+            <div class="card bg-dark" style="width: 18rem;">
+                <img src="{{imgSujets}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title" {{title}}></h5>
+                    <h5 class="card-title">{{title}}</h5>
                     <p class="card-text">{{ description }}</p>
-                    <a href="/Sujet/{{_id}}" class="btn btn-primary">Voir L'article</a>
+                    <a href="/Sujet/{{_id}}" class="btn btn-outline-info">Voir L'article</a>
                 </div>
             </div>
         </div>

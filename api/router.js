@@ -2,30 +2,31 @@
 *                   Importation
 ************************************************************/
 const
-    Express = require('express'),
-    Router  = Express.Router()
+    Express = require('express')
+,   Router  = Express.Router()
     
 /************************************************************
 *           Controllers du dossier API/CONTROLLERS
 *************************************************************/
 
 const
-    Admin  = require('./controllers/AdminControlleur'),
-    Compte = require('./controllers/MonCompteControlleur'),
-    Forum  = require('./controllers/ForumControlleur'),
-    Home   = require('./controllers/HomeControlleur'),
-    Login  = require('./controllers/LoginControleur'),
-    Sujet  = require('./controllers/SujetControlleur'),
-    User   = require('./controllers/UserControlleur')
+    Admin   = require('./controllers/AdminControlleur')
+,   Compte  = require('./controllers/MonCompteControlleur')
+,   Forum   = require('./controllers/ForumControlleur')
+,   Home    = require('./controllers/HomeControlleur')
+,   Login   = require('./controllers/LoginControleur')
+,   Success = require('./controllers/Success')
+,   Sujet   = require('./controllers/SujetControlleur')
+,   User    = require('./controllers/UserControlleur')
 
 /************************************************************
 *                       Impotation middlewares 
 *************************************************************/
 
 const
-    Auth  = require('./middleware/Auth'),
-    MAdmin = require('./middleware/Admin'),
-    Upload  = require('./middleware/multer-config')
+    Auth  = require('./middleware/Auth')
+,   MAdmin = require('./middleware/Admin')
+,   Upload  = require('./middleware/multer-config')
 
 /************************************************************
 *            ********** CRUD ********** 
@@ -87,6 +88,13 @@ Router.route('/Sujet/:id')
 
 Router.route('/MonCompte')
     .get(Auth, Compte.get)
+
+/************************************************************
+*                   Page MonCompte
+*************************************************************/
+
+Router.route('/Success')
+    .get(Auth, Success.get)
 
 /************************************************************
 *                   Page Admin (CRUD)

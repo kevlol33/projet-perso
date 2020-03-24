@@ -1,35 +1,44 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/Home">Pokélande</a>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">Pokélande</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse bg-light" id="navbarSupportedContent" style="color: #f8f9fa;">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        {{#if isAdmin}}
-        <a class="nav-link" href="/Admin">Admin <span class="sr-only">(current)</span></a>
-        {{/if}}
+  <div class="collapse navbar-collapse bg-dark justify-content-between" id="navbarSupportedContent">
+    <ul class="nav nav-tabs">
+      {{#if isAdmin}}
+      <li class="nav-item">
+        <a class="nav-link" href="/Admin">Admin</a>
+      </li>
+      {{/if}}
+      <li class="nav-item">
+        <a class="nav-link disabled">Bonjour {{ sess.username }}</a>
+      </li>
+     
+    </ul>
+    <ul class="nav nav-tabs">
+      {{#if user}}
+      <li class="nav-item">
+        <a class="nav-link" href="/Home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Forum">Forum</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/MonCompte">Mon Compte</a>
       </li>
     </ul>
-    <ul class="navbar-nav nr-auto">
-      {{#if user}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/Forum">Forum <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/MonCompte">Mon Compte <span class="sr-only">(current)</span></a>
-      </li>
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DecoModal">
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#DecoModal">
           Se Déconnecter
         </button>
       </li>
       {{else}}
       <li class="nav-item active">
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+        <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
           data-target="#Connection-modal-lg">
           Se Connecter
         </button>
@@ -55,20 +64,21 @@
             <label for="exampleInputEmail1">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
               placeholder="Email" name="email">
-            <small id="emailHelp" class="form-text text-muted">Nous ne partegerons jamais votre mot de passe.</small>
+            <small id="emailHelp" class="form-text text-muted">Veuillez rentrée une adresse valide.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Mot De Passe</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot De Passe"
               name="password">
+            <small id="emailHelp" class="form-text text-muted">Nous ne partegerons jamais votre mot de passe.</small>
           </div>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <button type="submit" class="btn btn-primary">Se Connecter</button>
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-outline-primary">Se Connecter</button>
           </div>
         </form>
       </div>
@@ -90,8 +100,8 @@
         Êtes-vous sur de vouloir vous déconnecter ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <a class="btn btn-danger" href="/logout">Se Déconnecté <span class="sr-only">(current)</span></a>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-outline-danger" href="/logout">Se Déconnecté <span class="sr-only">(current)</span></a>
       </div>
     </div>
   </div>
@@ -99,6 +109,6 @@
 
 <style>
   a {
-    color: #000000;
+    color: white !important
   }
 </style>
