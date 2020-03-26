@@ -91,7 +91,7 @@ Router.route('/MonCompte')
     .get(Auth, Compte.get)
 
 /************************************************************
-*                   Page MonCompte
+*                   Page Sucess
 *************************************************************/
 
 Router.route('/Success')

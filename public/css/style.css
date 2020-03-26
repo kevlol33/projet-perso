@@ -1,20 +1,15 @@
 h1 {
-    /* size: 500px; */
-    color: #820B11 !important;
-    /* font-family: 'Times New Roman', Times, serif; */
-}
-
-p {
-    color: #ffffff;
+    size: 500px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 a {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
-background {
-    color: #FFF4D7;
-}   
+p {
+    color: #000000
+}
 
 .navbar-header {
     float: none;
@@ -22,10 +17,6 @@ background {
     .navbar-toggle {
     display: block;
     }
-
-h1 {
-color: #000000 !important;
-}
 
 html, body {
     height: 100%

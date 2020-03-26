@@ -1,182 +1,189 @@
-<div class="accordion" id="accordionExample">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <i class="far fa-map"></i>
-                    Sujet sur les Régions Pokémon
-                </button>
-            </h2>
-        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                <i class="far fa-map"></i>
+                                Sujet sur les Régions Pokémon
+                            </button>
+                        </h2>
+                    </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-hover table-dark">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Titre</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Bouton</th>
-                                    </tr>
-                                </thead>
-                                {{#each dbType1 }}
-                                <tr>
-                                    <td>{{ id }}</td>
-                                    <td>{{ title }}</td>
-                                    <td>{{ description }}</td>
-                                    <td>
-                                        <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
-                                            <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <!-- Button Modif Sujet -->
-                                            <button type="button" class="btn btn-outline-warning" data-toggle="modal"
-                                                data-target="#EditModal">
-                                                <i class="fas fa-pen"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                {{/each }}
-                            </table>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Titre</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Bouton</th>
+                                                </tr>
+                                            </thead>
+                                            {{#each dbType1 }}
+                                            <tr>
+                                                <td>{{ id }}</td>
+                                                <td>{{ title }}</td>
+                                                <td>{{ description }}</td>
+                                                <td>
+                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
+                                                        <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <!-- Button Modif Sujet -->
+                                                        <button type="button" class="btn btn-outline-warning"
+                                                            data-toggle="modal" data-target="#EditModal">
+                                                            <i class="fas fa-pen"></i>
+                                                        </button>
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {{/each }}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-gamepad"></i>
+                                Sujet sur les Jeux Pokémon
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Titre</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Bouton</th>
+                                                </tr>
+                                            </thead>
+                                            {{#each dbType2 }}
+                                            <tr>
+                                                <td>{{ id }}</td>
+                                                <td>{{ title }}</td>
+                                                <td>{{ description }}</td>
+                                                <td>
+                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
+                                                        <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <!-- Button Modif Sujet -->
+                                                        <button type="button" class="btn btn-outline-warning"
+                                                            data-toggle="modal" data-target="#EditModal">
+                                                            <i class="fas fa-pen"></i>
+                                                        </button>
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {{/each }}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fas fa-gamepad"></i>
-                    Sujet sur les Jeux Pokémon
-                </button>
-            </h2>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-hover table-dark">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Titre</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Bouton</th>
-                                    </tr>
-                                </thead>
-                                {{#each dbType2 }}
-                                <tr>
-                                    <td>{{ id }}</td>
-                                    <td>{{ title }}</td>
-                                    <td>{{ description }}</td>
-                                    <td>
-                                        <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
-                                            <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <!-- Button Modif Sujet -->
-                                            <button type="button" class="btn btn-outline-warning" data-toggle="modal"
-                                                data-target="#EditModal">
-                                                <i class="fas fa-pen"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-outline-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                {{/each }}
-                            </table>
+</div>
+
+<!-- Modal Edit Sujet -->
+{{#each dbSujets }}
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/Sujet/{{ _id }}" method="put" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="EditModalLabel">Modification Article</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="formGroupExampleInput">Titre De L'article :</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                    placeholder="Example de Titre" name='title' value="{{ title }}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="exampleFormControlSelect1">Type de l'article :</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name='type' required>
+                                    <option selected>Choisir :</option>
+                                    <option value="1">Article sur les Régions Pokémon</option>
+                                    <option value="2">Article sur Les Jeux Pokémon</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="comment">Description :</label>
+                                    <textarea class="form-control" rows="5" id="comment" name="description"
+                                        required>{{ description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                            aria-describedby="inputGroupFileAddon01" name="imgSujets">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choisir
+                                            un fichier
+                                            ...</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                </div>
+            </form>
         </div>
     </div>
-
-
-    <!-- Modal Edit Sujet -->
-    {{#each dbSujets }}
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="/Sujet/{{ _id }}" method="put" enctype="multipart/form-data">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="EditModalLabel">Modification Article</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="formGroupExampleInput">Titre De L'article :</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput"
-                                        placeholder="Example de Titre" name='title' value="{{ title }}" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="exampleFormControlSelect1">Type de l'article :</label>
-                                    <select class="form-control" id="exampleFormControlSelect1" name='type' required>
-                                        <option selected>Choisir :</option>
-                                        <option value="1">Article sur les Régions Pokémon</option>
-                                        <option value="2">Article sur Les Jeux Pokémon</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="comment">Description :</label>
-                                        <textarea class="form-control" rows="5" id="comment" name="description"
-                                            required>{{ description }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </br>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="input">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                aria-describedby="inputGroupFileAddon01" name="imgSujets">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier
-                                                ...</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-success">Enregistrer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{/each}}
+</div>
+{{/each}}
