@@ -24,9 +24,10 @@ const
 *************************************************************/
 
 const
-    Auth  = require('./middleware/Auth')
-,   MAdmin = require('./middleware/Admin')
+    Auth    = require('./middleware/Auth')
+,   MAdmin  = require('./middleware/Admin')
 ,   Upload  = require('./middleware/multer-config')
+,   Verif   = require('./middleware/Verif')
 
 /************************************************************
 *            ********** CRUD ********** 
@@ -78,7 +79,7 @@ Router.route('/Forum')
 
 Router.route('/Sujet/:id')
     .get    (Auth, Sujet.get)
-    .post   (Auth, Sujet.post)
+    .post   (Auth, Verif, Sujet.post)
     .delete (Auth, Sujet.delete)
     .put    (Auth, Upload.single('imgSujets'), Sujet.put)
 

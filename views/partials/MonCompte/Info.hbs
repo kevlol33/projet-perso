@@ -1,64 +1,45 @@
-<h2><i class="fas fa-id-card"></i>Bienvenu sur la page du compte de <u>{{ dbUsers.username }}</u></h2>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 align-self-start">
-            <div class="container">
-                <div class="row">
-                    <p>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse"
-                            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Mes Donnée 
-                        </button>
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">sexe</th>
-                                            <th scope="col">Bouton</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td> {{ dbUsers.username }} </td>
-                                            <td> {{ dbUsers.email }}</td>
-                                            <td> {{ dbUsers.sexe }} </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal">
-                                                    Modifier
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+            <h2><i class="fas fa-id-card"></i>Bienvenu sur la page du compte de <u>{{ dbUsers.username }}</u></h2>
+            <p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Mes Donnée
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">sexe</th>
+                                <th scope="col">Bouton</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> {{ dbUsers.username }} </td>
+                                <td> {{ dbUsers.email }}</td>
+                                <td> {{ dbUsers.sexe }} </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Modifier
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
- <h3>Test de Mail</h3>
-<a href="/mailer/test">
-    <button>Tester votre mail</button>
-</a>
 
-<h3>Vérifier Son Compte</h3>
-<a href="/mailer/verifMail">
-    <button>Mail de vérification</button>
-</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
