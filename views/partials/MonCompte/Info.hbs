@@ -27,6 +27,11 @@
                             data-target="#exampleModal">
                             <i class="fas fa-pen"></i>
                         </button>
+                        <form action="/MonCompte/{{ dbUsers._id }}/?_method=DELETE" method="post">
+                        <button class="btn btn-outline-danger" type="submit">
+                            <i class="fas fa-user-minus"></i>
+                        </button>
+                    </form>
                     </td>
                 </tr>
             </tbody>

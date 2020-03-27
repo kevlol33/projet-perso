@@ -19,7 +19,7 @@
                 <td>{{ email }}</td>
                 <td>{{ _id }}</td>
                 <td>
-                    <form action="/admin/{{ this.id }}/?_method=DELETE" method="post">
+                    <form action="/User/{{ _id }}/?_method=DELETE" method="post">
                         <button class="btn btn-outline-danger" type="submit">
                             <i class="fas fa-user-minus"></i>
                         </button>

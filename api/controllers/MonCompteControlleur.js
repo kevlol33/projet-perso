@@ -25,4 +25,15 @@ module.exports = {
 
     },
 
+    delUser: (req, res) => {
+        console.log('je suis pret');
+
+        User.remove({ _id: req.params.id }, (err) => {
+            if (!err) {
+                res.redirect('/')
+            } else {
+                res.send(console.log(err))
+            }
+        })
+    },
 }
