@@ -90,6 +90,7 @@ Router.route('/Sujet/:id')
 Router.route('/MonCompte')
     .get(Auth, Compte.get)
     .delete (Compte.delUser)
+    .post(Compte.updateStatus)
 
 /************************************************************
 *                   Page Sucess

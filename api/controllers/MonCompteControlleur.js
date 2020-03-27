@@ -26,7 +26,7 @@ module.exports = {
     },
 
     delUser: (req, res) => {
-        console.log('je suis pret');
+        console.log('je suis pret a supprimer');
 
         User.remove({ _id: req.params.id }, (err) => {
             if (!err) {
@@ -36,4 +36,22 @@ module.exports = {
             }
         })
     },
+
+    updateStatus: async (req, res) => {
+        const query = await User.find({
+
+            _id: req.params.id
+        })
+            console.log('content');
+            
+        User.findByIdAndUpdate(query, {
+            username: req.body.username
+        ,   email: req.body.email
+        },
+            (err, post) => {
+                console.log('update reussie');
+
+                res.redirect('/admin')
+            })
+    }
 }
