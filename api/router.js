@@ -25,6 +25,7 @@ const
 
 const
     Auth    = require('./middleware/Auth')
+,   Ban     = require('./middleware/Ban') 
 ,   MAdmin  = require('./middleware/Admin')
 ,   Upload  = require('./middleware/multer-config')
 ,   Verif   = require('./middleware/Verif')
@@ -70,27 +71,28 @@ Router.route('/Home')
 *************************************************************/
 
 Router.route('/Forum')
-    .get  (Auth, Forum.get)
-    .post (Auth, Upload.single('imgSujets'), Forum.post)
+    .get  (Auth, Ban, Forum.get)
+    .post (Auth, Ban, Upload.single('imgSujets'), Forum.post)
 
 /************************************************************
 *                   Page Forum ID
 *************************************************************/
 
 Router.route('/Sujet/:id')
-    .get    (Auth, Sujet.get)
-    .post   (Auth, Verif, Sujet.post)
-    .delete (Auth, Sujet.delete)
-    .put    (Auth, Upload.single('imgSujets'), Sujet.put)
+    .get    (Auth, Ban, Sujet.get)
+    .post   (Auth, Ban, Verif, Sujet.post)
+    .delete (Auth, Ban, Sujet.delete)
+    .put    (Auth, Ban, Upload.single('imgSujets'), Sujet.put)
 
 /************************************************************
 *                   Page MonCompte
 *************************************************************/
 
 Router.route('/MonCompte')
-    .get(Auth, Compte.get)
+    .get(Compte.get)
     .delete (Compte.delUser)
     .post(Compte.updateStatus)
+    .delete (User.dellUser)
 
 /************************************************************
 *                   Page Sucess
@@ -104,9 +106,12 @@ Router.route('/Success')
 *************************************************************/
 
 Router.route('/Admin')
-    .get    (Auth, MAdmin, Admin.get)
-    .post   (Auth, MAdmin, Upload.single('imgSujets'), Admin.post)
-    .delete (Auth, MAdmin, Admin.deleteAll)
+    .get    (Auth, Ban, MAdmin, Admin.get)
+    .post   (Auth, Ban, MAdmin, Upload.single('imgSujets'), Admin.post)
+    .delete (Auth, Ban, MAdmin, Admin.deleteAll)
+
+Router.route('/admin/User/:id')
+    .post(Auth, Ban, MAdmin, Admin.dellUser)
 
 /************************************************************
 *                   Exportation de la route

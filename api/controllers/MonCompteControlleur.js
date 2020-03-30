@@ -51,7 +51,7 @@ module.exports = {
             (err, post) => {
                 console.log('update reussie');
 
-                res.redirect('/admin')
+                res.redirect('/MonCompte')
             })
     }
 }

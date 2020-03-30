@@ -2,20 +2,21 @@
 *                        Importation 
 *************************************************************/
 const
-    bodyParser     = require('body-parser'),
-    connectFlash   = require('connect-flash'),
-    express        = require('express'),
-    app            = express(),
-    expressSession = require('express-session'),
-    hbs            = require('express-handlebars'),
-    handlebars     = require('handlebars'),
-    methodOverride = require('method-override'),
-    nodemailer     = require('nodemailer'),
-    NODEMAILER     = require('./api/nodemailer'),
-    mongoose       = require('mongoose'),
-    MongoStore     = require('connect-mongo'),
-    passport       = require('passport'),
-    port           = process.env.PORT || 3000;
+    bodyParser     = require('body-parser')
+,   connectFlash   = require('connect-flash')
+,   express        = require('express')
+,   app            = express()
+,   expressSession = require('express-session')
+,   flash          = require('req-flash')
+,   hbs            = require('express-handlebars')
+,   handlebars     = require('handlebars')
+,   methodOverride = require('method-override')
+,   mongoose       = require('mongoose')
+,   MongoStore     = require('connect-mongo')
+,   nodemailer     = require('nodemailer')
+,   NODEMAILER     = require('./api/nodemailer')
+,   passport       = require('passport')
+,   port           = process.env.PORT || 3000;
 
 /************************************************************
 *                        Methode Override 
@@ -26,13 +27,13 @@ app.use(methodOverride('_method'));
 *                        Mongoose 
 *************************************************************/
 const
-    urlDb      = 'mongodb://localhost:27017/BaseJs',
-    mongoStore =  MongoStore(expressSession);
+    urlDb      = 'mongodb://localhost:27017/BaseJs'
+,   mongoStore =  MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
-    useCreateIndex:     true,
-    useNewUrlParser:    true,
-    useUnifiedTopology: true
+    useCreateIndex:     true
+,   useNewUrlParser:    true
+,   useUnifiedTopology: true
     });
 
 /************************************************************
@@ -40,11 +41,11 @@ mongoose.connect(urlDb, {
 *************************************************************/
 app.use(expressSession({
 
-    secret:             'securite',
-    name:               'ptitBiscuit',
-    saveUninitialized:  true,
-    resave:             false,
-    store:              new mongoStore({
+    secret:             'securite'
+,   name:               'ptitBiscuit'
+,   saveUninitialized:  true
+,   resave:             false
+,   store:              new mongoStore({
     mongooseConnection: mongoose.connection
     })
 }));
@@ -52,14 +53,17 @@ app.use(expressSession({
 /************************************************************
 *                        App.Use 
 *************************************************************/
-app.use('/assets', express.static('public'));
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(connectFlash())
-app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
         extended: true}));
+app.use(connectFlash());
+app.use('/assets', express.static('public'));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(methodOverride('_method'));
+
 
 /************************************************************
 *                        Handlebars 
@@ -77,12 +81,13 @@ app.engine('hbs', hbs({
 app.use('*', (req, res, next) => {
     const sess = req.session
     console.log(sess)
-        if (sess.isBan === true) {
-            console.log('sess isBan ')
-        } else if (sess.status === 'user') {
+            if (sess.status === 'user') {
             console.log('log user sess')
             res.locals.user = req.session.status
-            if (sess.isAdmin === true) {
+                if (sess.isBan === true) {
+                    console.log('sess isBan ')
+                    res.locals.isBan = req.session.isBan}
+            else if (sess.isAdmin === true) {
                 console.log('log Admin sess')
                 res.locals.isAdmin = req.session.status
             } 

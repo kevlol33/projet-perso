@@ -27,11 +27,12 @@
                             data-target="#exampleModal">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <form action="/MonCompte/{{ dbUsers._id }}/?_method=DELETE" method="post">
-                        <button class="btn btn-outline-danger" type="submit">
-                            <i class="fas fa-user-minus"></i>
-                        </button>
-                    </form>
+                        <form action="/MonCompte/User/{{dbUsers._id}}" method="POST">
+                            <button class="btn btn-outline-danger" type="submit">
+                                <i class="fas fa-user-minus"></i>
+                            </button>
+                        </form>
+
                     </td>
                 </tr>
             </tbody>
@@ -66,7 +67,8 @@
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i
                         class="far fa-times-circle"> Annuler</i></button>
                 <form action="/Moncompte/{{duUsers._id}}" method="POST">
-                <button type="submit" class="btn btn-outline-success"><i class="far fa-save"> Enregistré</i></button>
+                    <button type="submit" class="btn btn-outline-success"><i class="far fa-save">
+                            Enregistré</i></button>
                 </form>
             </div>
         </div>

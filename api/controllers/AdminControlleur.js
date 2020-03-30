@@ -4,9 +4,9 @@
 const
 
     Sujet = require('../database/Sujet')
-,   User   = require('../database/User')
-,   path   = require('path')
-,   Fs     = require('fs')
+    , User = require('../database/User')
+    , path = require('path')
+    , Fs = require('fs')
 
 
 /************************************************************
@@ -14,30 +14,35 @@ const
 *************************************************************/
 module.exports = {
 
-/************************************************************
-*                        Méthode GET 
-*************************************************************/
+    /************************************************************
+    *                        Méthode GET 
+    *************************************************************/
     //*** Permet de récupérer des donnée sur la pasge admin ***//
     get: async (req, res) => {
         //** chercher les donnée a l'interieur de la base de donnée **//
-        const 
+        const
             sess = req.session
-            dbType1    = await Sujet.find({ type: { $lte: 1 } })
-            dbType2    = await Sujet.find({ type: { $gte: 2 } })
-            dbSujetsID = await Sujet.findById(req.params.id)
-            dbSujets   = await Sujet.find({})
-            dbUsers    = await User.find({})
+            , dbType1 = await Sujet.find({ type: { $lte: 1 } })
+            , dbType2 = await Sujet.find({ type: { $gte: 2 } })
+            , dbSujetsID = await Sujet.findById(req.params.id)
+            , dbSujets = await Sujet.find({})
+            , dbUsers = await User.find({})
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//
         res.render('Admin', {
-            dbSujetsID, dbSujets, dbUsers, dbType1, dbType2, sess
+            dbSujetsID
+            , dbSujets
+            , dbUsers
+            , dbType1
+            , dbType2
+            , sess
         })
     },
 
-/************************************************************
-*                        Méthode POST
-*************************************************************/
+    /************************************************************
+    *                        Méthode POST
+    *************************************************************/
     //*** Permet d'enregistrer un sujet dans la base de données ***//
     post: async (req, res) => {
         // condition //
@@ -57,17 +62,17 @@ module.exports = {
                     //** tu me redirige vers la page admin **//
                     res.redirect('/Admin')
                 })
-                
+
         }
     },
 
-/************************************************************
-*                        Méthode DELLETE(ALL) 
-*************************************************************/
+    /************************************************************
+    *                        Méthode DELLETE(ALL) 
+    *************************************************************/
     //*** permet de supprimer tout les article en un clic ***//
     deleteAll: (req, res) => {
         const
-        //** resolve permet de résoudre un chemin afin d'y placer ici une image **//
+            //** resolve permet de résoudre un chemin afin d'y placer ici une image **//
             Directory = path.resolve("public/image/")
 
         //** Méthode de supprision de tout les sujet **//
@@ -85,7 +90,7 @@ module.exports = {
                                 if (!err) {
                                     //** tu me logue image supprimer et le fichier **//
                                     console.log('Delete Img' + file)
-                                } 
+                                }
                                 //** sinon tu me logue l'erreur **//
                                 else {
                                     console.log(err)
@@ -94,16 +99,33 @@ module.exports = {
                         }
                         //**apres tout sa tu me dirige sur la page admin **/
                         res.redirect('/Admin')
-                    } 
+                    }
                     //**sinon tu me logue l'erreur **//
                     else {
                         console.log(err)
                     }
                 })
-              //** logue de l'erreur **//
+                //** logue de l'erreur **//
             } else {
                 console.log(err)
             }
         })
     },
+
+
+    /************************************************************
+    *                        Méthode DELCONTACT 
+    *************************************************************/
+
+    dellUser: (req, res) => {
+        console.log('coucou');
+
+        User.remove({ _id: req.params.id }, (err) => {
+            if (!err) {
+                res.redirect('/Admin')
+            } else {
+                res.send(console.log(err))
+            }
+        })
+    }
 }

@@ -3,25 +3,25 @@
 *************************************************************/
 const
     Commentaire = require('../database/Commentaire')
-,   Sujet = require('../database/Sujet')
-,   Path = require('path')
-,   Fs = require('fs')
+    , Sujet = require('../database/Sujet')
+    , Path = require('path')
+    , Fs = require('fs')
 
 /************************************************************
 *                       Controleur Sujet 
 *************************************************************/
 module.exports = {
 
-/************************************************************
-*                        Méthode GET 
-*************************************************************/
+    /************************************************************
+    *                        Méthode GET 
+    *************************************************************/
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const
             sess = req.session
-            dbSujetsID      = await Sujet.findById(req.params.id),
+        dbSujetsID = await Sujet.findById(req.params.id),
             dbCommentaireID = await Commentaire.find({ sujetID: req.params.id })
-        
+
         console.log(dbCommentaireID);
 
         /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
@@ -29,9 +29,11 @@ module.exports = {
             dbSujetsID, dbCommentaireID, sess
         })
     },
-/************************************************************
-*                        Méthode POST
-*************************************************************/
+
+
+    /************************************************************
+    *                        Méthode POST
+    *************************************************************/
     //*** Permet d'enregistrer un commentaire ***//
     post: async (req, res) => {
 
@@ -59,12 +61,92 @@ module.exports = {
                 console.log('com ok'))
 
         }
-        res.redirect('back')
+        res.redirect('/Forum')
     },
 
-/************************************************************
-*                        Méthdoe DELLETE(1 SUJET) 
+    /************************************************************
+*                        Méthode PUT 
 *************************************************************/
+
+    //*** Permet de metre a jour un sujet ***//
+    put: async (req, res) => {
+        const
+            //** query me permer de recupere l'id d'un sujet **//
+            Query = await Sujet.find({
+                _id: req.params.id
+            })
+            //** dbsujet permet de chercher un sujet par id **//
+            , dbSujets = await Sujet.findById(Query)
+            //** pathImg permet de relier l'image du sujet dans la base de donnée **//
+            , PathImg = path.resolve("public/image/" + dbSujets.name)
+            
+        //** condition dans une condition **//
+        //** Si req.file n'y est pas alors: **/
+        if (!req.file) {
+            console.log('pas de fichier');
+
+            //** tu met a jour le sujet **//
+            if (req.body.title) {
+                console.log('il y a un titre je le met a jour');
+
+                Sujet.findByIdAndUpdate(query, {
+                    title: req.body.title
+                }),
+                    //** sinon tu me redirige soit **/
+                    (err) => {
+                        console.log('il y a une erreur');
+
+                        //** soit a l'acceuil **//
+                        if (err) {
+                            res.redirect('/Admin')
+                        }
+                        //** soit a la page admin **//
+                        else {
+                            res.redirect('/Admin')
+                        }
+                    }
+            }
+            //** sinon ru me redirige **//
+            else {
+                //** a la page home **//
+                res.redirect('/Admin')
+            }
+        }
+        //** sinon tout sa **//
+        else {
+            console.log('je met tout a jour');
+
+            //** tu met a jour mon sujet **//
+            Sujet.findByIdAndUpdate(query, {
+                title: req.body.title
+                , imgSujets: `/assets/image/${req.file.originalname}`
+                , name: req.file.originalname
+                , description: req.body.description
+            },
+                //** si il y a des erreur **//
+                (error, post) => {
+                    //** fs.unlink permet de supprimer le fichier en asynchrone **//
+                    Fs.unlink(PathImg,
+                        (err) => {
+                            console.log('il y a une erreur avec l image');
+
+                            //** si il y a une erreur tu me la logue **/
+                            if (err) {
+                                console.log(err)
+                            }
+                            //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
+                            else {
+                                console.log('File Deleted.')
+                                res.redirect('/Admin')
+                            }
+                        })
+                })
+        }
+    },
+
+    /************************************************************
+    *                        Méthdoe DELLETE(1 SUJET) 
+    *************************************************************/
     //*** Permet de suprimer un sujet de la basse de données ***//
     delete: async (req, res) => {
         //** chercher les sujets dans la base de donnée **//
@@ -103,67 +185,4 @@ module.exports = {
                 }
             })
     },
-
-/************************************************************
-*                        Méthode PUT
-*************************************************************/
-    //*** Permet de metre a jour un sujet ***//
-    put: async (req, res) => {
-        const
-            //** query me permer de recupere l'id d'un sujet **//
-            Query = { _id: req.params.id },
-            //** dbsujet permet de chercher un sujet par id **//
-            dbSujets = await Sujet.findById(Query),
-            //** pathImg permet de relier l'image du sujet dans la base de donnée **//
-            PathImg = path.resolve("public/image/" + dbSujets.name)
-
-        //** condition dans une condition **//
-        //** Si req.file n'y est pas alors: **/
-        if (!req.file) {
-            //** tu met a jour le sujet **//
-            if (req.body.title) {
-                Sujets.updateOne(Query, {
-                    title: req.body.title
-                },
-                    //** sinon tu me redirige soit **/
-                    (err) => {
-                        //** soit a l'acceuil **//
-                        if (err) res.redirect('/Admin')
-                        //** soit a la page admin **//
-                        else res.redirect('/Admin')
-                    })
-            }
-            //** sinon ru me redirige **//
-            else {
-                //** a la page home **//
-                res.redirect('/Admin')
-            }
-        }
-        //** sinon tout sa **//
-        else {
-            //** tu met a jour mon sujet **//
-            Sujet.updateOne(query, {
-                ...req.body,
-                imgSujets: `/assets/image/${req.file.originalname}`,
-                name: req.file.originalname,
-            },
-                //** si il y a des erreur **//
-                (error, post) => {
-                    //** fs.unlink permet de supprimer le fichier en asynchrone **//
-                    Fs.unlink(PathImg,
-                        (err) => {
-                            //** si il y a une erreur tu me la logue **/
-                            if (err) {
-                                console.log(err)
-                            }
-                            //** sinon tu me logue que le fichier et supprimer et tu me redirige sur la page admin **//
-                            else {
-                                console.log('File Deleted.')
-                                res.redirect('/Admin')
-                            }
-                        })
-                })
-        }
-    },
-
 }
