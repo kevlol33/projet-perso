@@ -17,16 +17,16 @@ module.exports = {
             dbSujets   = await Sujet.find({})
             dbType1    = await Sujet.find({ type: { $lte: 1 } })
             dbType2    = await Sujet.find({ type: { $gte: 2 } })
-       
-        req.flash('Ban', 'Tu est Bannie');
-        // console.log('il est Ban');
-       
+
+            if (!Ban) {
+                req.flash('Ok', '');
+            } else {
+                req.flash('Ban', 'Tu est Bannie');
+            }
+
         /* tu me redirige sur la page Home avec les données des sujets */
         res.render('Home', {
             dbSujets, dbType1, dbType2, sess
         })
     },
-
-    
-
 }

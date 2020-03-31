@@ -7,7 +7,7 @@ const
 ,   express        = require('express')
 ,   app            = express()
 ,   expressSession = require('express-session')
-,   flash          = require('req-flash')
+,   flash = require('express-flash')
 ,   hbs            = require('express-handlebars')
 ,   handlebars     = require('handlebars')
 ,   methodOverride = require('method-override')

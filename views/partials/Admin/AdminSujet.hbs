@@ -22,31 +22,37 @@
                                         <table class="table table-hover table-dark">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Titre</th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Bouton</th>
+                                                    <th class="text-center" scope="col">ID</th>
+                                                    <th class="text-center" scope="col">Titre</th>
+                                                    <th class="text-center" scope="col">Description</th>
+                                                    <th class="text-center" scope="col">Voir</th>
+                                                    <th class="text-center" scope="col">Éditer</th>
+                                                    <th class="text-center" scope="col">Supprimer</th>
                                                 </tr>
                                             </thead>
                                             {{#each dbType1 }}
                                             <tr>
-                                                <td>{{ id }}</td>
-                                                <td>{{ title }}</td>
-                                                <td>{{ description }}</td>
-                                                <td>
-                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
-                                                        <button type="submit" class="btn btn-outline-danger">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                <td class="text-center">{{ id }}</td>
+                                                <td class="text-center">{{ title }}</td>
+                                                <td class="text-center">{{ description }}</td>
+                                                <td class="text-center">
                                                     <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
+                                                </td>
+                                                <td class="text-center">
                                                     <!-- Button Modif Sujet -->
                                                     <button type="button" class="btn btn-outline-warning"
                                                         data-toggle="modal" data-target="#EditModal">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+                                                </td>
+                                                <td class="text-center"> 
+                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             {{/each }}
@@ -75,31 +81,38 @@
                                         <table class="table table-hover table-dark">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Titre</th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Bouton</th>
+                                                    <th class="text-center" scope="col">ID</th>
+                                                    <th class="text-center" scope="col">Titre</th>
+                                                    <th class="text-center" scope="col">Description</th>
+                                                    <th class="text-center" scope="col">Voir</th>
+                                                    <th class="text-center" scope="col">Éditer</th>
+                                                    <th class="text-center" scope="col">Supprimer</th>
                                                 </tr>
                                             </thead>
                                             {{#each dbType2 }}
                                             <tr>
-                                                <td>{{ id }}</td>
-                                                <td>{{ title }}</td>
-                                                <td>{{ description }}</td>
-                                                <td>
-                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
-                                                        <button type="submit" class="btn btn-outline-danger">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                <td class="text-center">{{ id }}</td>
+                                                <td class="text-center">{{ title }}</td>
+                                                <td class="text-center">{{ description }}</td>
+                                                <td class="text-center">
                                                     <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
+                                                </td>
+                                                <td class="text-center">
                                                     <!-- Button Modif Sujet -->
                                                     <button type="button" class="btn btn-outline-warning"
                                                         data-toggle="modal" data-target="#EditModal">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+
+                                                </td>
+                                                <td class="text-center">
+                                                    <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                             {{/each }}

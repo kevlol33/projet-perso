@@ -3,8 +3,8 @@
 *************************************************************/
 const
 
-    Sujet = require('../database/Sujet')
-    , User = require('../database/User')
+    Sujet = require('../../database/Sujet')
+    , User = require('../../database/User')
     , path = require('path')
     , Fs = require('fs')
 
@@ -127,5 +127,5 @@ module.exports = {
                 res.send(console.log(err))
             }
         })
-    }
+    },
 }

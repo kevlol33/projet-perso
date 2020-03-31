@@ -20,7 +20,7 @@ module.exports = {
         sess = req.session
 
         res.render('MonCompte', {
-            dbUsers, sess
+            sess, dbUsers
         })
 
     },

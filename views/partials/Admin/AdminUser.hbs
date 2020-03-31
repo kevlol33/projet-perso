@@ -1,33 +1,48 @@
 <div class="container">
     <div class="raw">
-        <h1>
-            <i class="fas fa-user"></i>
-            Liste des utilisateurs :
-        </h1>
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
+        <div class="col-md-12">
+            <h1>
+                <i class="far fa-address-book"></i>
+                Liste des utilisateurs :
+            </h1>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th class="text-center">Username</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Sexe</th>
+                        <th class="text-center">Vérifier</th>
+                        <th class="text-center">Bannie</th>
+                        <th class="text-center">Admin</th>
+                        <th class="text-center">Supprimer Utilisateur</th> 
+                        <th class="text-center">Bannir Utilisateur</th>
+                    </tr>
+                </thead>
+                {{#each dbUsers }}
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Id</th>
-                    <th>Bouton</th>
+                    <td class="text-center">{{ username }}</td>
+                    <td class="text-center">{{ email }}</td>
+                    <td class="text-center">{{ sexe }}</td>
+                    <td class="text-center">{{ isVerified }}</td>
+                    <td class="text-center">{{ isBan }}</td>
+                    <td class="text-center">{{ isAdmin }}</td>
+                    <td class="text-center">
+                        <form action="/admin/User/{{this._id}}" method="POST">
+                            <button class="btn btn-outline-danger" type="submit">
+                                <i class="fas fa-user-minus"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <form action="/admin/User/Ban/{{this._id}}" method="POST">
+                            <button class="btn btn-outline-warning" type="submit">
+                                <i class="fas fa-user-times"></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            {{#each dbUsers }}
-            <tr>
-                <td>{{ username }}</td>
-                <td>{{ email }}</td>
-                <td>{{ _id }}</td>
-                <td>
-                    <form action="/admin/User/{{this._id}}" method="POST">
-                        <button class="btn btn-outline-danger" type="submit">
-                            <i class="fas fa-user-minus"></i>
-                        </button>
-                    </form>
-
-                </td>
-            </tr>
-            {{/each}}
-        </table>
+                {{/each}}
+            </table>
+        </div>
     </div>
 </div>

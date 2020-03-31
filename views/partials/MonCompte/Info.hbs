@@ -17,17 +17,18 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each dbUsers}}
                 <tr>
-                    <td> {{ dbUsers.username }} </td>
-                    <td> {{ dbUsers.email }}</td>
-                    <td> {{ dbUsers.sexe }} </td>
+                    <td> {{ username }} </td>
+                    <td> {{ email }}</td>
+                    <td> {{ sexe }} </td>
                     <td>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn  btn-outline-warning" data-toggle="modal"
                             data-target="#exampleModal">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <form action="/MonCompte/User/{{dbUsers._id}}" method="POST">
+                        <form action="/MonCompte/{{this._id}}" method="POST">
                             <button class="btn btn-outline-danger" type="submit">
                                 <i class="fas fa-user-minus"></i>
                             </button>
@@ -35,6 +36,7 @@
 
                     </td>
                 </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
