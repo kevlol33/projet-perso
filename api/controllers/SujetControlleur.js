@@ -65,8 +65,8 @@ module.exports = {
     },
 
     /************************************************************
-*                        Méthode PUT 
-*************************************************************/
+    *                        Méthode PUT 
+    *************************************************************/
 
     //*** Permet de metre a jour un sujet ***//
     put: async (req, res) => {
@@ -84,33 +84,8 @@ module.exports = {
         //** Si req.file n'y est pas alors: **/
         if (!req.file) {
             console.log('pas de fichier');
-
-            //** tu met a jour le sujet **//
-            if (req.body.title) {
-                console.log('il y a un titre je le met a jour');
-
-                Sujet.findByIdAndUpdate(query, {
-                    title: req.body.title
-                }),
-                    //** sinon tu me redirige soit **/
-                    (err) => {
-                        console.log('il y a une erreur');
-
-                        //** soit a l'acceuil **//
-                        if (err) {
-                            res.redirect('/Admin')
-                        }
-                        //** soit a la page admin **//
-                        else {
-                            res.redirect('/Admin')
-                        }
-                    }
-            }
-            //** sinon ru me redirige **//
-            else {
-                //** a la page home **//
-                res.redirect('/Admin')
-            }
+            console.log(err);
+            
         }
         //** sinon tout sa **//
         else {

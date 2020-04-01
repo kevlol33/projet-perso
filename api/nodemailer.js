@@ -107,9 +107,6 @@ Router.post('/cert/:id', async (req, res) => {
                     console.log('err 2');
                     res.redirect('/')
                 } else {
-                    User.findOneAndUpdate({
-                        isVerified: true
-                    })
                     res.render('MonCompte')
                 }
             })
