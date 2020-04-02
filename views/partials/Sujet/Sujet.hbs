@@ -1,17 +1,24 @@
-{{!-- Mon Sujet --}}
+{{!-- Partial d'un Sujet --}}
+
+{{!-- Boucle de la db SujetID --}}
 {{#each dbSujetsID }}
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      {{!-- {{imgSujets}} permet de recupere l'image du sujetID --}}
       <img src="{{ imgSujets }}" class="img-fluid" alt="">
     </div>
   </div>
 </div>
 <div class="container">
   <div class="col-md-12">
+    {{!-- {{title}} permet de recupere le titre du sujetID --}}
     <h1>{{ title }}</h1>
+    {{!-- {{description}} permet de recupere la description du sujetID --}}
     <p>{{ description }}</p>
   </div>
 </div>
 {{/each}}
-{{!-- /Mon Sujet --}}
+{{!-- Boucle de la db SujetID --}}
+
+{{!-- /Partial d'un Sujet --}}

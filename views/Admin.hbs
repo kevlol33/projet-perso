@@ -1,3 +1,4 @@
+{{!-- Partial De la Page Administrateur --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -16,7 +17,9 @@
 
                     <div id="collapseArticle" class="collapse show" aria-labelledby="Article" data-parent="#accordion">
                         <div class="card-body">
+                            {{!-- Partial des Bouton pour la gestion des sujet --}}
                             {{> Admin/Btn}}
+                            {{!-- Partial pour l'administrations des Sujet du site Internet --}}
                             {{> Admin/AdminSujet}}
                         </div>
                     </div>
@@ -33,6 +36,7 @@
                     </div>
                     <div id="collapseSujet" class="collapse" aria-labelledby="Sujet" data-parent="#accordion">
                         <div class="card-body">
+                            {{!-- Partial pour l'administrations des utilisateur --}}
                             {{> Admin/AdminUser}}
                         </div>
                     </div>

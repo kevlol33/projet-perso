@@ -11,7 +11,7 @@ const
 
 const
     Admin     = require('./controllers/Admin/AdminControlleur')
-    AdminUser = require('./controllers/Admin/AdminUserControlleur')
+,   AdminUser = require('./controllers/Admin/AdminUserControlleur')
 ,   Compte    = require('./controllers/MonCompteControlleur')
 ,   Forum     = require('./controllers/ForumControlleur')
 ,   Home      = require('./controllers/HomeControlleur')
@@ -90,10 +90,10 @@ Router.route('/Sujet/:id')
 *************************************************************/
 
 Router.route('/MonCompte')
-    .get(Compte.get)
-    .delete (Compte.delUser)
-    .post(Compte.updateStatus)
-    .delete (User.dellUser)
+    .get(Auth, Compte.get)
+    .delete (Auth, Compte.delUser)
+    .post(Auth, Compte.updateStatus)
+    .delete (Auth, User.dellUser)
 
 /************************************************************
 *                   Page Sucess

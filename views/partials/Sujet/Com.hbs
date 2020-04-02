@@ -1,8 +1,9 @@
-{{!-- Liste de mes commentaire --}}
+{{!-- Partial pour la Liste de mes commentaire --}}
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h3>Commentaire:</h3>
+      {{!-- Boucle de la DB commentaireID --}}
       {{#each dbCommentaireID }}
       <div class="card">
         <div class="card-body">
@@ -11,7 +12,9 @@
               <div class="media">
                 <img src="https://picsum.photos/102/102" class="align-self-center mr-3" alt="...">
                 <div class="media-body">
+                  {{!-- {{username}} permet d'afficher l'user name de l'utilisateur qui a poster un commentaire --}}
                   <h5 class="mt-0"> {{ username }} a dit :</h5>
+                  {{!-- {{description}} permet d'afficer le commentaire envoyer --}}
                   <p> {{ description }} </p>
                 </div>
               </div>
@@ -25,4 +28,4 @@
   </div>
 </div>
 </br>
-{{!-- /Liste de mes commentaire --}}
+{{!-- /Partial pour la Liste de mes commentaire --}}

@@ -1,3 +1,4 @@
+{{!-- Partial de la navBar --}}
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand"><img src="https://img.icons8.com/color/48/000000/pokeball--v1.png" />Pokélande</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -7,17 +8,20 @@
 
   <div class="collapse navbar-collapse bg-dark justify-content-between" id="navbarSupportedContent">
     <ul class="nav nav-tabs">
+      {{!-- Condition si la personne est Administrateur --}}
       {{#if isAdmin}}
       <li class="nav-item">
         <a class="nav-link" href="/Admin">Admin</a>
       </li>
       {{/if}}
+       {{!-- /Condition si la personne est Administrateur --}}
       <li class="nav-item">
         <a class="nav-link disabled">Bonjour {{ sess.username }}</a>
       </li>
 
     </ul>
     <ul class="nav nav-tabs">
+       {{!-- Condition si la personne est Utilisateur --}}
       {{#if user }}
       <li class="nav-item">
         <a class="nav-link" href="/Home">Home</a>
@@ -37,6 +41,7 @@
         </button>
       </li>
       {{else}}
+      {{!--  Condition si la personne n'est pas utilisateur --}}
       <li class="nav-item active">
         <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
           data-target="#Connection-modal-lg">
@@ -44,11 +49,13 @@
         </button>
       </li>
       {{/if}}
+      {{!--  /Condition si la personne n'est pas utilisateur --}}
 
     </ul>
   </div>
 </nav>
 
+{{!-- Modal du Bouton Connection --}}
 <div class="modal fade" id="Connection-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Connection"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -89,7 +96,8 @@
   </div>
 </div>
 
-<!-- Modal Déco -->
+
+{{!-- Modale du Bouton Se Déconnecter --}}
 <div class="modal fade" id="DecoModal" tabindex="-1" role="dialog" aria-labelledby="DecoModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

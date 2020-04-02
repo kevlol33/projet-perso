@@ -9,12 +9,14 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Félicitation</h3>
+            {{!-- Je logue le pseudo de l'utilisateur --}}
             <h2><u>{{ sess.pseudo }}</u></h2>
 
             <h5>Cliké sur le bouton en dessous pour Certifier la validation de vôtre compte</h5>
 
             <p>Déconnecte et reconnect pour le voir afficher dans les logs ;) </p>
 
+            {{!-- Ce Bouton permet de certifier l'eamil de l'utilisateur --}}
             <form action="/mailer/cert/:id" method="post" enctype="application/x-www-form-urlencoded">
                 <button type="submit"> Certifier </button>
             </form>

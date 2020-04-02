@@ -1,3 +1,6 @@
+{{!-- Partial d'info sur l'utilisateur --}}
+
+{{!-- {{dbUsers.username}} permet d'afficher l'username de l'utilisateur --}}
 <h2><i class="fas fa-id-card"></i>Bienvenu sur la page du compte de <u>{{ dbUsers.username }}</u></h2>
 <p>
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
@@ -17,38 +20,47 @@
                 </tr>
             </thead>
             <tbody>
+                {{!-- Boucle dbUsers --}}
                 {{#each dbUsers}}
                 <tr>
+                    {{!-- L'username de l'utilisateur --}}
                     <td> {{ username }} </td>
+                    {{!-- Le Mail de l'utilisateur --}}
                     <td> {{ email }}</td>
+                    {{!-- le sexe de l'utilisateur --}}
                     <td> {{ sexe }} </td>
                     <td>
-                        <!-- Button trigger modal -->
+                        {{!-- Bouton modif User --}}
                         <button type="button" class="btn  btn-outline-warning" data-toggle="modal"
-                            data-target="#exampleModal">
+                            data-target="#ModifUser">
                             <i class="fas fa-pen"></i>
                         </button>
+                        {{!-- /Bouton modif User --}}
+
+                        {{!-- Formumlaire Ban User --}}
                         <form action="/MonCompte/{{this._id}}" method="POST">
                             <button class="btn btn-outline-danger" type="submit">
                                 <i class="fas fa-user-minus"></i>
                             </button>
                         </form>
+                        {{!-- /Formumlaire Ban User --}}
 
                     </td>
                 </tr>
                 {{/each}}
+                {{!-- /Boucle dbUsers --}}
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+{{!-- Bouton modif User --}}
+<div class="modal fade" id="ModifUser" tabindex="-1" role="dialog" aria-labelledby="ModifUserModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="ModifUserLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -76,3 +88,6 @@
         </div>
     </div>
 </div>
+{{!-- /Bouton modif User --}}
+
+{{!-- /Partial d'info sur l'utilisateur --}}

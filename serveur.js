@@ -6,10 +6,12 @@ const
 ,   connectFlash   = require('connect-flash')
 ,   express        = require('express')
 ,   app            = express()
+,   cookieParser   = require('cookie-parser')
 ,   expressSession = require('express-session')
-,   flash = require('express-flash')
+,   flash          = require('express-flash')
 ,   hbs            = require('express-handlebars')
 ,   handlebars     = require('handlebars')
+,   keys           = require('./api/config/config')
 ,   methodOverride = require('method-override')
 ,   mongoose       = require('mongoose')
 ,   MongoStore     = require('connect-mongo')
@@ -27,7 +29,7 @@ app.use(methodOverride('_method'));
 *                        Mongoose 
 *************************************************************/
 const
-    urlDb      = 'mongodb://localhost:27017/BaseJs'
+    urlDb      = keys.DB.dev
 ,   mongoStore =  MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
@@ -39,10 +41,10 @@ mongoose.connect(urlDb, {
 /************************************************************
 *                        Express Session 
 *************************************************************/
-app.use(expressSession({
 
-    secret:             'securite'
-,   name:               'ptitBiscuit'
+app.use(expressSession({
+    secret:             keys.Cookie.secret
+,   name:               keys.Cookie.name
 ,   saveUninitialized:  true
 ,   resave:             false
 ,   store:              new mongoStore({
@@ -55,13 +57,13 @@ app.use(expressSession({
 *************************************************************/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-        extended: true}));
+    extended: true}));
+app.use(cookieParser());
 app.use(connectFlash());
 app.use('/assets', express.static('public'));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(methodOverride('_method'));
 
 
@@ -70,8 +72,8 @@ app.use(methodOverride('_method'));
 *************************************************************/
 app.set   ('view engine', 'hbs');
 app.engine('hbs', hbs({
-          extname: 'hbs',
-          defaultLayout: 'main'
+    extname: 'hbs',
+    defaultLayout: 'main'
 }));
 
 /************************************************************
@@ -81,12 +83,12 @@ app.engine('hbs', hbs({
 app.use('*', (req, res, next) => {
     const sess = req.session
     console.log(sess)
-            if (sess.status === 'user') {
-            console.log('log user sess')
-            res.locals.user = req.session.status
-                if (sess.isBan === true) {
-                    console.log('sess isBan ')
-                    res.locals.isBan = req.session.isBan}
+    if (sess.status === 'user') {
+        console.log('log user sess')
+        res.locals.user = req.session.status
+            if (sess.isBan === true) {
+                console.log('sess isBan ')
+                res.locals.isBan = req.session.isBan}
             else if (sess.isAdmin === true) {
                 console.log('log Admin sess')
                 res.locals.isAdmin = req.session.status
