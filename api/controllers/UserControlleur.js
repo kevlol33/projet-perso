@@ -100,6 +100,33 @@ module.exports = {
             })
     },
 
+    put: async (req, res) => {
+        const
+            //** query me permer de recupere l'id d'un sujet **//
+            Query = await User.find({
+                _id: req.params.id
+            })
+            //** dbsujet permet de chercher un sujet par id **//
+            , dbUser = await User.findById(Query)
+            
+        //** condition dans une condition **//
+        //** Si req.file n'y est pas alors: **/
+        if (!req.body.username) {
+            console.log('pas de username');
+            console.log(err);
+            
+        }
+        //** sinon tout sa **//
+        else {
+            console.log('je met tout a jour');
+
+            //** tu met a jour mon sujet **//
+            User.findByIdAndUpdate(Query, {
+                username: req.body.username
+            ,   email: req.body.email
+            })
+    }
+},
     /************************************************************
     *                        Méthode DELUSER
     *************************************************************/

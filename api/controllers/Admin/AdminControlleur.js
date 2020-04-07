@@ -22,11 +22,11 @@ module.exports = {
         //** chercher les donnée a l'interieur de la base de donnée **//
         const
             sess = req.session
-            , dbType1 = await Sujet.find({ type: { $lte: 1 } })
-            , dbType2 = await Sujet.find({ type: { $gte: 2 } })
+            , dbType1    = await Sujet.find({ type: { $lte: 1 } })
+            , dbType2    = await Sujet.find({ type: { $gte: 2 } })
             , dbSujetsID = await Sujet.findById(req.params.id)
-            , dbSujets = await Sujet.find({})
-            , dbUsers = await User.find({})
+            , dbSujets   = await Sujet.find({})
+            , dbUsers    = await User.find({})
         //** je logue pour voir les article dans la base de donnée **//
         // console.log(dbsujet);
         //** je demande de rester sur la page admin **//

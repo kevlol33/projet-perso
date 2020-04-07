@@ -22,8 +22,8 @@ module.exports = {
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const
-            sess = req.session
-        dbSujetsID = await Sujet.findById(req.params.id),
+            sess = req.session,
+            dbSujetsID = await Sujet.findById(req.params.id),
             dbCommentaireID = await Commentaire.find({ sujetID: req.params.id })
 
         console.log(dbCommentaireID);
@@ -82,7 +82,7 @@ module.exports = {
             //** dbsujet permet de chercher un sujet par id **//
             , dbSujets = await Sujet.findById(Query)
             //** pathImg permet de relier l'image du sujet dans la base de donnée **//
-            , PathImg = path.resolve("public/image/" + dbSujets.name)
+            , PathImg = Path.resolve("public/image/" + dbSujets.name)
             
         //** condition dans une condition **//
         //** Si req.file n'y est pas alors: **/
@@ -96,7 +96,7 @@ module.exports = {
             console.log('je met tout a jour');
 
             //** tu met a jour mon sujet **//
-            Sujet.findByIdAndUpdate(query, {
+            Sujet.findByIdAndUpdate(Query, {
                 title: req.body.title
                 , imgSujets: `/assets/image/${req.file.originalname}`
                 , name: req.file.originalname

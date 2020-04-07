@@ -93,6 +93,7 @@ Router.route('/MonCompte')
     .get(Auth, Compte.get)
     .delete (Auth, Compte.delUser)
     .post(Auth, Compte.updateStatus)
+    .put(Auth, User.put)
     .delete (Auth, User.dellUser)
 
 /************************************************************
@@ -109,6 +110,7 @@ Router.route('/Success')
 Router.route('/Admin')
     .get    (Auth, Ban, MAdmin, Admin.get)
     .post   (Auth, Ban, MAdmin, Upload.single('imgSujets'), Admin.post)
+    .put    (Auth, Ban, MAdmin, Upload.single('imgSujets'), Sujet.put)
     .delete (Auth, Ban, MAdmin, Admin.deleteAll)
 
 Router.route('/Admin/User/:id')

@@ -14,7 +14,7 @@ module.exports = {
 *************************************************************/
     //*** Permet de rester sur la pasge home ***//
     get: async (req, res) => {
-
+        
         res.render('Login')
 
     },
