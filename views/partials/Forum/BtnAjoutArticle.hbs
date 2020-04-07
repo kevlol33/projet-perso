@@ -1,8 +1,10 @@
-<!-- Button trigger modal -->
+{{!-- Collapse Btn Add Sujet --}}
+
+{{!-- Button Add Sujet --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn btn-outline-success float-right" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn btn-outline-success float-right" data-toggle="modal" data-target="#AddModal">
                 Ajouter un article
             </button>
             <h1>Liste des Sujets :</h1>
@@ -11,19 +13,21 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal Add Sujet -->
+<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Créer un Sujet</h5>
+                <h5 class="modal-title" id="AddModalLabel">Créer un Sujet</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            {{!-- Formulaire pour crée un article --}}
             <form action="/Forum" method="post" enctype="multipart/form-data"></form>
                 <div class="modal-body">
+                    {{!-- Input titre --}}
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -33,6 +37,8 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- /Input titre --}}
+                    {{!-- Menu déroulan pour selectionner le type d'article --}}
                     <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -45,7 +51,8 @@
                         </div>
                     </div>
                     </div>
-
+                    {{!-- /Menu déroulan pour selectionner le type d'article --}}
+                    {{!-- Input Description --}}
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -57,7 +64,9 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- /Input Description --}}
                     </br>
+                    {{!-- Input add image --}}
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -72,13 +81,15 @@
                             </div>
                         </div>
                     </div>
-                    {{!-- /Formulaire pour crée un article --}}
+                    {{!-- /Input add image --}}
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Enregistrer</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 </div>
             </form>
+            {{!-- /Formulaire pour crée un article --}}
         </div>
     </div>
 </div>
+<!-- Modal Add Sujet -->

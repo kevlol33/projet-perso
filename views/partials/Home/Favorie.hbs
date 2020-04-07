@@ -1,9 +1,12 @@
-&nbsp;
+{{!-- Partial Favorie --}}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="Ban">
+                {{!-- j'utilise raq.flash pour afficher le massage Ban --}}
                 <h1>{{messages.Ban}}</h1>
+                {{!-- j'utilise raq.flash pour afficher le massage Ok --}}
                 <h1>{{messages.Ok}}</h1>
             </div>
         </div>
@@ -12,17 +15,25 @@
 <div class="container">
     <h1><img src="https://img.icons8.com/color/48/000000/hearts.png"/>Favorie des Région Pokémon :</h1>
     <div class="row">
+        {{!-- J'utilise la bloucle dbType1 --}}
         {{#each dbType1}}
         <div class="col-md-4">
             <div class="card bg-dark" style="width: 18rem;">
+                {{!-- {{imgSujets}} perlet d'afficher l'image du sujet --}}
                 <img src="{{imgSujets}}" class="card-img-top" alt="...">
                 <div class="card-body">
+                    {{!-- {{title}} perlet d'afficher le titre du sujet --}}
                     <h5 class="card-title">{{title}}</h5>
+                    {{!-- {{description}} perlet d'afficher la description du sujet --}}
                     <p class="card-text">{{ description }}</p>
+                    {{!-- ce boutton permet de voir l'article --}}
                     <a href="/Sujet/{{_id}}" class="btn btn-outline-info">Voir L'article</a>
                 </div>
             </div>
         </div>
         {{/each}}
+        {{!-- /J'utilise la bloucle dbType1 --}}
     </div>
 </div>
+
+{{!-- /Partial Favorie --}}

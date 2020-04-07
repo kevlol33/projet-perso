@@ -14,7 +14,7 @@ const
             user: "pokelandedev@gmail.com",
             pass: "pokelande2020"
         }
-    })
+    });
 
 /************************************************************
 *                       Let 
@@ -40,7 +40,7 @@ Router.get('/test', (req, res, next) => {
             console.log(info);       
     });
     res.redirect('back');
-})
+});
 
 /************************************************************
 *                       Vérification de son Mail 
@@ -68,7 +68,7 @@ Router.get('/verifMail', function (req, res) {
         }
     })
     
-})
+});
 
 /************************************************************
 *                       Certification du compte 
@@ -79,7 +79,7 @@ Router.get('/verify/:id', function (req, res) {
         sess = req.session
 
     res.render('VerifAcount')
-})
+});
 
 /************************************************************
 *                       Formulaire de Certification 
@@ -110,7 +110,7 @@ Router.post('/cert/:id', async (req, res) => {
                     res.render('MonCompte')
                 }
             })
-})
+});
 
 /************************************************************
 *                       Exportation 

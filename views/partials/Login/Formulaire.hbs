@@ -2,11 +2,13 @@
 <div class="col-md-6">
     <h1>Inscription :</h1>
     </br>
+    {{!-- form ici et le formulaire d'inscription --}}
     <form action="/register" method="post">
 
         <div class="form-group">
             <i class="fas fa-user"></i>
             <label for="inputEmail4">Pseudo :</label>
+            {{!-- Je lui donne le nom username pour que je puisse enregistrer l'input dans la base de donnée --}}
             <input type="text" class="form-control" name="username">
         </div>
 
@@ -19,22 +21,26 @@
         <div class="form-group">
             <i class="fas fa-lock prefix grey-text"></i>
             <label for="inputPassword4">Mot De Passe :</label>
+            {{!-- Je lui donne le nom password pour que je puisse enregistrer l'input dans la base de donnée --}}
             <input type="password" class="form-control" name="password">
         </div>
 
         <div class="form-group">
             <i class="fas fa-lock prefix grey-text"></i>
             <label for="inputPassword4">Confirmer Mot de Passe :</label>
+            {{!-- Je lui donne le nom password2 pour que je puisse enregistrer l'input dans la base de donnée --}}
             <input type="password" class="form-control" name="password2">
         </div>
 
         <div class="form-group">
             <label for="Sexe">Sexe :</label>
             <div class="custom-control custom-radio custom-control-inline">
+                {{!-- je lui donne la vallue fille pour que l'utilisateur puisse choisir son sexe, et que la base de donnée puisse comprendre que l'utilisateur choisie bien fille  --}}
                 <input type="radio" id="customRadioInline1" class="custom-control-input" name="sexe" value="fille">
                 <label class="custom-control-label" for="customRadioInline1"><i class="fas fa-venus"></i></label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
+                {{!-- je lui donne la vallue garçon pour que l'utilisateur puisse choisir son sexe, et que la base de donnée puisse comprendre que l'utilisateur choisie bien garçon  --}}
                 <input type="radio" id="customRadioInline2" class="custom-control-input" name="sexe" value="Garçon">
                 <label class="custom-control-label" for="customRadioInline2"><i class="fas fa-mars"></i></label>
             </div>
@@ -42,6 +48,7 @@
 
         <div class="form-group">
             <div class="form-check">
+                {{!--  je demande a l'utilisateur d'accepter les termes et le condition en valadant la checkbox --}}
                 <input class="form-check-input" type="checkbox" id="gridCheck" required>
                 <label class="form-check-label" for="gridCheck">
                     J'accepte les termes et les conditions d'utilisation
@@ -51,4 +58,6 @@
         <button type="submit" class="btn btn-primary">Inscription</button>
         <button type="button" class="btn btn-light"> Annuler </button>
     </form>
+    {{!-- /form ici et le formulaire d'inscription --}}
 </div>
+{{!-- /Partial Formulaire d'inscription --}}

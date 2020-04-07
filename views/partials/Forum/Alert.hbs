@@ -1,3 +1,4 @@
+{{!-- Collapse Régle du forum --}}
 <div class="container">
     <div class="raw">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -9,10 +10,11 @@
                 vous invite a
                 cliqué sur le bouton juste en dessous.</p>
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalScrollable-modal-xl">
+            <!-- Button Afficher regle -->
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#RegleModalScrollable-modal-xl">
                 Cliqué Ici
             </button>
+            <!-- /Button Afficher regle -->
 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -21,16 +23,18 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalScrollable-modal-xl" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalScrollableTitle-modal-xl" aria-hidden="true">
+<!-- Modal Regle du forum -->
+<div class="modal fade" id="RegleModalScrollable-modal-xl" tabindex="-1" role="dialog"
+    aria-labelledby="RegleModalScrollableTitle-modal-xl" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle-modal-xl">Règle du Forum</h5>
+                <h5 class="modal-title" id="RegleModalScrollableTitle-modal-xl">Règle du Forum</h5>
+                {{!-- Bouton fermer modal --}}
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                {{!-- /Bouton fermer modal --}}
             </div>
             <div class="modal-body">
                 Bonjour et bienvenue sur le forum des passionnés des Pokémon
@@ -68,3 +72,4 @@
         </div>
     </div>
 </div>
+<!-- /Modal Regle du forum -->

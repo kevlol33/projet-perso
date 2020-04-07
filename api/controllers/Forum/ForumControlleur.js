@@ -2,7 +2,7 @@
 *                       Importation 
 *************************************************************/
 const
-    Sujet  = require('../database/Sujet')
+    Sujet  = require('../../database/Sujet')
 
 /************************************************************
 *                       Controleur du forum 

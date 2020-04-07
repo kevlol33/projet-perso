@@ -1,4 +1,8 @@
 /************************************************************
+*              Model pour les User
+*************************************************************/
+
+/************************************************************
 *                        Importation 
 *************************************************************/
 const
@@ -8,9 +12,11 @@ const
 /************************************************************
 *                        Schema
 *************************************************************/
+
 const UserShema = new Mongoose.Schema({
 
     //** Je deffinie le statu de futur utilisateur et savoir a quoi il corespondra sur la base de donnée **//
+    
     status: {
 
         //* le type sera une chaine de caractère *//
@@ -108,4 +114,5 @@ UserShema.pre('save', function (next) {
 /************************************************************
 *                        Exportation du Module 
 *************************************************************/
+
 module.exports = Mongoose.model('User', UserShema)

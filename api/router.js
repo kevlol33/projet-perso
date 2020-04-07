@@ -13,12 +13,12 @@ const
     Admin     = require('./controllers/Admin/AdminControlleur')
 ,   AdminUser = require('./controllers/Admin/AdminUserControlleur')
 ,   Compte    = require('./controllers/MonCompteControlleur')
-,   Forum     = require('./controllers/ForumControlleur')
+,   Forum     = require('./controllers/Forum/ForumControlleur')
 ,   Home      = require('./controllers/HomeControlleur')
 ,   Login     = require('./controllers/LoginControleur')
-,   Success   = require('./controllers/Success')
-,   Sujet     = require('./controllers/SujetControlleur')
-,   User      = require('./controllers/UserControlleur')
+,   Success   = require('./controllers/Nodemailer/Success')
+,   Sujet     = require('./controllers/Forum/SujetControlleur')
+,   User      = require('./controllers/UserControlleur');
 
 /************************************************************
 *                       Impotation middlewares 
@@ -29,7 +29,7 @@ const
 ,   Ban     = require('./middleware/Ban') 
 ,   MAdmin  = require('./middleware/Admin')
 ,   Upload  = require('./middleware/multer-config')
-,   Verif   = require('./middleware/Verif')
+,   Verif   = require('./middleware/Verif');
 
 /************************************************************
 *            ********** CRUD ********** 
@@ -116,6 +116,7 @@ Router.route('/Admin/User/:id')
 
 Router.route('/Admin/User/Ban/:id')
     .post(Auth, Ban, MAdmin, AdminUser.BanUser)
+    
 /************************************************************
 *                   Exportation de la route
 *************************************************************/

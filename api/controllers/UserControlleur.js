@@ -1,4 +1,8 @@
 /************************************************************
+*              Controleur des Utilisateur
+*************************************************************/
+
+/************************************************************
 *                       Importation 
 *************************************************************/
 const
@@ -112,15 +116,15 @@ module.exports = {
         })
     },
 
-/************************************************************
-*                       Methode logout
-*************************************************************/
-logout: (req, res) => {
-    /* tu me detruit la session grace */
-    req.session.destroy(() => {
-        /* tu detruit le cookie et tu me redirige sur la page login */
-        res.clearCookie("ptitBiscuit");
-        res.redirect('/')
-    })
-}
+    /************************************************************
+    *                       Methode logout
+    *************************************************************/
+    logout: (req, res) => {
+        /* tu me detruit la session grace */
+        req.session.destroy(() => {
+            /* tu detruit le cookie et tu me redirige sur la page login */
+            res.clearCookie("ptitBiscuit");
+            res.redirect('/')
+        })
+    }
 }

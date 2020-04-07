@@ -5,8 +5,10 @@
                 <i class="far fa-address-book"></i>
                 Liste des utilisateurs :
             </h1>
+            {{!-- Tableau Info user --}}
             <table class="table table-hover table-dark">
                 <thead>
+                    {{!-- Cathegorie des info user --}}
                     <tr>
                         <th class="text-center">Username</th>
                         <th class="text-center">Email</th>
@@ -17,8 +19,10 @@
                         <th class="text-center">Supprimer Utilisateur</th> 
                         <th class="text-center">Bannir Utilisateur</th>
                     </tr>
+                    {{!-- /Cathegorie des info user --}}
                 </thead>
                 {{#each dbUsers }}
+                {{!-- Récuperation des info user dans la base de donnée --}}
                 <tr>
                     <td class="text-center">{{ username }}</td>
                     <td class="text-center">{{ email }}</td>
@@ -27,22 +31,28 @@
                     <td class="text-center">{{ isBan }}</td>
                     <td class="text-center">{{ isAdmin }}</td>
                     <td class="text-center">
+                        {{!-- Forumailer pour modifier les info des user --}}
                         <form action="/admin/User/{{this._id}}" method="POST">
                             <button class="btn btn-outline-danger" type="submit">
                                 <i class="fas fa-user-minus"></i>
                             </button>
                         </form>
+                        {{!-- /Forumailer pour modifier les info des user --}}
                     </td>
                     <td class="text-center">
+                        {{!-- Formulaire pout Ban les users --}}
                         <form action="/admin/User/Ban/{{this._id}}" method="POST">
                             <button class="btn btn-outline-warning" type="submit">
                                 <i class="fas fa-user-times"></i>
                             </button>
                         </form>
+                        {{!-- /Formulaire pout Ban les users --}}
                     </td>
                 </tr>
+                {{!-- Récuperation des info user dans la base de donnée --}}
                 {{/each}}
             </table>
+            {{!-- /Tableau Info user --}}
         </div>
     </div>
 </div>

@@ -1,9 +1,13 @@
 /************************************************************
+*              Controleur des Sujet
+*************************************************************/
+
+/************************************************************
 *                       Importation 
 *************************************************************/
 const
-    Commentaire = require('../database/Commentaire')
-    , Sujet = require('../database/Sujet')
+    Commentaire = require('../../database/Commentaire')
+    , Sujet = require('../../database/Sujet')
     , Path = require('path')
     , Fs = require('fs')
 

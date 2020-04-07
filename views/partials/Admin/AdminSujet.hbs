@@ -1,26 +1,33 @@
+{{!-- Coolapse Sujett --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            {{!-- Accordeon des Sujet du forum --}}
             <div class="accordion" id="accordionExample">
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                            {{!-- Button Sujet collapse --}}
+                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                data-target="#Sujetcollapse" aria-expanded="true" aria-controls="Sujetcollapse">
                                 <i class="far fa-map"></i>
                                 Sujet sur les Régions Pokémon
                             </button>
+                            {{!-- /Button Sujet Modale --}}
                         </h2>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    {{!-- Modal Sujet  --}}
+                    <div id="Sujetcollapse" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
                         <div class="card-body">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        {{!-- Tableau sur les Type1 --}}
                                         <table class="table table-hover table-dark">
                                             <thead>
+                                                {{!-- Categorie des Sujets --}}
                                                 <tr>
                                                     <th class="text-center" scope="col">ID</th>
                                                     <th class="text-center" scope="col">Titre</th>
@@ -29,48 +36,60 @@
                                                     <th class="text-center" scope="col">Éditer</th>
                                                     <th class="text-center" scope="col">Supprimer</th>
                                                 </tr>
+                                                {{!-- /Categorie des Sujets --}}
                                             </thead>
                                             {{#each dbType1 }}
+                                            {{!-- Info du Sujet --}}
                                             <tr>
                                                 <td class="text-center">{{ id }}</td>
                                                 <td class="text-center">{{ title }}</td>
                                                 <td class="text-center">{{ description }}</td>
                                                 <td class="text-center">
+                                                    {{!-- Lien pour voir le sujet --}}
                                                     <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
+                                                    {{!-- /Lien pour voir le sujet --}}
                                                 </td>
                                                 <td class="text-center">
-                                                    <!-- Button Modif Sujet -->
+                                                    {{!-- Btn Etion Sujet --}}
                                                     <button type="button" class="btn btn-outline-warning"
                                                         data-toggle="modal" data-target="#EditModal">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+                                                    {{!-- /Btn Etion Sujet --}}
                                                 </td>
-                                                <td class="text-center"> 
+                                                <td class="text-center">
+                                                    {{!-- Forum Suprimer Sujet --}}
                                                     <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
                                                         <button type="submit" class="btn btn-outline-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
+                                                    {{!-- /Forum Suprimer Sujet --}}
                                                 </td>
                                             </tr>
+                                            {{!-- /Info du Sujet --}}
                                             {{/each }}
                                         </table>
+                                        {{!-- /Tableau sur les Type1 --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{!-- /Modal Sujet  --}}
                 </div>
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
+                            {{!-- Btn Sujet Modale Jeux Pokemon --}}
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 <i class="fas fa-gamepad"></i>
                                 Sujet sur les Jeux Pokémon
                             </button>
+                            {{!-- /Btn Sujet Modale Jeux Pokemon --}}
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
@@ -79,7 +98,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <table class="table table-hover table-dark">
+                                            {{!-- Tableau sur les Type2 --}}
                                             <thead>
+                                                {{!-- Categorie des Sujets --}}
                                                 <tr>
                                                     <th class="text-center" scope="col">ID</th>
                                                     <th class="text-center" scope="col">Titre</th>
@@ -88,33 +109,41 @@
                                                     <th class="text-center" scope="col">Éditer</th>
                                                     <th class="text-center" scope="col">Supprimer</th>
                                                 </tr>
+                                                {{!-- /Categorie des Sujets --}}
                                             </thead>
                                             {{#each dbType2 }}
+                                            {{!-- Info du Sujet --}}
                                             <tr>
                                                 <td class="text-center">{{ id }}</td>
                                                 <td class="text-center">{{ title }}</td>
                                                 <td class="text-center">{{ description }}</td>
                                                 <td class="text-center">
+                                                    {{!-- Lien pour voir le sujet --}}
                                                     <a href="/Sujet/{{ _id }}" class="btn btn-outline-success">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
+                                                    {{!-- /Lien pour voir le sujet --}}
                                                 </td>
                                                 <td class="text-center">
-                                                    <!-- Button Modif Sujet -->
+                                                    {{!-- Btn modifier sujet --}}
                                                     <button type="button" class="btn btn-outline-warning"
                                                         data-toggle="modal" data-target="#EditModal">
                                                         <i class="fas fa-pen"></i>
                                                     </button>
+                                                    {{!-- /Btn modifier sujet --}}
 
                                                 </td>
                                                 <td class="text-center">
+                                                    {{!-- Formulaire Delete sujet --}}
                                                     <form action="/Sujet/{{ _id }}/?_method=DELETE" method="post">
                                                         <button type="submit" class="btn btn-outline-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
+                                                    {{!-- /Formulaire Delete sujet --}}
                                                 </td>
                                             </tr>
+                                            {{!-- /Info du Sujet --}}
                                             {{/each }}
                                         </table>
                                     </div>
@@ -124,41 +153,49 @@
                     </div>
                 </div>
             </div>
+            {{!-- /Accordeon des Sujet du forum --}}
         </div>
     </div>
 </div>
 
-<!-- Modal Edit Sujet -->
+{{!-- Modal Edit Sujet --}}
 {{#each dbSujetsID }}
 <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+            {{!-- Forum Mise a jour --}}
             <form action="/Sujet/{{ _id }}" method="put" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="EditModalLabel">Modification Article</h5>
+                    {{!-- Btn Fermer modal --}}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    {{!-- /Btn Fermer modal --}}
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+                                {{!-- Inpout Titre --}}
                                 <label for="formGroupExampleInput">Titre De L'article :</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                     placeholder="Example de Titre" name='title' value="{{ title }}" required>
+                                {{!-- /Inpout Titre --}}
                             </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+                                {{!-- Input Type --}}
                                 <label for="exampleFormControlSelect1">Type de l'article :</label>
                                 <select class="form-control" id="exampleFormControlSelect1" name='type' required>
                                     <option selected>Choisir :</option>
                                     <option value="1">Article sur les Régions Pokémon</option>
                                     <option value="2">Article sur Les Jeux Pokémon</option>
                                 </select>
+                                {{!-- /Input Type --}}
                             </div>
                         </div>
                     </div>
@@ -166,10 +203,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+                                {{!-- Input Description --}}
                                 <div class="form-group">
                                     <label for="comment">Description :</label>
                                     <textarea class="form-control" rows="5" id="comment" name="description"
                                         required>{{ description }}</textarea>
+                                {{!-- /Input Description --}}
                                 </div>
                             </div>
                         </div>
@@ -180,11 +219,13 @@
                             <div class="col-md-12">
                                 <div class="input">
                                     <div class="custom-file">
+                                        {{!-- Input Image --}}
                                         <input type="file" class="custom-file-input" id="inputGroupFile01"
                                             aria-describedby="inputGroupFileAddon01" name="imgSujets">
                                         <label class="custom-file-label" for="inputGroupFile01">Choisir
                                             un fichier
                                             ...</label>
+                                        {{!-- /Input Image --}}
                                     </div>
                                 </div>
                             </div>
@@ -192,10 +233,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    {{!-- Btn Annuler --}}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    {{!-- /Btn Annuler --}}
+                    {{!-- Btn Save --}}
                     <button type="submit" class="btn btn-success">Enregistrer</button>
+                    {{!-- Btn Save --}}
                 </div>
             </form>
+            {{!-- /Forum Mise a jour --}}
         </div>
     </div>
 </div>

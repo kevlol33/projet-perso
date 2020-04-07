@@ -1,11 +1,16 @@
+{{!-- Partial Équipe favorite --}}
+
 <div class="container">
     <h1>Favorie des Jeux Pokémon :</h1>
     <div class="row">
+        {{!-- J'utilise la db Type2 pour afficher les article de type2 --}}
         {{#each dbType2}}
         <div class="col-md-4">
             <div class="card bg-dark" style="width: 18rem;">
+                {{!-- {{imgSujets}} me permet d'afficher l'image du sujet --}}
                 <img src="{{imgSujets}}" class="card-img-top" alt="...">
                 <div class="card-body">
+                    {{!-- {{titre}} --}}
                     <h5 class="card-title">{{title}}</h5>
                     <p class="card-text">{{ description }}</p>
                     <a href="/Sujet/{{_id}}" class="btn btn-outline-info">Voir L'article</a>
@@ -13,6 +18,9 @@
             </div>
         </div>
         {{/each}}
+        {{!-- /J'utilise la db Type2 pour afficher les article de type2 --}}
     </div>
 </div>
 </br>
+
+{{!-- /Partial Équipe favorite --}}

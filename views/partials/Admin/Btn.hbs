@@ -1,3 +1,5 @@
+{{!-- Collapse Admin Btn --}}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -5,22 +7,25 @@
                 <i class="fas fa-list"></i>
                 Liste des Sujets :
             </h1>
-             <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
-                    data-target="#DelAllModal">
-                    <i class="fas fa-trash-alt"></i>
-                    Effacer tout
-                </button>
-                <!-- Button Add Sujet -->
-                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
-                    data-target="#AddSujet">
-                    <i class="fas fa-plus"></i>
-                    Ajouter un article
-                </button>
+            {{!-- Button Del All Sujet --}}
+            <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
+                data-target="#DelAllModal">
+                <i class="fas fa-trash-alt"></i>
+                Effacer tout
+            </button>
+            {{!-- /Button Del All Sujet --}}
+            {{!-- Button Add Sujet --}}
+            <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal"
+                data-target="#AddSujet">
+                <i class="fas fa-plus"></i>
+                Ajouter un article
+            </button>
+            {{!-- /Button Add Sujet --}}
         </div>
     </div>
 </div>
 
-<!-- Modal -->
+{{!-- Modal Dell All Sujet --}}
 <div class="modal fade" id="DelAllModal" tabindex="-1" role="dialog" aria-labelledby="DelAllModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -35,16 +40,23 @@
                 Êtes-vous sur de supprimer tout les sujets ?
             </div>
             <div class="modal-footer">
+                {{!-- Btn Annuler --}}
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                {{!-- /Btn Annuler --}}
+                {{!-- Formulaire pour tous les supprimer --}}
                 <form action="/admin/?_method=DELETE" method="POST">
+                    {{!-- Btn Tout Effacer --}}
                     <button type="submit" class="btn btn-danger">Tout Effacer</button>
+                    {{!-- /Btn Tout Effacer --}}
                 </form>
+                {{!-- /Formulaire pour tous les supprimer --}}
             </div>
         </div>
     </div>
 </div>
+{{!-- /Modal Dell All Sujet --}}
 
-<!-- Modal Add Sujet-->
+{{!-- Modal Add Sujet --}}
 <div class="modal fade" id="AddSujet" tabindex="-1" role="dialog" aria-labelledby="AddSujet" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -54,63 +66,77 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            {{!-- Formulaire Add Sujet --}}
+            <form action="/admin" method="post" enctype="multipart/form-data"></form>
             <div class="modal-body">
-                <form action="/admin" method="post" enctype="multipart/form-data">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="formGroupExampleInput">Titre De L'article :</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Example de Titre" name='title' required>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        {{!-- Imput titre --}}
+                        <div class="col-md-12">
+                            <label for="formGroupExampleInput">Titre De L'article :</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                placeholder="Example de Titre" name='title' required>
                         </div>
+                        {{!-- /Imput titre --}}
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="exampleFormControlSelect1">Type de l'article :</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name='type' required>
-                                    <option selected>Choisir :</option>
-                                    <option value="1">Article sur les Régions Pokémon</option>
-                                    <option value="2">Article sur Les Jeux Pokémon</option>
-                                </select>
-                            </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        {{!-- Dropdown Type d'article --}}
+                        <div class="col-md-12">
+                            <label for="exampleFormControlSelect1">Type de l'article :</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name='type' required>
+                                <option selected>Choisir :</option>
+                                <option value="1">Article sur les Régions Pokémon</option>
+                                <option value="2">Article sur Les Jeux Pokémon</option>
+                            </select>
                         </div>
+                        {{!-- /Dropdown Type d'article --}}
                     </div>
+                </div>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="comment">Description :</label>
-                                    <textarea class="form-control" rows="5" id="comment" name="description"
-                                        required></textarea>
+                <div class="container">
+                    <div class="row">
+                        {{!-- Input description --}}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="comment">Description :</label>
+                                <textarea class="form-control" rows="5" id="comment" name="description"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        {{!-- Input description --}}
+                    </div>
+                </div>
+                </br>
+                <div class="container">
+                    <div class="row">
+                        {{!-- Input Image --}}
+                        <div class="col-md-12">
+                            <div class="input">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                        aria-describedby="inputGroupFileAddon01" name="imgSujets" required>
+                                    <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier
+                                        ...</label>
                                 </div>
                             </div>
                         </div>
+                        {{!-- /Input Image --}}
                     </div>
-                    </br>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="input">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01" name="imgSujets" required>
-                                        <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier
-                                            ...</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{!-- /Formulaire pour crée un article --}}
+                </div>
             </div>
             <div class="modal-footer">
+                {{!-- Btn Annuler --}}
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                {{!-- /Btn Annuler --}}
+                {{!-- Btn Save --}}
                 <button type="submit" class="btn btn-success">Enregistrer</button>
-                </form>
+                {{!-- Btn Save --}}
             </div>
+            </form>
+            {{!-- /Formulaire Add Sujet --}}
         </div>
     </div>
 </div>
+{{!-- /Modal Add Sujet --}}
