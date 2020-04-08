@@ -1,7 +1,6 @@
 {
-  "name": "basse-node-js",
+  "name": "basse-node",
   "version": "1.0.0",
-  "description": "",
   "main": "serveur.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +10,7 @@
   "author": "kevin",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "connect-flash": "^0.1.1",
@@ -34,5 +33,14 @@
   "devDependencies": {
     "handlebars": "^4.5.0",
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevlol33/projet-perso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kevlol33/projet-perso/issues"
+  },
+  "homepage": "https://github.com/kevlol33/projet-perso#readme",
+  "description": ""
 }

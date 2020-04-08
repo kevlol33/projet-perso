@@ -29,7 +29,7 @@ app.use(methodOverride('_method'));
 *                        Mongoose 
 *************************************************************/
 const
-    urlDb      = keys.DB.dev
+    urlDb      = keys.DB.prod
 ,   mongoStore =  MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
@@ -41,15 +41,18 @@ mongoose.connect(urlDb, {
 /************************************************************
 *                        Express Session 
 *************************************************************/
+const
+    discret = keys.Cookie.secret,
+    name   = keys.Cookie.name;
 
 app.use(expressSession({
-    secret:             keys.Cookie.secret
-,   name:               keys.Cookie.name
+
+    secret:             discret
+,   name:               name
 ,   saveUninitialized:  true
 ,   resave:             false
 ,   store:              new mongoStore({
-    mongooseConnection: mongoose.connection
-    })
+    mongooseConnection: mongoose.connection})
 }));
 
 /************************************************************
