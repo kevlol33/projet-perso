@@ -13,25 +13,27 @@ const
     *                        Méthode Post 
     *************************************************************/
         BanUser: (req, res) => {
-            const
-                id = { _id: req.session.userId }
-        
+            const 
+            sess = req.session 
+    
+            let query = { _id:req.params.id }
+
+            console.log(sess);
+            console.log(query);
+            
             User.findByIdAndUpdate(
-                id,
+                query,
                 {
                     isBan: true
                 },
                 
                 { useFindAndModify: false},
-        
+    
                 function (error, post) {
                     if (error) {
                         console.log('err 2');
                         res.redirect('/')
                     } else {
-                        User.findByIdAndUpdate({
-                            isBan: true
-                        })
                         res.render('Admin')
                     }
                 })

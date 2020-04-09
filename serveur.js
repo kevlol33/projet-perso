@@ -29,7 +29,7 @@ app.use(methodOverride('_method'));
 *                        Mongoose 
 *************************************************************/
 const
-    urlDb      = keys.DB.prod
+    urlDb      = keys.DB.dev
 ,   mongoStore =  MongoStore(expressSession);
 
 mongoose.connect(urlDb, {

@@ -21,14 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-                {{!-- Boucle dbUsers --}}
+                {{#each dbUserID}}
                 <tr>
                     {{!-- L'username de l'utilisateur --}}
-                    <td> {{ dbUsers.username }} </td>
+                    <td> {{ username }} </td>
                     {{!-- Le Mail de l'utilisateur --}}
-                    <td> {{ dbUsers.email }}</td>
+                    <td> {{ email }}</td>
                     {{!-- le sexe de l'utilisateur --}}
-                    <td> {{ dbUsers.sexe }} </td>
+                    <td> {{ sexe }} </td>
                     <td>
                         {{!-- Bouton modif User --}}
                         <button type="button" class="btn  btn-outline-warning" data-toggle="modal"
@@ -39,50 +39,50 @@
                     </td>
                     <td>
                         {{!-- Formumlaire Ban User --}}
-                            <button class="btn btn-outline-danger" type="submit">
-                                <i class="fas fa-user-minus"></i>
-                            </button>
+                        <button class="btn btn-outline-danger" type="submit">
+                            <i class="fas fa-user-minus"></i>
+                        </button>
                         {{!-- /Formumlaire Ban User --}}
                     </td>
                 </tr>
-                {{!-- /Boucle dbUsers --}}
+                {{!-- Modal modif User --}}
+                <div class="modal fade" id="ModifUser" tabindex="-1" role="dialog" aria-labelledby="ModifUserModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModifUserLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="Moncompte{{_id}}/?_method=PUT" method="POST">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Username :</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput"
+                                            placeholder="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput2">Email :</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput2"
+                                            placeholder="email">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i
+                                            class="far fa-times-circle"> Annuler</i></button>
+                                    <button type="submit" class="btn btn-outline-success"><i class="far fa-save">
+                                            Enregistré</i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{!-- /Modal modif User --}}
+                {{/each}}
             </tbody>
         </table>
     </div>
 </div>
-
-{{!-- Modal modif User --}}
-<div class="modal fade" id="ModifUser" tabindex="-1" role="dialog" aria-labelledby="ModifUserModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ModifUserLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="Moncompte{{duUsers.userId}}/?_method=PUT" method="POST">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">Username :</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Email :</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="email">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i
-                            class="far fa-times-circle"> Annuler</i></button>
-                    <button type="submit" class="btn btn-outline-success"><i class="far fa-save">
-                            Enregistré</i></button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-{{!-- /Bouton modif User --}}
-
 {{!-- /Partial d'info sur l'utilisateur --}}

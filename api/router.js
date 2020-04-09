@@ -76,7 +76,7 @@ Router.route('/Forum')
     .post (Auth, Ban, Upload.single('imgSujets'), Forum.post)
 
 /************************************************************
-*                   Page Forum ID
+*                   Page Forum ID (CRUD)
 *************************************************************/
 
 Router.route('/Sujet/:id')
@@ -86,7 +86,7 @@ Router.route('/Sujet/:id')
     .put    (Auth, Ban, Upload.single('imgSujets'), Sujet.put)
 
 /************************************************************
-*                   Page MonCompte
+*                   Page MonCompte (CRUD)
 *************************************************************/
 
 Router.route('/MonCompte')
