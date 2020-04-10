@@ -88,7 +88,7 @@ module.exports = {
         //** Si req.file n'y est pas alors: **/
         if (!req.file) {
             console.log('pas de fichier');
-            console.log(err);
+            // console.log(error);
             
         }
         //** sinon tout sa **//

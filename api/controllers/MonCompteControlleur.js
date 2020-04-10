@@ -16,8 +16,9 @@ module.exports = {
     get: async (req, res) => {
 
     const
-        dbUsers    = await User.findById(req.session.userId)
-        sess = req.session
+        sess    = req.session
+        Query   = await User.find({sess})
+        dbUsers = Query
 
         res.render('MonCompte', {
             sess, dbUsers
@@ -38,20 +39,22 @@ module.exports = {
     },
 
     updateStatus: async (req, res) => {
-        const query = await User.find({
-
-            _id: req.params.id
-        })
-            console.log('content');
-            
-        User.findByIdAndUpdate(query, {
-            username: req.body.username
-        ,   email: req.body.email
-        },
-            (err, post) => {
-                console.log('update reussie');
-
-                res.redirect('/MonCompte')
+        const
+            //** query me permer de recupere l'id d'un sujet **//
+            Query = await User.find({
+                _id: req.params.id
             })
+            //** dbsujet permet de chercher un sujet par id **//
+            , dbUsers = await User.findById(Query)
+            
+
+
+            console.log('je met tout a jour');
+
+            //** tu met a jour mon sujet **//
+            User.findByIdAndUpdate(Query, {
+               username: req.body.username
+            ,  email: req.body.email 
+            })
+        }
     }
-}

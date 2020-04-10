@@ -53,7 +53,7 @@
                                                     {{!-- /Lien pour voir le sujet --}}
                                                 </td>
                                                 <td class="text-center">
-                                                    {{!-- Btn Etion Sujet --}}
+                                                    {{!-- Btn Edition Sujet --}}
                                                     <button type="button" class="btn btn-outline-warning"
                                                         data-toggle="modal" data-target="#EditModalCenter{{id}}">
                                                         <i class="fas fa-pen"></i>
@@ -239,12 +239,11 @@
                                                 </td>
                                                 <td class="text-center">
                                                     {{!-- Btn modifier sujet --}}
-                                                    {{!-- <button type="button" class="btn btn-outline-warning"
-                                                        data-toggle="" data-target="#">
+                                                    <button type="button" class="btn btn-outline-warning"
+                                                        data-toggle="modal" data-target="#EditModalCenter{{id}}">
                                                         <i class="fas fa-pen"></i>
-                                                    </button> --}}
+                                                    </button>
                                                     {{!-- /Btn modifier sujet --}}
-
                                                 </td>
                                                 <td class="text-center">
                                                     {{!-- Formulaire Delete sujet --}}
@@ -257,6 +256,117 @@
                                                 </td>
                                             </tr>
                                             {{!-- /Info du Sujet --}}
+                                            <div class="modal fade" id="EditModalCenter{{id}}" tabindex="-1"
+                                                role="dialog" aria-labelledby="EditModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="EditModalLongTitle">Modification
+                                                                Article</h5>
+                                                            {{!-- Btn Fermer modal --}}
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            {{!-- /Btn Fermer modal --}}
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {{!-- Forum Mise a jour --}}
+                                                            <form action="/Sujet/{{ _id }}/?_method=PUT" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                <div class="modal-body">
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                {{!-- Inpout Titre --}}
+                                                                                <label for="formGroupExampleInput">Titre
+                                                                                    De L'article :</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="formGroupExampleInput"
+                                                                                    placeholder="Example de Titre"
+                                                                                    name='title' value="{{ title }}"
+                                                                                    required>
+                                                                                {{!-- /Inpout Titre --}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                {{!-- Input Type --}}
+                                                                                <label
+                                                                                    for="exampleFormControlSelect1">Type
+                                                                                    de l'article :</label>
+                                                                                <select class="form-control"
+                                                                                    id="exampleFormControlSelect1"
+                                                                                    name='type' required>
+                                                                                    <option selected>Choisir :</option>
+                                                                                    <option value="1">Article sur les
+                                                                                        Régions Pokémon</option>
+                                                                                    <option value="2">Article sur Les
+                                                                                        Jeux Pokémon</option>
+                                                                                </select>
+                                                                                {{!-- /Input Type --}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                {{!-- Input Description --}}
+                                                                                <div class="form-group">
+                                                                                    <label for="comment">Description
+                                                                                        :</label>
+                                                                                    <textarea class="form-control"
+                                                                                        rows="5" id="comment"
+                                                                                        name="description"
+                                                                                        required>{{ description }}</textarea>
+                                                                                    {{!-- /Input Description --}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    </br>
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="input">
+                                                                                    <div class="custom-file">
+                                                                                        {{!-- Input Image --}}
+                                                                                        <input type="file"
+                                                                                            class="custom-file-input"
+                                                                                            id="inputGroupFile01"
+                                                                                            aria-describedby="inputGroupFileAddon01"
+                                                                                            name="imgSujets">
+                                                                                        <label class="custom-file-label"
+                                                                                            for="inputGroupFile01">Choisir
+                                                                                            un fichier
+                                                                                            ...</label>
+                                                                                        {{!-- /Input Image --}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    {{!-- Btn Annuler --}}
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Annuler</button>
+                                                                    {{!-- /Btn Annuler --}}
+                                                                    {{!-- Btn Save --}}
+                                                                    <button type="submit"
+                                                                        class="btn btn-success">Enregistrer</button>
+                                                                    {{!-- Btn Save --}}
+                                                                </div>
+                                                            </form>
+                                                            {{!-- /Forum Mise a jour --}}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                             {{/each }}
                                         </table>
                                     </div>
