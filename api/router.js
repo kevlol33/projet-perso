@@ -12,6 +12,7 @@ const
 const
     Admin     = require('./controllers/Admin/AdminControlleur')
 ,   AdminUser = require('./controllers/Admin/AdminUserControlleur')
+,   Article   = require('./controllers/Forum/Article/Article')
 ,   Compte    = require('./controllers/MonCompteControlleur')
 ,   Forum     = require('./controllers/Forum/ForumControlleur')
 ,   Home      = require('./controllers/HomeControlleur')
@@ -75,6 +76,12 @@ Router.route('/Forum')
     .get  (Auth, Ban, Forum.get)
     .post (Auth, Ban, Upload.single('imgSujets'), Forum.post)
 
+/************************************************************
+*                   Page Forum/Article
+*************************************************************/
+
+Router.route('/Forum/Article')
+    .get (Auth, Ban, Article.get)
 /************************************************************
 *                   Page Forum ID (CRUD)
 *************************************************************/

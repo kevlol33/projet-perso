@@ -1,4 +1,16 @@
 {{!-- Page Forum ou son regrouper les sujet --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Forum</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
 {{!-- 
     Message d'acceuil pour les nouveau utilisateur
  --}}
@@ -9,7 +21,5 @@
  --}}
 {{> Forum/BtnAjoutArticle }}
 
-{{!-- 
-     Partial de l'Acordeon pour les Article du Forum
- --}}
-{{> Forum/collapseforum }}
+{{!-- Liste des Article --}}
+{{> Forum/TableauCategorie }}

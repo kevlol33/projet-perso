@@ -3,6 +3,10 @@ h1 {
     font-family: 'Times New Roman', Times, serif;
 }
 
+h5 {
+    color: #ffffff !important;
+}
+
 a {
     color: #ffffff !important;
 }
