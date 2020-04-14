@@ -29,38 +29,40 @@ app.use(methodOverride('_method'));
 *                        Mongoose 
 *************************************************************/
 const
-    urlDb      = keys.DB.dev
-,   mongoStore =  MongoStore(expressSession);
+    urlDb              = keys.DB.dev
+,   useCreateIndex     = keys.Mongoose.useCreateIndex  
+,   useNewUrlParser    = keys.Mongoose.useNewUrlParser 
+,   useUnifiedTopology = keys.Mongoose.useUnifiedTopology 
+,   mongoStore         = MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
-    useCreateIndex:     true
-,   useNewUrlParser:    true
-,   useUnifiedTopology: true
+    useCreateIndex:  useCreateIndex
+,   useNewUrlParser: useNewUrlParser
+,   useUnifiedTopology: useUnifiedTopology
     });
 
 /************************************************************
 *                        Express Session 
 *************************************************************/
 const
-    discret = keys.Cookie.secret,
-    name   = keys.Cookie.name;
+    secret           = keys.Cookie.secret
+,   name              = keys.Cookie.name
+,   saveUninitialized = keys.Cookie.saveUninitialized
+,   resave            = keys.Cookie.resave
 
 app.use(expressSession({
-
-    secret:             discret
+    secret:             secret
 ,   name:               name
-,   saveUninitialized:  true
-,   resave:             false
-,   store:              new mongoStore({
-    mongooseConnection: mongoose.connection})
+,   saveUninitialized:  saveUninitialized
+,   resave:             resave
+,   store:              new mongoStore({mongooseConnection: mongoose.connection})
 }));
 
 /************************************************************
 *                        App.Use 
 *************************************************************/
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(connectFlash());
 app.use('/assets', express.static('public'));
@@ -69,14 +71,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-
 /************************************************************
 *                        Handlebars 
 *************************************************************/
 app.set   ('view engine', 'hbs');
 app.engine('hbs', hbs({
-    extname: 'hbs',
-    defaultLayout: 'main'
+    extname: 'hbs'
+,   defaultLayout: 'main'
 }));
 
 /************************************************************
@@ -97,7 +98,6 @@ app.use('*', (req, res, next) => {
                 res.locals.isAdmin = req.session.status
             } 
         }
-
     // La function next permet qu'une fois la condition effectuer il reprenne son chemin
     next()
 });
@@ -118,9 +118,7 @@ app.use('/mailer', NODEMAILER)
 /************************************************************
 *                        Erreur 404 
 *************************************************************/
-app.use((req, res) => {
-    res.render('err404')
-})
+app.use((req, res) => {res.render('err404')})
 
 /************************************************************
 *                        Port 

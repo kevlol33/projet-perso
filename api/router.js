@@ -12,11 +12,12 @@ const
 const
     Admin     = require('./controllers/Admin/AdminControlleur')
 ,   AdminUser = require('./controllers/Admin/AdminUserControlleur')
-,   Article   = require('./controllers/Forum/Article/Article')
+,   Article   = require('./controllers/Forum/Article/ArticleJeuPoke/ArticleJeuPoke')
 ,   Compte    = require('./controllers/MonCompteControlleur')
 ,   Forum     = require('./controllers/Forum/ForumControlleur')
 ,   Home      = require('./controllers/HomeControlleur')
 ,   Login     = require('./controllers/LoginControleur')
+,   Region    = require('./controllers/Forum/Article/RegionPoke/RegionPoke')
 ,   Success   = require('./controllers/Nodemailer/Success')
 ,   Sujet     = require('./controllers/Forum/SujetControlleur')
 ,   User      = require('./controllers/UserControlleur');
@@ -80,8 +81,16 @@ Router.route('/Forum')
 *                   Page Forum/Article
 *************************************************************/
 
-Router.route('/Forum/Article')
+Router.route('/Forum/RegionPokemon')
+    .get (Auth, Ban, Region.get)
+
+/************************************************************
+*                   Page Forum/Article Jeux Pokemon
+*************************************************************/
+
+Router.route('/Forum/JeuxPokemon')
     .get (Auth, Ban, Article.get)
+
 /************************************************************
 *                   Page Forum ID (CRUD)
 *************************************************************/

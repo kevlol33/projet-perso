@@ -15,10 +15,9 @@ module.exports = {
         //** cette constance permet d'aller chercher les sujet dans la base de donnée **//
         const 
             sess = req.session
-            dbSujets = await Sujet.find({})
 
         res.render('Forum', {
-            dbSujets, sess
+            sess
         })
     },
 
