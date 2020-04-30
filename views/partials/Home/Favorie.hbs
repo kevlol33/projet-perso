@@ -16,7 +16,7 @@
     <h1><img src="https://img.icons8.com/color/48/000000/hearts.png"/>Favorie des Région Pokémon :</h1>
     <div class="row">
         {{!-- J'utilise la bloucle dbType1 --}}
-        {{#each dbType1}}
+        {{#each (limit dbType1 2)}}
         <div class="col-md-4">
             <div class="card bg-dark" style="width: 18rem;">
                 {{!-- {{imgSujets}} perlet d'afficher l'image du sujet --}}

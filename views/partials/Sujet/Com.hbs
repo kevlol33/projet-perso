@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <h3>Commentaire:</h3>
       {{!-- Boucle de la DB commentaireID --}}
-      {{#each dbCommentaireID }}
+      {{#each dbCommentaire }}
       <div class="card">
         <div class="card-body">
           <div class="container">
@@ -13,9 +13,10 @@
                 <img src="https://picsum.photos/102/102" class="align-self-center mr-3" alt="...">
                 <div class="media-body">
                   {{!-- {{username}} permet d'afficher l'user name de l'utilisateur qui a poster un commentaire --}}
-                  <h5 class="mt-0"> {{ username }} a dit :</h5>
+                  <h5 class="mt-0"> {{ author }} a dit :</h5>
                   {{!-- {{description}} permet d'afficer le commentaire envoyer --}}
-                  <p> {{ description }} </p>
+                  <p> {{ message }} </p>
+                  <p> {{ SujetID}}</p>
                 </div>
               </div>
             </div>

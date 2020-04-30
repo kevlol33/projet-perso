@@ -20,7 +20,7 @@ module.exports = {
             dbType1  = await Sujet.find({ type: { $lte: 1 } })
             dbSujets = await Sujet.find({})
 
-        res.render('Article', {
+        res.render('RegionPokemon', {
             dbSujets, dbType1, sess
         })
     }

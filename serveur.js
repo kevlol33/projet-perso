@@ -80,6 +80,11 @@ app.engine('hbs', hbs({
 ,   defaultLayout: 'main'
 }));
 
+handlebars.registerHelper('limit', function(arr, limit) {
+        if (!Array.isArray(arr)) { return[]; }
+        return arr.slice(0,limit);}
+);
+
 /************************************************************
 *                       Uttilisation du middleware 
 *************************************************************/

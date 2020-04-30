@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn btn-outline-success float-right" data-toggle="modal" data-target="#AddModal">
-                Ajouter un article
+            <button type="button" class="btn btn-outline-success btn-circle btn-lg float-right" data-toggle="modal"
+                data-target="#AddModal">
+                +
             </button>
         </div>
     </div>
@@ -13,12 +14,11 @@
 
 
 <!-- Modal Add Sujet -->
-<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="AddModalLabel">Créer un Sujet</h5>
+                <h1 class="modal-title" id="AddModalLabel">Créer un Sujet</h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -39,16 +39,16 @@
                     {{!-- /Input titre --}}
                     {{!-- Menu déroulan pour selectionner le type d'article --}}
                     <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label for="exampleFormControlSelect1">Type de l'article :</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name='type' required>
-                                <option selected>Choisir :</option>
-                                <option value="1">Article sur les Régions Pokémon</option>
-                                <option value="2">Article sur Les Jeux Pokémon</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="exampleFormControlSelect1">Type de l'article :</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name='type' required>
+                                    <option selected>Choisir :</option>
+                                    <option value="1">Article sur les Régions Pokémon</option>
+                                    <option value="2">Article sur Les Jeux Pokémon</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     {{!-- /Menu déroulan pour selectionner le type d'article --}}
                     {{!-- Input Description --}}

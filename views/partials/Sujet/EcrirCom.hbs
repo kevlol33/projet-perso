@@ -5,15 +5,15 @@
       {{!-- Formulaire Pour envoyer le commentaire sur la DB --}}
 
       {{!-- {{dbsujetID._id}} permet de lier l'id de l'article au commentaire --}}
-      <form action="/Sujet/{{dbsujetsID._id}}" method="post" enctype="application/x-www-form-urlencoded">
+      <form action="/comment" method="post">
         <h3>Ajouter un Commentaire:</h3>
         <div class="form-group row">
-          {{!-- le name description permet a la DB qu'il faut récupere ce textarea --}}
-          <textarea class="form-control" id="validationTextarea" placeholder="Commentaire" required
-            name="description"></textarea>
-        </div>
-        <div class="form">
-          <button type="submit" class="btn btn-outline-primary">Envoyer</button>
+            <label>Autheur</label>
+        <input type="text" name="author" placeholder="Autheur">
+        <label>Message</label>
+        <input type="hidden" name="articleID" value="{{dbSujetsID._id}}">
+        <textarea name="message"></textarea>
+        <button type="submit">Confirmer</button>
         </div>
       </form>
       {{!-- Formulaire Pour envoyer le commentaire sur la DB --}}

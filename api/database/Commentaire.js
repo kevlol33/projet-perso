@@ -14,13 +14,10 @@ const
 const 
     /* Création du schema Com */
     ComSchema = new Mongoose.Schema({
-        /* les description sera de type String */
-        description: String,
-        /* les username sera de type String */ 
-        username: String,
-
-        sujetID: String
-
+       author:  String
+    ,  message: String
+    ,  date:    String
+    ,  SujetID: String
     })
 
 /************************************************************

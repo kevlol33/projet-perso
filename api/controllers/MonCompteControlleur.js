@@ -17,8 +17,7 @@ module.exports = {
 
     const
         sess    = req.session
-        Query   = await User.find({sess})
-        dbUsers = Query
+        dbUsers   = await User.findById(req.params.id)
 
         res.render('MonCompte', {
             sess, dbUsers

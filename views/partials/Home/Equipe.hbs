@@ -4,7 +4,7 @@
     <h1>Favorie des Jeux Pokémon :</h1>
     <div class="row">
         {{!-- J'utilise la db Type2 pour afficher les article de type2 --}}
-        {{#each dbType2}}
+        {{#each (limit dbType2 2 )}}
         <div class="col-md-4">
             <div class="card bg-dark" style="width: 18rem;">
                 {{!-- {{imgSujets}} me permet d'afficher l'image du sujet --}}

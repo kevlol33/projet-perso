@@ -10,17 +10,18 @@ const
 *************************************************************/
 
 const
-    Admin     = require('./controllers/Admin/AdminControlleur')
-,   AdminUser = require('./controllers/Admin/AdminUserControlleur')
-,   Article   = require('./controllers/Forum/Article/ArticleJeuPoke/ArticleJeuPoke')
-,   Compte    = require('./controllers/MonCompteControlleur')
-,   Forum     = require('./controllers/Forum/ForumControlleur')
-,   Home      = require('./controllers/HomeControlleur')
-,   Login     = require('./controllers/LoginControleur')
-,   Region    = require('./controllers/Forum/Article/RegionPoke/RegionPoke')
-,   Success   = require('./controllers/Nodemailer/Success')
-,   Sujet     = require('./controllers/Forum/SujetControlleur')
-,   User      = require('./controllers/UserControlleur');
+    Admin       = require('./controllers/Admin/AdminControlleur')
+,   AdminUser   = require('./controllers/Admin/AdminUserControlleur')
+,   Article     = require('./controllers/Forum/Article/ArticleJeuPoke/ArticleJeuPoke')
+,   Commentaire = require('./controllers/Forum/CommentaireController')
+,   Compte      = require('./controllers/MonCompteControlleur')
+,   Forum       = require('./controllers/Forum/ForumControlleur')
+,   Home        = require('./controllers/HomeControlleur')
+,   Login       = require('./controllers/LoginControleur')
+,   Region      = require('./controllers/Forum/Article/RegionPoke/RegionPoke')
+,   Success     = require('./controllers/Nodemailer/Success')
+,   Sujet       = require('./controllers/Forum/SujetControlleur')
+,   User        = require('./controllers/UserControlleur');
 
 /************************************************************
 *                       Impotation middlewares 
@@ -97,10 +98,11 @@ Router.route('/Forum/JeuxPokemon')
 
 Router.route('/Sujet/:id')
     .get    (Auth, Ban, Sujet.get)
-    .post   (Auth, Ban, Verif, Sujet.post)
     .delete (Auth, Ban, Sujet.delete)
     .put    (Auth, Ban, Upload.single('imgSujets'), Sujet.put)
 
+Router.route('/comment')
+    .post   (Auth, Ban, Commentaire.post)
 /************************************************************
 *                   Page MonCompte (CRUD)
 *************************************************************/
