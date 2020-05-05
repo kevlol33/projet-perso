@@ -24,38 +24,16 @@ module.exports = {
     get: async (req, res) => {
         /* ces constance me permet de recupere les sujets et les commentaire dans la base de données */
         const
-            dbSujetsID = await Sujet.findById(req.params.id)
-
-        console.log(dbSujetsID);
+        query = req.params.id
+,           dbSujetsID = await Sujet.findById(query)
+,           dbCommentaire = await Commentaire.find({})
         
 
         /* redirige moi vers sur la page sujet avec les donnée sujets ainsi que les donnée commentaires */
         res.render('Sujet', {
-            dbSujetsID
-        })
-    },
-
-    getID: async (req, res) => {
-        const 
-            query = req.params.id
-,           dbSujets = await Sujet.findById(query)
-,           dbCommentaire = await Commentaire.find({sujetID: query})
-,           arr = new Array(dbCommentaire)
-
-        console.log(query);
-        console.log(dbSujets);
-        console.log(dbCommentaire);
-        console.log(arr);
-        
-        
-        
-        res.render('sujetID', {
-
-            dbSujets,
+            dbSujetsID,
             dbCommentaire
-            
         })
-        
     },
         
     /************************************************************
