@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <h3>Commentaire:</h3>
       {{!-- Boucle de la DB commentaireID --}}
-      {{#each dbCommentaire }}
+      {{#each dbCommentaireID }}
       <div class="card">
         <div class="card-body">
           <div class="container">
@@ -16,7 +16,6 @@
                   <h5 class="mt-0"> {{ author }} a dit :</h5>
                   {{!-- {{description}} permet d'afficer le commentaire envoyer --}}
                   <p> {{ message }} </p>
-                  <p> {{ SujetID}}</p>
                 </div>
               </div>
             </div>

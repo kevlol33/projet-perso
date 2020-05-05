@@ -30,32 +30,26 @@ app.use(methodOverride('_method'));
 *************************************************************/
 const
     urlDb              = keys.DB.dev
-,   useCreateIndex     = keys.Mongoose.useCreateIndex  
-,   useNewUrlParser    = keys.Mongoose.useNewUrlParser 
-,   useUnifiedTopology = keys.Mongoose.useUnifiedTopology 
 ,   mongoStore         = MongoStore(expressSession);
 
 mongoose.connect(urlDb, {
-    useCreateIndex:  useCreateIndex
-,   useNewUrlParser: useNewUrlParser
-,   useUnifiedTopology: useUnifiedTopology
+    useCreateIndex:     true
+,   useNewUrlParser:    true
+,   useUnifiedTopology: true
     });
-
 /************************************************************
 *                        Express Session 
 *************************************************************/
 const
-    secret           = keys.Cookie.secret
-,   name              = keys.Cookie.name
-,   saveUninitialized = keys.Cookie.saveUninitialized
-,   resave            = keys.Cookie.resave
-
+    discret = keys.Cookie.secret,
+    name   = keys.Cookie.name;
 app.use(expressSession({
-    secret:             secret
+    secret:             discret
 ,   name:               name
-,   saveUninitialized:  saveUninitialized
-,   resave:             resave
-,   store:              new mongoStore({mongooseConnection: mongoose.connection})
+,   saveUninitialized:  true
+,   resave:             false
+,   store:              new mongoStore({
+    mongooseConnection: mongoose.connection})
 }));
 
 /************************************************************

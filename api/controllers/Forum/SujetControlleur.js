@@ -6,7 +6,9 @@
 *                       Importation 
 *************************************************************/
 const
-    Commentaire = require('../../database/Commentaire')
+      express = require('express')
+    , router = express.Router()
+    , Commentaire = require('../../database/Commentaire')
     , Sujet = require('../../database/Sujet')
     , Path = require('path')
     , Fs = require('fs')
@@ -36,15 +38,22 @@ module.exports = {
     getID: async (req, res) => {
         const 
             query = req.params.id
-,           dbSujetsID = await Sujet.findById(query)
-,           dbCommentaireID = await Commentaire.find({sujetID: query})
+,           dbSujets = await Sujet.findById(query)
+,           dbCommentaire = await Commentaire.find({sujetID: query})
+,           arr = new Array(dbCommentaire)
 
         console.log(query);
-        console.log(dbSujetsID);
-        console.log(dbCommentaireID);
+        console.log(dbSujets);
+        console.log(dbCommentaire);
+        console.log(arr);
+        
+        
         
         res.render('sujetID', {
-            dbSujetsID, dbCommentaireID
+
+            dbSujets,
+            dbCommentaire
+            
         })
         
     },

@@ -20,9 +20,11 @@ module.exports = {
     *                        Méthode POST
     *************************************************************/
    post: async (req,res) => {
-    Commentaire.create({
-     ...req.body
+       console.log(req.body);
+       Commentaire.create({
+        ...req.body,
+        date: Date.now()
     },
-    res.redirect('back'))
+    res.redirect('/Forum'))
    }
 }
